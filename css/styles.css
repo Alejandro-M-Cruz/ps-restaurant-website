@@ -1,0 +1,471 @@
+:root {
+    --main-color: orange;
+    --emphasis-color: darkorange;
+    --cancel-button-color: #fa372b;
+    --confirm-button-color: limegreen;
+    --back-button-color: #ffd232;
+    --hover-row-color: #eeeeee;
+    --selected-row-color: rgba(255, 165, 0, 0.7);
+    --empty-row-color: #dddddd;
+    --input-focus-color: #eeeeee;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Arial, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+.page-title {
+    width: 50%;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 7rem auto 0 auto;
+}
+
+#index-wrapper {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+}
+
+/* -------------NAVBAR------------- */
+
+#nav-bar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--main-color);
+}
+
+.lista-paginas {
+    list-style-type: none;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.lista-paginas__titulo {
+    flex-grow: 10;
+}
+
+#la-nostra-casa-nav-title {
+    font-size: 2.2rem;
+    color: white;
+}
+
+#la-nostra-casa-nav-title:hover {
+    font-size: 2.3rem;
+}
+
+li[class^='lista-paginas'], li[class*=' lista-paginas'] {
+    display: inline-block;
+}
+
+nav a {
+    display: block;
+    color: black;
+    margin: 0 1.5vw;
+    padding: 1.25rem;
+    line-height: 2.2rem;
+    font-size: 1.1rem;
+}
+
+nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
+    background-color: var(--emphasis-color);
+}
+
+.user-icon {
+    margin-right: 5vw;
+}
+
+.user-icon:hover img {
+    transform: scale(1.2, 1.2);
+}
+
+.user-icon img {
+    position: absolute;
+    top: 25%;
+    height: 2.2rem;
+    width: 2.2rem;
+}
+
+
+/* -------------SLIDE SHOW------------- */
+
+.slide-image {
+    width: 60vw;
+    height: 32vw;
+    margin: 0 auto;
+    /* border: 1px solid purple; */
+}
+
+.slide-image-thing {
+    position: relative;
+    /* border: 3px solid red; */
+    width: 50vw;
+    height: 30vw;
+    margin: 2vw auto;
+    text-align: center;
+}
+
+.slide-image-thing img {
+    position: relative;
+    display: block;
+    /* border: 3px solid red; */
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    filter: brightness(50%)
+}
+
+.slide-image-thing__center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 30px;
+}
+
+.slide-image-thing__center-text-p {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 15px;
+}
+
+#slide-image__left-arrow, #slide-image__right-arrow {
+    position: relative;
+    width: 2vw;
+    height: 2vw;
+    display: block;
+    /* border: 3px solid blue; */
+    padding: 14vw 0;
+}
+
+#slide-image__left-arrow {
+    float: left;
+    padding-left: 1vw;
+}
+
+#slide-image__right-arrow {
+    float: right;
+    padding-right: 1vw;
+}
+
+
+/* -------------MENU------------- */
+
+.main-content h2 {
+    text-align: center;
+    margin: 2em 0;
+}
+
+.main-content__left-side {
+    float: left;
+    width: 50%;
+    background-color: lightgrey;
+}
+
+.main-content__left-side h3, .main-content__right-side h3 {
+    font-size: 1.5em;
+    line-height: 3em;
+}
+
+.main-content__left-side p {
+    line-height: 2em;
+}
+
+.main-content__right-side p {
+    line-height: 2em;
+}
+
+.main-content__right-side {
+    float: right;
+    width: 50%;
+    background-color: lightgrey;
+}
+
+.main-content:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+/* -------------LINK TO RESERVATIONS------------- */
+
+.reserva {
+    border: 3px solid black;
+    background-color: orange;
+    width: 500px;
+    height: 100px;
+    margin: 3em auto;
+}
+
+.reserva h2 {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 1.5em;
+}
+
+/* -------------ABOUT US------------- */
+
+.about-us {
+    height: 30vw;
+}
+
+.about-us h2 {
+    text-align: center;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.about-us-description {
+    width: 40%;
+    float: left;
+    padding-left: 4em;
+}
+
+.about-us-image {
+    width: 40%;
+    float: right;
+    padding-right: 4em;
+}
+
+.about-us-image img {
+    height: 100%;
+    width: 100%;
+    border-radius: 8px;
+}
+
+/* -------------TABLE------------- */
+
+.data-table {
+    width: 70vw;
+    margin: 4vw auto 3vw auto;
+    box-sizing: border-box;
+    border-collapse: collapse;
+}
+
+.data-table th, .data-table td {
+    padding: 0.8vw;
+    border: 1px solid lightgrey;
+}
+
+.data-table th {
+    font-size: 1.3vw;
+    background-color: var(--main-color);
+    color: white;
+}
+
+.data-table td {
+    text-align: center;
+    font-size: 1vw;
+}
+
+.data-table tr:not(.title-row):not(.empty-row):not(.non-selectable-row):hover {
+    cursor: pointer;
+}
+
+.data-table tr:not(.selected-row):not(.title-row):not(.empty-row):hover {
+    background-color: var(--hover-row-color);
+}
+
+.selected-row {
+    background-color: var(--selected-row-color);
+}
+
+.empty-row {
+    background-color: var(--empty-row-color);
+}
+
+.info {
+    text-align: center;
+    width: 40%;
+    margin: 4rem auto 4rem auto;
+    font-size: 2.5rem;
+}
+
+/* -------------BUTTONS------------- */
+
+.management-button {
+    display: block;
+    font-size: 1vw;
+    width: 20%;
+    padding: 1vw;
+    text-align: center;
+    text-decoration: none;
+    float: left;
+}
+
+.management-button:hover {
+    cursor: pointer;
+}
+
+.left-button {
+    color: black;
+    background-color: var(--back-button-color);
+    margin: 2% 3% 0 17%;
+}
+
+.middle-button {
+    color: white;
+    background-color: var(--cancel-button-color);
+    margin-top: 2%;
+}
+
+.right-button {
+    color: black;
+    background-color: var(--confirm-button-color);
+    margin: 2% 17% 0 3%;
+}
+
+
+/* -------------FORM PAGE------------- */
+
+/* -------------FORM------------- */
+
+.user-form {
+    font-size: 1.6rem;
+    text-align: center;
+}
+
+.user-form .labels-container, .user-form .inputs-container {
+    display: inline-block;
+    text-align: left;
+}
+
+.labels-container {
+    margin-right: 2rem;
+}
+
+.inputs-container {
+    margin-left: 2rem;
+}
+
+.user-form label, .user-form input {
+    display: block;
+    margin: 5rem 0;
+}
+
+.user-form input {
+    display: block;
+    font-size: 1.4rem;
+    height: 2rem;
+    border: black solid 1px;
+    width: 25rem;
+    padding-left: 3px;
+}
+
+.user-form input:focus {
+    background-color: var(--input-focus-color);
+}
+
+
+/* -------------BUTTONS------------- */
+
+.buttons-container {
+    width: 100%;
+    display: block;
+    text-align: center;
+}
+
+.cancel-button, .submit-button {
+    display: inline-block;
+    font-size: 1.2rem;
+    width: 20%;
+    padding: 1rem;
+    margin: 0 3rem 2rem 3rem;
+    text-align: center;
+}
+
+.cancel-button:hover, .submit-button:hover {
+    cursor: pointer;
+}
+
+.cancel-button {
+    background-color: var(--cancel-button-color);
+    color: white;
+}
+
+.submit-button {
+    background-color: var(--confirm-button-color);
+}
+
+
+/* -------------LINK TO LOGIN / SIGNUP------------- */
+
+.already-paragraph {
+    display: inline;
+}
+
+.already-div {
+    margin: 1rem 0 3rem 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.go-to-login-signup {
+    color: var(--emphasis-color);
+    background: none;
+    font-size: inherit;
+}
+
+.go-to-login-signup:hover {
+    cursor: pointer;
+}
+
+
+/* -------------FOOTER------------- */
+
+#footer-container {
+    background-color: lightgrey;
+    width: 100%;
+    height: 300px;
+}
+
+.vertical-list, .horizontal-list {
+    list-style-type: none;
+}
+
+.vertical-list li, .horizontal-list li {
+    padding: 0.5rem;
+}
+
+.vertical-list {
+    text-align: center;
+}
+
+.horizontal-list {
+    width: 100%;
+    padding-bottom: 0.8rem;
+}
+
+.horizontal-list li {
+    display: inline-block;
+}
+
+.social-media-icon {
+    transform: translateY(25%);
+}
+
+.social-media-icon img {
+    width: 3rem;
+}

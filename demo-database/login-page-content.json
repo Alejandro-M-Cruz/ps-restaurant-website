@@ -1,0 +1,24 @@
+{
+    "title": "Inicie sesión para poder ver sus reservas",
+    "formFields": [
+        {
+            "id": "phone-number",
+            "label": "Número de teléfono: ",
+            "type": "tel",
+            "name": "phoneNumber",
+            "constraints": "required max-length='15'"
+        },
+        {
+            "id": "password",
+            "label": "Contraseña: ",
+            "type": "password",
+            "name": "password",
+            "constraints": "required max-length='16'"
+        }
+    ],
+    "cancelButtonLabel": "Atrás",
+    "confirmButtonLabel": "Iniciar sesión",
+    "already": "Si aún no se ha registrado, ",
+    "alreadyLink": "REGÍSTRESE AQUÍ",
+    "linkHref": "signup.html"
+}

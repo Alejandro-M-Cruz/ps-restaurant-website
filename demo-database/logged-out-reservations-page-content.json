@@ -1,0 +1,9 @@
+{
+    "title": "Reservas",
+    "info": "Inicie sesión o regístrese para poder acceder a sus reservas",
+    "leftButtonLabel": "Atrás",
+    "middleButtonLabel": "Iniciar sesión",
+    "middleButtonHref": "login.html",
+    "rightButtonLabel": "Registrarse",
+    "rightButtonHref": "signup.html"
+}
