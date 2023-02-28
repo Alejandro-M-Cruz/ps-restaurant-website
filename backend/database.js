@@ -41,8 +41,19 @@ function deleteReservation(reservation, callback) {
     con.query("DELETE FROM Reservations WHERE id = ?", [reservation.id], callback)
 }
 
+function getAllReservations(callback) {
+    con.query("SELECT * FROM Reservations", callback)
+}
+
 function getUserReservations(userId, callback) {
     con.query("SELECT * FROM Reservations WHERE user_id = ?", [userId], callback)
 }
 
-module.exports = { addUser, getUser, checkPhoneNumber, deleteUser, addReservation, deleteReservation, getUserReservations }
+function getReservedPeople(time, callback) {
+    con.query("SELECT SUM(number_of_people) FROM Reservations WHERE time = ?", [time], callback)
+}
+
+module.exports = { 
+    addUser, getUser, checkPhoneNumber, deleteUser, 
+    addReservation, deleteReservation, getAllReservations, getUserReservations, getReservedPeople
+}
