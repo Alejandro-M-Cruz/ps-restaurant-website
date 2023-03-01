@@ -1,4 +1,5 @@
-{
+export default {
+    "not-found": "El recurso solicitado no está disponible",
     "db-error": "Se ha producido un error, inténtelo de nuevo",
     "phone-number-exists": "Este número de teléfono ya ha sido registrado",
     "failed-login": "El número de teléfono o la contraseña son incorrectos",

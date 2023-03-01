@@ -1,18 +1,20 @@
-const db = require("./database")
-const express = require("express")
+import express from "express"
+import cors from "cors"
+import errorMessages from "./error-messages.js"
+import users from "./api/users-route"
+import reservations from "./api/reservations-route"
+
 const app = express()
 const API = "/api/v1"
 const PORT = 8080
 
-const errorMessagesFetch = await fetch("error-mesages.json")
-const errorMessages = await errorMessagesFetch.json()
-
-let currentUser = null    // not logged in
-function login(user) { currentUser = user }
-
 app.use(express.static("public"))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+app.use(`${API}/users`, users)
+app.use(`${API}/reservations`, reservations)    // base route
+app.use("*", (req, res) => res.status(404).json({ error: errorMessages["not-found"] }))
 
 app.get("/", (req, res) => {
     res.redirect("/html/reservations.html")
@@ -57,6 +59,14 @@ app.get(`${API}/user`, (req, res) => {
     res.json({ error: errorMessages["not-logged-in"] })
 })
 
+app.delete(`${API}/user`, (req, res) => {
+    db.deleteUser(currentUser.id, (err) => {
+        if (err) return res.json({ error: errorMessages["db-error"] })
+        logout()
+        res.json({ error: null })
+    })
+})
+
 
 /* ========== RESERVATIONS ========== */
 app.post(`${API}/reservation`, (req, res) => {
@@ -89,14 +99,14 @@ app.all(`${API}/reservations/:user_id`, (req, res) => {
 })
 
 const now = new Date(Date.now())
-const MIN_DATE = new Date(Date.now() + MIN_DAYS_IN_ADVANCE * 24 * 60 * 60 * 1000)
-const MAX_DATE = new Date(now.getFullYear(), now.getMonth(), now.getDate())
 const MINUTES_BETWEEN_RESERVATIONS = 30
 const MIN_DAYS_IN_ADVANCE = 2
 const MAX_DAYS_IN_ADVANCE = 15
 const MAX_NUMBER_OF_PEOPLE = 15
 const CLOSED_DAYS = [0]     // closed on Mondays
-const current = MIN_HOUR
+const MIN_DATE = new Date(Date.now() + MIN_DAYS_IN_ADVANCE * 24 * 60 * 60 * 1000)
+const MAX_DATE = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+const current = MIN_DATE
 app.all(`${API}/available-reservations`, (req, res) => {
     db.getAllReservations((err, reservations) => {
         if (err) return res.json({ error: errorMessages["db-error"] })
@@ -114,3 +124,5 @@ app.all(`${API}/reserved-people/:time`, (req, res) => {
 app.listen(PORT, () => {
     console.log("Server is listening on port 8080")
 })
+
+export default app
