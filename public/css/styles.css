@@ -8,6 +8,8 @@
     --selected-row-color: rgba(255, 165, 0, 0.7);
     --empty-row-color: #dddddd;
     --input-focus-color: #eeeeee;
+    --menu-background-color: #dddddd;
+    --footer-background-color: #dddddd;
 }
 
 * {
@@ -33,11 +35,21 @@ button:hover {
     margin: 7rem auto 0 auto;
 }
 
+.dark-filter {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
 #index-wrapper {
     margin: 0 auto;
     width: 100%;
     height: 100%;
 }
+
 
 /* -------------NAVBAR------------- */
 
@@ -109,7 +121,7 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
 .slide-image {
     width: 60vw;
     height: 32vw;
-    margin: 10vw auto 0;
+    margin: 7vw auto 0;
     z-index: 1;
 }
 
@@ -120,7 +132,6 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
     margin: 2vw auto;
     text-align: center;
     background-size: cover;
-    filter: brightness(50%)
 }
 
 .slide-image-thing__center-text {
@@ -130,7 +141,6 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
     transform: translate(-50%, -50%);
     color: white;
     font-size: 1.5em;
-    filter: brightness(100%)
 }
 
 .slide-image-thing__center-text-p {
@@ -140,7 +150,6 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
     transform: translate(-50%, -50%);
     color: white;
     font-size: 15px;
-    filter: brightness(100%)
 }
 
 #slide-image__left-arrow, #slide-image__right-arrow {
@@ -150,10 +159,6 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
     height: 2vw;
     display: block;
     padding-top: 14vw;
-}
-
-#slide-image__left-arrow, #slide-image__right-arrow img{
-    image-resolution: 25px;
 }
 
 #slide-image__left-arrow {
@@ -182,34 +187,38 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
 
 /* -------------MENU------------- */
 
-.main-content h2 {
+.menu {
+    display: flex;
+}
+
+.menu-left, .menu-right {
+    border: 1px solid black;
+    padding-bottom: 1rem;
+}
+
+#main-content h2 {
     text-align: center;
-    margin: 2em 0;
+    margin: 3em 0 1.5em 0;
 }
 
-.main-content__left-side {
-    float: left;
+.menu-left, .menu-right {
+    border-radius: 1rem;
     width: 50%;
-    background-color: lightgrey;
+    background-color: var(--menu-background-color);
 }
 
-.main-content__left-side h3, .main-content__right-side h3 {
+.menu-left h3, .menu-right h3 {
     font-size: 1.5em;
     line-height: 3em;
+    padding: 1.3em 0 0 1.3em;
 }
 
-.main-content__left-side p {
+.menu-left p {
     line-height: 2.5em;
 }
 
-.main-content__right-side p {
+.menu-right p {
     line-height: 2em;
-}
-
-.main-content__right-side {
-    float: right;
-    width: 50%;
-    background-color: lightgrey;
 }
 
 .sides {
@@ -222,6 +231,7 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
 
 .left-side {
     float: left;
+    padding-left: 2em;
 }
 
 .left-side p, .right-side p{
@@ -245,21 +255,19 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
     clear: both;
 }
 
-.main-content:after {
+#main-content:after {
     content: "";
     display: table;
     clear: both;
 }
 
 
-/* -------------LINK TO RESERVATIONS------------- */
+/* -------------LINKS TO RESERVATIONS------------- */
 
 .reserva {
-    border: 1px solid black;
-    background-color: orange;
-    width: 95%;
-    margin: 5rem auto;
+    background-color: var(--confirm-button-color);
     text-align: center;
+    margin-bottom: 10rem;
     border-radius: 1rem;
 }
 
@@ -273,33 +281,133 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
 
 /* -------------ABOUT US------------- */
 
-.about-us {
-    height: 30vw;
-}
-
-.about-us h2 {
+#about-us-section h2 {
     text-align: center;
     margin-top: 1em;
     margin-bottom: 3em;
 }
 
+.about-us-content {
+    display: flex;
+    align-items: center;
+    background-color: var(--main-color);
+}
+
 .about-us-description {
-    width: 40%;
-    float: left;
-    padding-left: 4em;
+    width: 50%;
+    font-size: 1.3rem;
+    padding: 5rem;
+    text-align: justify;
+    color: white;
 }
 
 .about-us-image {
-    width: 40%;
-    float: right;
-    padding-right: 4em;
+    width: 50%;
 }
 
 .about-us-image img {
     height: 100%;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 0.5rem;
 }
+
+
+/* -------------LINKS TO COMPLAINTS------------- */
+.complaints {
+    background-color: var(--cancel-button-color);
+    text-align: center;
+    border-radius: 1rem;
+    margin-top: 7rem;
+}
+
+.complaints h2 {
+    font-size: 1rem;
+    color: white;
+    display: block;
+    padding: 0.5rem;
+}
+
+/* -------------FOOTER------------- */
+
+#footer-container {
+    box-sizing: content-box;
+    background-color: var(--footer-background-color);
+    width: 100%;
+    height: 300px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items:center;
+    padding: 2rem 0 1.5rem 0;
+}
+
+#footer-container ul{
+    list-style-type:none;
+}
+
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    align-items: center;
+    padding-bottom: 1em;
+}
+
+.contact-list .copyright{
+    font-size:0.8em;
+}
+
+.hours {
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    height:100%;
+    align-items:center;
+}
+
+.social-list {
+
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom:1em;
+}
+
+.social-media-icon {
+    transform: translateY(25%);
+}
+
+.social-media-icon img {
+    width: 3rem;
+}
+
+hr{
+    height:80%;
+    width:0.1%;
+    border-width:0;
+    color:black;
+    background-color:black;
+}
+
+.icons-size {
+    width: 3em;
+    height: 3em;
+    display: inline-block;
+    margin-left: 1em;
+}
+
+.icons-size a {
+    display: inline-block;
+}
+
+.icons-size img {
+    width: 100%;
+    height: 100%;
+}
+
 
 /* -------------TABLE------------- */
 
@@ -411,18 +519,26 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
     margin: 5rem 0;
 }
 
-.user-form input {
+.user-form input, .user-form textarea {
     display: block;
     font-size: 1.4rem;
-    height: 2rem;
     border: black solid 1px;
-    width: 25rem;
     padding-left: 3px;
 }
 
-.user-form input:focus {
+.user-form input {
+    height: 2rem;
+    width: 25rem;
+}
+
+.user-form textarea {
+    margin: 3rem auto;
+}
+
+.user-form input:focus, .user-form textarea:focus {
     background-color: var(--input-focus-color);
 }
+
 
 
 /* -------------BUTTONS------------- */
@@ -476,42 +592,4 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
 
 .go-to-login-signup:hover {
     cursor: pointer;
-}
-
-
-/* -------------FOOTER------------- */
-
-#footer-container {
-    background-color: lightgrey;
-    width: 100%;
-    height: 300px;
-}
-
-.vertical-list, .horizontal-list {
-    list-style-type: none;
-}
-
-.vertical-list li, .horizontal-list li {
-    padding: 0.5rem;
-}
-
-.vertical-list {
-    text-align: center;
-}
-
-.horizontal-list {
-    width: 100%;
-    padding-bottom: 0.8rem;
-}
-
-.horizontal-list li {
-    display: inline-block;
-}
-
-.social-media-icon {
-    transform: translateY(25%);
-}
-
-.social-media-icon img {
-    width: 3rem;
 }

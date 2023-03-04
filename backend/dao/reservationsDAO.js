@@ -5,23 +5,48 @@ export default class ReservationsDAO {
         this.connection = connection
     }
 
-    static addReservation(reservation, callback) {
-        this.connection.query("INSERT INTO Reservations SET ?", reservation, callback)
+    static addReservation(reservation) {
+        return new Promise((resolve, reject) => {
+            this.connection.query("INSERT INTO Reservations SET ?", reservation, (err, result) => {
+                if (err) return reject(err)
+                resolve(result)
+            })
+        })
     }
 
-    static deleteReservation(id, callback) {
-        this.connection.query("DELETE FROM Reservations WHERE id = ?", [id], callback)
+    static deleteReservation(id) {
+        return new Promise((resolve, reject) => {
+            this.connection.query("DELETE FROM Reservations WHERE id = ?", [id], (err, result) => {
+                if (err) return reject(err)
+                resolve(result)
+            })
+        })
     }
 
-    static getAllReservations(callback) {
-        this.connection.query("SELECT * FROM Reservations", callback)
+    static getAllReservations() {
+        return new Promise((resolve, reject) => {
+            this.connection.query("SELECT * FROM Reservations", (err, result) => {
+                if (err) return reject(err)
+                resolve(result)
+            })
+        })
     }
 
-    static getReservationsByUserId(userId, callback) {
-        this.connection.query("SELECT * FROM Reservations WHERE user_id = ?", [userId], callback)
+    static getReservationsByUserId(userId) {
+        return new Promise((resolve, reject) => {
+            this.connection.query("SELECT * FROM Reservations WHERE user_id = ?", [userId], (err, result) => {
+                if (err) return reject(err)
+                resolve(result)
+            })
+        })
     }
 
-    static getReservedPeople(time, callback) {
-        this.connection.query("SELECT SUM(number_of_people) FROM Reservations WHERE time = ?", [time], callback)
+    static getReservationDateTimes() {
+        return new Promise((resolve, reject) => {
+            this.connection.query("SELECT date, time FROM Reservations", (err, result) => {
+                if (err) return reject(err)
+                resolve(result)
+            })
+        })
     }
 }

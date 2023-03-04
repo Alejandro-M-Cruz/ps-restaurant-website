@@ -6,21 +6,24 @@
             "label": "Número de teléfono: ",
             "type": "tel",
             "name": "phoneNumber",
-            "constraints": "required max-length='15'"
+            "required": true,
+            "maxlength": "15"
         },
         {
             "id": "password",
             "label": "Contraseña: ",
             "type": "password",
             "name": "password",
-            "constraints": "required max-length='16'"
+            "required": true,
+            "maxLength": 16
         },
         {
             "id": "password-confirm",
             "label": "Confirme su contraseña: ",
             "type": "password",
             "name": "passwordConfirmation",
-            "constraints": "required max-length='16'"
+            "required": true,
+            "maxLength": 16
         }
     ],
     "cancelButtonLabel": "Atrás",

@@ -1,8 +1,7 @@
 import app from "./server.js";
 import mysql from "mysql"
-import errorMessages from "./error-messages";
-import UsersDAO from "./dao/usersDAO"
-import ReservationsDAO from "dao/reservationsDAO"
+import UsersDAO from "./dao/usersDAO.js"
+import ReservationsDAO from "./dao/reservationsDAO.js"
 
 const PORT = 8080
 
@@ -14,11 +13,9 @@ const connection = mysql.createConnection({
 })
 
 connection.connect(err => {
-    if (err) return console.error(errorMessages["db-error"])
+    if (err) return console.error("Error connecting to database: " + err.stack)
     UsersDAO.setConnection(connection)
     ReservationsDAO.setConnection(connection)
-    app.listen(PORT, () => {
-        console.log(`Server is listening on port ${PORT}...`)
-    })
+    app.listen(PORT, () => console.log("Server running on port " + PORT))
 })
 

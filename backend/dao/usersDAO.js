@@ -1,39 +1,43 @@
-let users
-
 export default class UsersDAO {
     static connection
+
     static setConnection(connection) {
-        if (users) return
+        if (this.connection) return
         this.connection = connection
-        connection.query("SELECT * FROM Users", (err, result) => {
-            if (err) return console.error("Unable to initialize ReservationsDAO...")
-            users = result
+    }
+
+    static addUser(user) {
+        return new Promise((resolve, reject) => {
+            this.connection.query(
+                "INSERT INTO Users (phone_number, email, password, creation_date) VALUES (?, ?, ?, CURDATE())",
+                [user.phone_number, user.email, user.password],
+                (err, result) => {
+                    if (err) return reject(err)
+                    resolve(result)
+                }
+            )
         })
     }
 
-    static async addUser(user, callback) {
-        this.connection.query(
-            "INSERT INTO Users (phone_number, email, password, creation_date) VALUES (?, ?, ?, CURDATE())",
-            [user.phone_number, user.email, user.password],
-            callback
-        )
-    }
-
-    static async getUser(phoneNumber, password, callback) {
-        this.connection.query(
-            "SELECT * FROM Users WHERE phone_number = ? AND password = ?",
-            [phoneNumber, password],
-            callback
-        )
-    }
-
-    static async checkPhoneNumber(phoneNumber, callback) {
-        this.connection.query("SELECT COUNT(*) FROM Users WHERE phone_number = ?", [phoneNumber], (err, result) => {
-            callback(err, result > 0)
+    static getUser(phoneNumber, password) {
+        return new Promise((resolve, reject) => {
+            this.connection.query(
+                "SELECT * FROM Users WHERE phone_number = ? AND password = ?",
+                [phoneNumber, password],
+                (err, result) => {
+                    if (err) return reject(err)
+                    resolve(result)
+                }
+            )
         })
     }
 
-    static async deleteUser(userId, callback) {
-        this.connection.query("DELETE FROM Users WHERE id = ?", [userId], callback)
+    static deleteUser(userId) {
+        return new Promise((resolve, reject) => {
+            this.connection.query("DELETE FROM Users WHERE id = ?", [userId], (err, result) => {
+                if (err) return reject(err)
+                resolve(result)
+            })
+        })
     }
 }

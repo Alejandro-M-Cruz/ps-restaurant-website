@@ -14,8 +14,15 @@ CREATE TABLE Reservations (
     id INT PRIMARY KEY AUTO_INCREMENT,
     date DATE NOT NULL,
     time TIME NOT NULL,
-    number_of_people INT NOT NULL,
+    customers INT NOT NULL,
     name VARCHAR(255) NOT NULL,
     user_id INT NOT NULL,
     FOREIGN KEY (user_id) REFERENCES Users(id)
+);
+
+INSERT INTO Users (phone_number, password, creation_date, admin) VALUES (
+    "admin",
+    "admin",
+    CURDATE(),
+    TRUE
 );
