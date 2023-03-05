@@ -41,12 +41,28 @@ export default class ReservationsDAO {
         })
     }
 
-    static getReservationDateTimes() {
+    static getTotalCustomersForEachDatetime() {
         return new Promise((resolve, reject) => {
-            this.connection.query("SELECT date, time FROM Reservations", (err, result) => {
-                if (err) return reject(err)
-                resolve(result)
-            })
+            this.connection.query(
+                "SELECT datetime, SUM(customers) as total_customers FROM Reservations GROUP BY datetime",
+                (err, result) => {
+                    if (err) return reject(err)
+                    resolve(result)
+                }
+            )
+        })
+    }
+
+    static getTotalCustomersByDatetime(datetime) {
+        return new Promise((resolve, reject) => {
+            this.connection.query(
+                "SELECT SUM(customers) as total_customers FROM Reservations WHERE datetime = ?",
+                [datetime],
+                (err, result) => {
+                    if (err) return reject(err)
+                    resolve(result)
+                }
+            )
         })
     }
 }

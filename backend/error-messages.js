@@ -4,5 +4,6 @@ export default {
     "duplicate-user": "Este número de teléfono ya ha sido registrado",
     "failed-login": "El número de teléfono o la contraseña son incorrectos",
     "not-logged-in": "No se ha iniciado sesión",
-    "reservation-same-day": "Ya ha realizado una reserva para la fecha seleccionada"
+    "reservation-same-day": "Ya ha realizado una reserva para la fecha seleccionada",
+    "reservations-full": "No hay más reservas disponibles para la fecha seleccionada"
 }

@@ -42,9 +42,8 @@ export default class UsersController {
                 if (result.length === 0) return res.json({ error: errorMessages["failed-login"] })
                 login(result[0])
                 res.json({ id: user.id, admin: user.admin === 1, error: null })
-            }, error => {
-                res.json({ error: errorMessages["db-error"] })
             })
+            .catch(error => res.json({ error: errorMessages["db-error"] }))
     }
 
     static apiLogout(req, res) {
