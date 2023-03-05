@@ -5,7 +5,7 @@ export default class MenuController {
     static apiGetMenu(req, res) {
         dao.getAllMenuItems()
             .then(menuItems => res.json({ menuItems, error: null }))
-            .catch(err => res.status(500).json({ error: errorMessages["db-error"] }))
+            .catch(err => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
     }
 
     static apiAddMenuItem(req, res) {
@@ -17,13 +17,13 @@ export default class MenuController {
         }
         dao.addMenuItem(menuItem)
             .then(result => res.json({ error: null }))
-            .catch(err => res.status(500).json({ error: errorMessages["db-error"] }))
+            .catch(err => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
     }
 
     static apiDeleteMenuItem(req, res) {
         dao.deleteMenuItem(req.params.id)
             .then(result => res.json({ error: null }))
-            .catch(err => res.status(500).json({ error: errorMessages["db-error"] }))
+            .catch(err => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
     }
 
     static apiUpdateMenuItem(req, res) {
@@ -35,6 +35,6 @@ export default class MenuController {
         }
         dao.updateMenuItem(req.params.id, menuItem)
             .then(result => res.json({ error: null }))
-            .catch(err => res.status(500).json({ error: errorMessages["db-error"] }))
+            .catch(err => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
     }
 }

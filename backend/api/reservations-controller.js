@@ -53,19 +53,19 @@ export default class ReservationsController {
                 })
                 res.json({ available, error: null })
             })
-            .catch(error => res.status(500).json({ error: errorMessages["db-error"] }))
+            .catch(error => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
     }
 
     static apiGetAllReservations(req, res) {
         dao.getAllReservations()
             .then(result => res.json({ reservations: result, error: null }))
-            .catch(error => res.status(500).json({ error: errorMessages["db-error"] }))
+            .catch(error => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
     }
 
     static apiGetReservationsByUserId(req, res) {
         dao.getReservationsByUserId(req.params.user_id)
             .then(result => res.json({ reservations: result, error: null }))
-            .catch(error => res.status(500).json({ error: errorMessages["db-error"] }))
+            .catch(error => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
     }
 
     static apiPostReservation(req, res) {
@@ -74,14 +74,13 @@ export default class ReservationsController {
             .then(result => {
                 for (const reservation of result) {
                     if (reservation.datetime.toISOString() === datetime.toISOString())
-                        return res.status(500).json({ error: errorMessages["reservation-same-day"] })
+                        throw new Error("reservation-same-day")
                 }
                 return dao.getTotalCustomersByDatetime(datetime)
             })
             .then(result => {       // Check if there are available seats for the selected datetime
-                if (result.error) return
                 if (result[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME)
-                    return res.status(500).json({ error: errorMessages["reservation-full"] })
+                    throw new Error("reservations-full")
                 const newReservation = {
                     user_id: req.body.user_id,
                     datetime: `${req.body.date} ${req.body.time}`,
@@ -90,13 +89,15 @@ export default class ReservationsController {
                 }
                 return dao.addReservation(newReservation)
             })
-            .then(result => result.error ? null : res.json({ error: null }))
-            .catch(error => res.status(500).json({ error: errorMessages["db-error"] }))
+            .then(result => res.json({ error: null }))
+            .catch(error => res.status(500).json({
+                error: errorMessages[errorMessages[error.message] ? error.message : "DB_ERROR"]
+            }))
     }
 
     static apiDeleteReservation(req, res) {
         dao.deleteReservation(req.params.id)
             .then(result => res.json({ error: null }))
-            .catch(error => res.status(500).json({ error: errorMessages["db-error"] }))
+            .catch(error => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
     }
 }

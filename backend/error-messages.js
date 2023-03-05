@@ -1,9 +1,9 @@
 export default {
-    "not-found": "El recurso solicitado no está disponible",
-    "db-error": "Se ha producido un error, inténtelo de nuevo",
-    "duplicate-user": "Este número de teléfono ya ha sido registrado",
-    "failed-login": "El número de teléfono o la contraseña son incorrectos",
-    "not-logged-in": "No se ha iniciado sesión",
-    "reservation-same-day": "Ya ha realizado una reserva para la fecha seleccionada",
-    "reservations-full": "No hay más reservas disponibles para la fecha seleccionada"
+    "NOT_FOUND": "El recurso solicitado no está disponible",
+    "DB_ERROR": "Se ha producido un error, inténtelo de nuevo",
+    "DUPLICATE_USER": "Este número de teléfono ya ha sido registrado",
+    "FAILED_LOGIN": "El número de teléfono o la contraseña son incorrectos",
+    "NOT_LOGGED_IN": "No se ha iniciado sesión",
+    "RESERVATION_SAME_DAY": "Ya ha realizado una reserva para la fecha seleccionada",
+    "RESERVATIONS_FULL": "No hay más reservas disponibles para la hora seleccionada"
 }

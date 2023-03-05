@@ -15,7 +15,7 @@ app.use(express.urlencoded({extended: true}))
 app.use(`${API}/users`, users)
 app.use(`${API}/reservations`, reservations)
 app.use(`${API}/menu`, menu)
-app.use("*", (req, res) => res.status(404).json({ error: errorMessages["not-found"] }))
+app.use("*", (req, res) => res.status(404).json({ error: errorMessages["NOT_FOUND"] }))
 
 app.get("/", (req, res) => {
     res.redirect("/html/index.html")
