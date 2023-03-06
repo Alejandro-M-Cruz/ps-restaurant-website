@@ -1,4 +1,4 @@
-export default {
+const errorMessages = {
     "NOT_FOUND": "El recurso solicitado no está disponible",
     "DB_ERROR": "Se ha producido un error, inténtelo de nuevo",
     "DUPLICATE_USER": "Este número de teléfono ya ha sido registrado",
@@ -7,3 +7,9 @@ export default {
     "RESERVATION_SAME_DAY": "Ya ha realizado una reserva para la fecha seleccionada",
     "RESERVATIONS_FULL": "No hay más reservas disponibles para la hora seleccionada"
 }
+
+export function errorMessage(message) {
+    return { error: errorMessages[errorMessages[message] ? message : "DB_ERROR"] }
+}
+
+export const noError = { error: null }

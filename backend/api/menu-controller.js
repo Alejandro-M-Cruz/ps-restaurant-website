@@ -1,40 +1,43 @@
 import dao from "../dao/menuDAO.js"
-import errorMessages from "../error-messages.js";
+import { errorMessage, noError } from "../error-messages.js";
 
 export default class MenuController {
-    static apiGetMenu(req, res) {
-        dao.getAllMenuItems()
-            .then(menuItems => res.json({ menuItems, error: null }))
-            .catch(err => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
+    static async apiGetMenu(req, res) {
+        try {
+            const menuItems = await dao.getAllMenuItems()
+            res.json({ menuItems })
+        } catch(error) { res.status(500).json(errorMessage(error.message)) }
     }
 
-    static apiAddMenuItem(req, res) {
-        const menuItem = {
-            name: req.body.name,
-            price: req.body.price,
-            ingredients: req.body.ingredients,
-            image: req.body.image
-        }
-        dao.addMenuItem(menuItem)
-            .then(result => res.json({ error: null }))
-            .catch(err => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
+    static async apiAddMenuItem(req, res) {
+        try {
+            const menuItem = {
+                name: req.body.name,
+                price: req.body.price,
+                ingredients: req.body.ingredients,
+                image: req.body.image
+            }
+            await dao.addMenuItem(menuItem)
+            res.json(noError)
+        } catch(error) { res.status(500).json(errorMessage(error.message)) }
     }
 
-    static apiDeleteMenuItem(req, res) {
-        dao.deleteMenuItem(req.params.id)
-            .then(result => res.json({ error: null }))
-            .catch(err => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
+    static async apiDeleteMenuItem(req, res) {
+        try {
+            await dao.deleteMenuItem(req.params.id)
+            res.json(noError)
+        } catch(error) { res.status(500).json(errorMessage(error.message)) }
     }
 
-    static apiUpdateMenuItem(req, res) {
-        const menuItem = {
-            name: req.body.name,
-            price: req.body.price,
-            ingredients: req.body.ingredients,
-            image: req.body.image
-        }
-        dao.updateMenuItem(req.params.id, menuItem)
-            .then(result => res.json({ error: null }))
-            .catch(err => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
+    static async apiUpdateMenuItem(req, res) {
+        try {
+            const menuItem = {
+                name: req.body.name,
+                price: req.body.price,
+                ingredients: req.body.ingredients,
+                image: req.body.image
+            }
+            await dao.updateMenuItem(req.params.id, menuItem)
+        } catch(error) { res.status(500).json(errorMessage(error.message)) }
     }
 }

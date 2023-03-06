@@ -1,5 +1,6 @@
 import dao from "../dao/reservationsDAO.js"
-import errorMessages from "../error-messages.js"
+import { API } from "../server.js"
+import { errorMessage, noError } from "../error-messages.js"
 
 const MIN_DAYS_BEFORE_RESERVATION = 2
 const MAX_DAYS_BEFORE_RESERVATION = 15
@@ -39,10 +40,10 @@ const allDateTimes = () => {
 }
 
 export default class ReservationsController {
-    static apiGetAvailableReservations(req, res) {
-        dao.getTotalCustomersForEachDatetime()
-            .then(result => {
-                const available = allDateTimes()
+    static async apiGetAvailableReservations(req, res) {
+        try {
+            const totalCustomers = await dao.getTotalCustomersForEachDatetime()
+            const available = allDateTimes()
                 result.forEach(reserved => {
                     const date = formatDate(reserved.datetime)
                     const time = formatTime(reserved.datetime)
@@ -51,53 +52,57 @@ export default class ReservationsController {
                         if (Object.keys(available[date]).length === 0) delete available[date]
                     } else available[date][time] -= reserved.total_customers
                 })
-                res.json({ available, error: null })
+                res.json({ available })
+        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+    }
+
+    static async apiGetAllReservations(req, res) {
+        try {
+            const reservations = await dao.getAllReservations()
+            res.json({ reservations })
+        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+    }
+
+    static async apiGetReservationsByUserId(req, res) {
+        try {
+            const userReservations = await dao.getReservationsByUserId(req.params.id)
+            res.json({ reservations: userReservations })
+        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+    }
+
+    static async apiPostReservation(req, res) {
+        try {
+            const datetime = new Date(req.body.date + " " + req.body.time)
+            const user = await (await fetch(`http://localhost:8080${API}/users`)).json()
+            if (user.error) return res.status(500).json({ error: user.error })
+            const userReservations = await dao.getReservationsByUserId(user.id)
+            userReservations.forEach(reservation => {
+                if (reservation.datetime.toISOString() === datetime.toISOString()) 
+                    throw new Error("RESERVATION_SAME_DAY")
             })
-            .catch(error => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
+            const customers = await dao.getTotalCustomersByDatetime(datetime)
+            if (customers[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME) 
+                throw new Error("RESERVATIONS_FULL") 
+            const newReservation = {
+                user_id: user.id,
+                datetime: new Date(`${req.body.date} ${req.body.time}`),
+                customers: req.body.customers,
+                name: req.body.name
+            }
+            await dao.addReservation(newReservation)
+            res.json(noError)
+        } catch(error) { 
+            console.error(error)
+            res.status(404).json(errorMessage(error.message)) 
+        }
     }
 
-    static apiGetAllReservations(req, res) {
-        dao.getAllReservations()
-            .then(result => res.json({ reservations: result, error: null }))
-            .catch(error => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
-    }
-
-    static apiGetReservationsByUserId(req, res) {
-        dao.getReservationsByUserId(req.params.user_id)
-            .then(result => res.json({ reservations: result, error: null }))
-            .catch(error => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
-    }
-
-    static apiPostReservation(req, res) {
-        const datetime = new Date(req.body.date + " " + req.body.time)
-        dao.getReservationsByUserId(req.body.user_id)   // Check if user has made a reservation that same day
-            .then(result => {
-                for (const reservation of result) {
-                    if (reservation.datetime.toISOString() === datetime.toISOString())
-                        throw new Error("reservation-same-day")
-                }
-                return dao.getTotalCustomersByDatetime(datetime)
-            })
-            .then(result => {       // Check if there are available seats for the selected datetime
-                if (result[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME)
-                    throw new Error("reservations-full")
-                const newReservation = {
-                    user_id: req.body.user_id,
-                    datetime: `${req.body.date} ${req.body.time}`,
-                    customers: req.body.customers,
-                    name: req.body.name
-                }
-                return dao.addReservation(newReservation)
-            })
-            .then(result => res.json({ error: null }))
-            .catch(error => res.status(500).json({
-                error: errorMessages[errorMessages[error.message] ? error.message : "DB_ERROR"]
-            }))
-    }
-
-    static apiDeleteReservation(req, res) {
-        dao.deleteReservation(req.params.id)
-            .then(result => res.json({ error: null }))
-            .catch(error => res.status(500).json({ error: errorMessages["DB_ERROR"] }))
+    static async apiDeleteReservation(req, res) {
+        try {
+            await dao.deleteReservation(req.params.id)
+            res.json(noError)
+        } catch(error) {
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 }

@@ -1,4 +1,4 @@
-import app from "./server.js";
+import { app } from "./server.js";
 import mysql from "mysql"
 import UsersDAO from "./dao/usersDAO.js"
 import ReservationsDAO from "./dao/reservationsDAO.js"
