@@ -16,15 +16,16 @@ export default class UsersController {
     }
 
     static async apiPostUser(req, res) {
-        const newUser = {
-            phone_number: req.body.phone_number,
-            email: req.body.email,
-            password: req.body.password
-        }
         try {
-            await dao.addUser(newUser)
+            const user = {
+                phone_number: req.body.phone_number,
+                email: req.body.email,
+                password: req.body.password
+            }
+            await dao.addUser(user)
             res.json(noError)
-        } catch(error) { 
+        } catch(error) {
+            console.error(error.message)
             if (error.code === "ER_DUP_ENTRY") return res.status(404).json(errorMessage("DUPLICATE_USER"))
             res.status(500).json(errorMessage(error.message)) 
         }
@@ -34,7 +35,10 @@ export default class UsersController {
         try {
             await dao.deleteUser(req.params.id)
             res.json(noError)
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 
     static async apiLogin(req, res) {
@@ -43,7 +47,10 @@ export default class UsersController {
             if (result.length === 0) throw new Error("FAILED_LOGIN")
             login(result[0])
             res.json({ id: user.id, admin: user.admin === 1 })
-        } catch(error) { res.status(404).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(404).json(errorMessage(error.message))
+        }
     }
 
     static apiLogout(req, res) {

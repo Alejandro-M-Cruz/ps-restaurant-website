@@ -6,7 +6,10 @@ export default class MenuController {
         try {
             const menuItems = await dao.getAllMenuItems()
             res.json({ menuItems })
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 
     static async apiAddMenuItem(req, res) {
@@ -19,25 +22,35 @@ export default class MenuController {
             }
             await dao.addMenuItem(menuItem)
             res.json(noError)
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 
     static async apiDeleteMenuItem(req, res) {
         try {
             await dao.deleteMenuItem(req.params.id)
             res.json(noError)
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 
-    static async apiUpdateMenuItem(req, res) {
+    static async apiPutMenuItem(req, res) {
         try {
             const menuItem = {
                 name: req.body.name,
-                price: req.body.price,
                 ingredients: req.body.ingredients,
+                price: req.body.price,
                 image: req.body.image
             }
             await dao.updateMenuItem(req.params.id, menuItem)
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+            res.json(noError)
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 }

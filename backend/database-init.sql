@@ -1,4 +1,6 @@
 DROP TABLE Reservations;
+DROP TABLE Menu;
+DROP TABLE Complaints;
 DROP TABLE Users;
 
 CREATE TABLE Users (

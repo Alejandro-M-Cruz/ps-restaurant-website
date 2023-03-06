@@ -8,6 +8,6 @@ router.route("/")
     .post(MenuController.apiAddMenuItem)
 router.route("/:id")
     .delete(MenuController.apiDeleteMenuItem)
-    .put(MenuController.apiUpdateMenuItem)
+    .put(MenuController.apiPutMenuItem)
 
 export default router

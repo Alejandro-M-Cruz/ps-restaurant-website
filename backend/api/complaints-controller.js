@@ -5,8 +5,11 @@ export default class ComplaintsController {
     static async apiGetAllComplaints(req, res) {
         try {
             const complaints = await dao.getAllComplaints()
-            res.json(complaints)
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+            res.json({ complaints })
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 
     static async apiPostComplaint(req, res) {
@@ -14,6 +17,9 @@ export default class ComplaintsController {
             const complaint = { content: req.body.content }
             await dao.addComplaint(complaint)
             res.json(noError)
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 }

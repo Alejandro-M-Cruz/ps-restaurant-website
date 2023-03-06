@@ -42,7 +42,7 @@ const allDateTimes = () => {
 export default class ReservationsController {
     static async apiGetAvailableReservations(req, res) {
         try {
-            const totalCustomers = await dao.getTotalCustomersForEachDatetime()
+            const result = await dao.getTotalCustomersForEachDatetime()
             const available = allDateTimes()
                 result.forEach(reserved => {
                     const date = formatDate(reserved.datetime)
@@ -53,21 +53,30 @@ export default class ReservationsController {
                     } else available[date][time] -= reserved.total_customers
                 })
                 res.json({ available })
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 
     static async apiGetAllReservations(req, res) {
         try {
             const reservations = await dao.getAllReservations()
             res.json({ reservations })
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 
     static async apiGetReservationsByUserId(req, res) {
         try {
             const userReservations = await dao.getReservationsByUserId(req.params.id)
             res.json({ reservations: userReservations })
-        } catch(error) { res.status(500).json(errorMessage(error.message)) }
+        } catch(error) {
+            console.error(error.message)
+            res.status(500).json(errorMessage(error.message))
+        }
     }
 
     static async apiPostReservation(req, res) {
@@ -82,7 +91,7 @@ export default class ReservationsController {
             })
             const customers = await dao.getTotalCustomersByDatetime(datetime)
             if (customers[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME) 
-                throw new Error("RESERVATIONS_FULL") 
+                res.status(404).json(errorMessage("RESERVATIONS_FULL"))
             const newReservation = {
                 user_id: user.id,
                 datetime: new Date(`${req.body.date} ${req.body.time}`),
@@ -102,6 +111,7 @@ export default class ReservationsController {
             await dao.deleteReservation(req.params.id)
             res.json(noError)
         } catch(error) {
+            console.error(error.message)
             res.status(500).json(errorMessage(error.message))
         }
     }
