@@ -3,11 +3,11 @@ import { API } from "../server.js"
 import { errorMessage, noError } from "../error-messages.js"
 
 const MIN_DAYS_BEFORE_RESERVATION = 2
-const MAX_DAYS_BEFORE_RESERVATION = 15
+const MAX_DAYS_BEFORE_RESERVATION = 30
 const MIN_TIME = 12 * 60 * 60 * 1000    // 12:00
 const MAX_TIME = 22 * 60 * 60 * 1000    // 22:00
 const MINUTES_BETWEEN_RESERVATIONS = 30
-const MAX_CUSTOMERS_AT_THE_SAME_TIME = 15
+const MAX_CUSTOMERS_AT_THE_SAME_TIME = 30
 const TODAY = new Date()
 const START = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate())
 START.setTime(START.getTime() + MIN_DAYS_BEFORE_RESERVATION * 24 * 60 * 60 * 1000 + MIN_TIME)
@@ -81,17 +81,22 @@ export default class ReservationsController {
 
     static async apiPostReservation(req, res) {
         try {
-            const datetime = new Date(req.body.date + " " + req.body.time)
             const user = await (await fetch(`http://localhost:8080${API}/users`)).json()
+            if (req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
+                return res.status(404).json(errorMessage("MAX_CUSTOMERS_EXCEEDED"))
             if (user.error) return res.status(500).json({ error: user.error })
+            const datetime = new Date(req.body.date + " " + req.body.time)
             const userReservations = await dao.getReservationsByUserId(user.id)
             userReservations.forEach(reservation => {
                 if (reservation.datetime.toISOString() === datetime.toISOString()) 
                     throw new Error("RESERVATION_SAME_DAY")
             })
             const customers = await dao.getTotalCustomersByDatetime(datetime)
-            if (customers[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME) 
-                res.status(404).json(errorMessage("RESERVATIONS_FULL"))
+            if (customers[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME) {
+                if (customers[0].total_customers + req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
+                    return res.status(404).json(errorMessage("MAX_CUSTOMERS_EXCEEDED"))
+                return res.status(404).json(errorMessage("RESERVATIONS_FULL"))
+            }
             const newReservation = {
                 user_id: user.id,
                 datetime: new Date(`${req.body.date} ${req.body.time}`),
