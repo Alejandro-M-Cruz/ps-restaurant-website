@@ -27,6 +27,12 @@ CREATE TABLE Menu (
     image VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE Complaints (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    content VARCHAR(255) NOT NULL,
+    creation_date DATETIME NOT NULL
+);
+
 INSERT INTO Users (phone_number, password, creation_date, admin) VALUES (
     "admin",
     "admin",

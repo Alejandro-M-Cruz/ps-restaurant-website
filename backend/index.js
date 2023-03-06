@@ -3,6 +3,7 @@ import mysql from "mysql"
 import UsersDAO from "./dao/usersDAO.js"
 import ReservationsDAO from "./dao/reservationsDAO.js"
 import MenuDAO from "./dao/menuDAO.js"
+import ComplaintsDAO from "./dao/complaintsDAO.js"
 
 const PORT = 8080
 
@@ -18,6 +19,7 @@ connection.connect(err => {
     UsersDAO.setConnection(connection)
     ReservationsDAO.setConnection(connection)
     MenuDAO.setConnection(connection)
+    ComplaintsDAO.setConnection(connection)
     app.listen(PORT, () => console.log("Server running on port " + PORT))
 })
 
