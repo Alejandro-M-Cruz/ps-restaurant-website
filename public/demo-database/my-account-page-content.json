@@ -1,0 +1,16 @@
+{
+    "title": "Mi cuenta",
+    "tableFields": [
+        {
+            "header": "Número de teléfono",
+            "name": "phoneNumber"
+        },
+        {
+            "header": "Fecha de creación",
+            "name": "creationDate"
+        }
+    ],
+    "backButtonLabel": "Atrás",
+    "deleteButtonLabel": "Eliminar cuenta",
+    "logoutButtonLabel": "Cerrar sesión"
+}

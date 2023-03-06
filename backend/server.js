@@ -17,10 +17,11 @@ app.use(`${API}/users`, users)
 app.use(`${API}/reservations`, reservations)
 app.use(`${API}/menu`, menu)
 app.use(`${API}/complaints`, complaints)
-app.use("*", (req, res) => res.status(404).json(errorMessage("NOT_FOUND")))
 
 app.get("/", (req, res) => {
     res.redirect("/html/index.html")
 })
+
+app.use("*", (req, res) => res.status(404).json(errorMessage("NOT_FOUND")))
 
 export { API, app }
