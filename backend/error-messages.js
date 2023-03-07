@@ -1,6 +1,7 @@
 const errorMessages = {
     "NOT_FOUND": "El recurso solicitado no está disponible",
     "UNKNOWN_ERROR": "Se ha producido un error, inténtelo de nuevo",
+    "PASSWORDS_DONT_MATCH": "Las contraseñas no coinciden",
     "DUPLICATE_USER": "Este número de teléfono ya ha sido registrado",
     "FAILED_LOGIN": "El número de teléfono o la contraseña son incorrectos",
     "NOT_LOGGED_IN": "No se ha iniciado sesión",

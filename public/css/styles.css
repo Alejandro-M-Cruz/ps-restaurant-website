@@ -2,6 +2,7 @@
     --main-color: orange;
     --emphasis-color: darkorange;
     --cancel-button-color: #fa372b;
+    --disabled-cancel-button-color: #fa352b94;
     --confirm-button-color: limegreen;
     --back-button-color: #ffd232;
     --hover-row-color: #eeeeee;
@@ -483,6 +484,11 @@ hr{
     color: white;
     background-color: var(--cancel-button-color);
     margin-top: 2%;
+}
+
+.middle-button:disabled {
+    background-color: var(--disabled-cancel-button-color);
+    cursor: default;
 }
 
 .right-button {

@@ -28,19 +28,21 @@ function loadPage(pageContent) {
     rightButton.innerHTML = pageContent.rightButtonLabel
     rightButton.href = pageContent.rightButtonHref
     if (filename === "reservations.html") {
-        setButtonsEventListeners(middleButton, rightButton, pageContent)
-        return loadReservations(pageContent)
+        loadReservations(pageContent, middleButton)
+        middleButton.disabled = !document.querySelector(".selected-row")
+        return middleButton.addEventListener("click", cancelReservation)
     }
     document.querySelector(".info").innerHTML = pageContent.info
 }
 
-function loadReservations(pageContent) {
-    fetch("/api/v1/reservations").then(response => response.json()).then(data => {
-        fillTable(document.querySelector(".data-table"), data.reservations, pageContent)
+async function loadReservations(pageContent, cancelResButton) {
+    const user = await (await fetch("/api/v1/users/")).json()
+    fetch(`/api/v1/reservations/user/${user.id}`).then(response => response.json()).then(data => {
+        fillTable(document.querySelector(".data-table"), data.reservations, pageContent, cancelResButton)
     })
 }
 
-function fillTable(table, reservations, pageContent) {
+function fillTable(table, reservations, pageContent, cancelResButton) {
     table.innerHTML = ""
     const fragment = new DocumentFragment()
     tableTitleHTML(pageContent, fragment)
@@ -56,6 +58,7 @@ function fillTable(table, reservations, pageContent) {
                 if (r !== row) r.classList.remove("selected-row")
             })
             row.classList.toggle("selected-row")
+            cancelResButton.disabled = !row.classList.contains("selected-row")
         }
     })
     table.appendChild(fragment)

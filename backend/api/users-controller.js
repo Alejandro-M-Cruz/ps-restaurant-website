@@ -17,6 +17,8 @@ export default class UsersController {
 
     static async apiPostUser(req, res) {
         try {
+            if (req.body.password !== req.body.password_confirmation) 
+                return res.status(404).json(errorMessage("PASSWORDS_DONT_MATCH"))
             const user = {
                 phone_number: req.body.phone_number,
                 email: req.body.email,

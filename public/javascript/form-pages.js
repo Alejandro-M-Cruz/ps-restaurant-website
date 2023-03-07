@@ -15,6 +15,7 @@ w3IncludeHTML(() => {
         default:
             loadContent("/demo-database/complaints-page-content.json")
     }
+    document.querySelector(".user-form").addEventListener("submit", e => submit(e))
 })
 
 function loadContent(path) {
@@ -50,5 +51,4 @@ function loadPage(pageContent) {
             <a href="${pageContent.linkHref}" class="go-to-login-signup"><b>${pageContent.alreadyLink}</b></a>
         `
     }
-    handleFormSubmit(document.querySelector(".user-form"))
 }
