@@ -32,7 +32,7 @@ button:hover {
     width: 50%;
     font-size: 2.5rem;
     text-align: center;
-    margin: 7rem auto 0 auto;
+    margin: 10rem auto 0 auto;
 }
 
 .dark-filter {
@@ -62,57 +62,27 @@ button:hover {
     z-index: 999;
 }
 
-.lista-paginas {
+.navbar-list {
     list-style-type: none;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
 }
 
-.lista-paginas__titulo {
-    flex-grow: 10;
+.navbar-list__logo {
+    flex-grow: 2;
+    padding: 0.5rem;
 }
 
-#la-nostra-casa-nav-title {
-    font-size: 2.2rem;
-    color: white;
-}
-
-#la-nostra-casa-nav-title:hover {
-    font-size: 2.3rem;
-}
-
-li[class^='lista-paginas'], li[class*=' lista-paginas'] {
-    display: inline-block;
-}
-
-nav a {
+.navbar-list a {
     display: block;
+}
+
+.navbar-list a:not(.navbar-list__logo) {
     color: black;
-    margin: 0 1.5vw;
-    padding: 1.25rem;
-    line-height: 2.2rem;
-    font-size: 1.1rem;
-}
-
-nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
-    background-color: var(--emphasis-color);
-}
-
-.user-icon {
-    margin-right: 5vw;
-}
-
-.user-icon:hover img {
-    transform: scale(1.2, 1.2);
-}
-
-.user-icon img {
-    position: absolute;
-    top: 25%;
-    height: 2.2rem;
-    width: 2.2rem;
+    padding: 0 3rem;
+    font-size: 1.2rem;
 }
 
 
@@ -615,3 +585,69 @@ hr{
 
 
 
+
+
+/* ------------- TABLET / LAPTOP ------------- */
+
+@media screen and (max-width: 1268px) {
+    html {
+        font-size: 14px;
+    }
+
+    .page-title {
+        margin-top: 17rem;
+    }
+
+    .navbar-list__logo {
+        flex-basis: 100%;
+    }
+
+    .navbar-list a {
+        margin-bottom: 0.5rem;
+    }
+}
+
+
+/* ------------- MOBILE PHONE ------------- */
+
+@media screen and (max-width: 943px) {
+    html {
+        font-size: 12px;
+        box-sizing: content-box;
+    }
+
+    .page-title {
+        margin-top: 3rem;
+    }
+
+    #nav-bar-container {
+        position: static;
+    }
+
+    .navbar-list {
+        flex-direction: column;
+    }
+
+    .navbar-list li {
+        width: 100%;
+        border-top: 1px solid black;
+        text-align: center;
+    }
+
+    .navbar-list a:not(#la-nostra-casa-nav-logo):not(.user-icon) {
+        padding: 18px 0;
+    }
+
+    .navbar-list .user-icon {
+        margin: 5px;
+    }
+
+    .navbar-list__user-icon img {
+        width: 40px;
+    }
+
+
+    .navbar-list a:hover {
+        background-color: var(--emphasis-color);
+    }
+}
