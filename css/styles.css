@@ -564,9 +564,17 @@ hr{
     cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
+
+/* ------------- MOBILE PHONE ------------- */
+
+@media screen and (max-width: 943px) {
     html {
         font-size: 12px;
+        box-sizing: content-box;
+    }
+
+    #nav-bar-container {
+        position: static;
     }
 
     .navbar-list {
@@ -579,11 +587,34 @@ hr{
         text-align: center;
     }
 
-    .navbar-list a:not(#la-nostra-casa-nav-logo) {
-        padding: 1rem 0;
+    .navbar-list a:not(#la-nostra-casa-nav-logo):not(.user-icon) {
+        padding: 18px 0;
+    }
+
+    .navbar-list .user-icon {
+        margin: 5px;
+    }
+
+    .navbar-list__user-icon img {
+        width: 40px;
     }
 
     .navbar-list a:hover {
         background-color: var(--emphasis-color);
+    }
+}
+
+
+@media screen and (max-width: 1268px) {
+    html {
+        font-size: 14px;
+    }
+
+    .navbar-list__logo {
+        flex-basis: 100%;
+    }
+
+    .navbar-list a {
+        margin-bottom: 0.5rem;
     }
 }
