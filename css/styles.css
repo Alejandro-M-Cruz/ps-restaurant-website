@@ -593,3 +593,25 @@ hr{
 .go-to-login-signup:hover {
     cursor: pointer;
 }
+
+
+/* -------------COMPLAINTS AND SUGGESTIONS/ ADMIN------------- */
+
+#complaints-admin-section{
+    margin-bottom:10em;
+}
+
+#complaints-admin-table .users-column{
+    width:15%;
+}
+
+#complaints-admin-table .date-column{
+    width:15%;
+}
+
+#complaints-admin-table .messages-column {
+    width: 70%;
+}
+
+
+
