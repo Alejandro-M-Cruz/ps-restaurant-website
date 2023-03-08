@@ -8,7 +8,7 @@ export default class MenuController {
             res.json({ menuItems })
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 
@@ -24,7 +24,7 @@ export default class MenuController {
             res.json(noError)
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 
@@ -34,7 +34,7 @@ export default class MenuController {
             res.json(noError)
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 
@@ -50,7 +50,7 @@ export default class MenuController {
             res.json(noError)
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 }

@@ -55,7 +55,7 @@ export default class ReservationsController {
                 res.json({ available })
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 
@@ -65,7 +65,7 @@ export default class ReservationsController {
             res.json({ reservations })
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 
@@ -75,7 +75,7 @@ export default class ReservationsController {
             res.json({ reservations: userReservations })
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 
@@ -83,8 +83,8 @@ export default class ReservationsController {
         try {
             const user = await (await fetch(`http://localhost:8080${API}/users`)).json()
             if (req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
-                return res.status(404).json(errorMessage("MAX_CUSTOMERS_EXCEEDED"))
-            if (user.error) return res.status(500).json({ error: user.error })
+                return res.json(errorMessage("MAX_CUSTOMERS_EXCEEDED"))
+            if (user.error) return res.json({ error: user.error })
             const datetime = new Date(req.body.date + " " + req.body.time)
             const userReservations = await dao.getReservationsByUserId(user.id)
             userReservations.forEach(reservation => {
@@ -94,8 +94,8 @@ export default class ReservationsController {
             const customers = await dao.getTotalCustomersByDatetime(datetime)
             if (customers[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME) {
                 if (customers[0].total_customers + req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
-                    return res.status(404).json(errorMessage("MAX_CUSTOMERS_EXCEEDED"))
-                return res.status(404).json(errorMessage("RESERVATIONS_FULL"))
+                    return res.json(errorMessage("MAX_CUSTOMERS_EXCEEDED"))
+                return res.json(errorMessage("RESERVATIONS_FULL"))
             }
             const newReservation = {
                 user_id: user.id,
@@ -107,7 +107,7 @@ export default class ReservationsController {
             res.json(noError)
         } catch(error) { 
             console.error(error)
-            res.status(404).json(errorMessage(error.message)) 
+            res.json(errorMessage(error.message)) 
         }
     }
 
@@ -117,7 +117,7 @@ export default class ReservationsController {
             res.json(noError)
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 }

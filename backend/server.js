@@ -27,6 +27,12 @@ app.get("/", (req, res) => {
     res.sendFile(path.resolve("public/html/index.html"))
 })
 
+app.get("/html/reservations.html", (req, res) => {
+    console.log(req.path)
+})
+
+
+
 app.use("*", (req, res) => res.status(404).json(errorMessage("NOT_FOUND")))
 
 export { API, app }

@@ -1,16 +1,6 @@
-const path = window.location.pathname
-const filename = path.substring(path.lastIndexOf('/') + 1)
 const MAX_RESERVATIONS = 5
 
-w3IncludeHTML(() => {
-    switch(filename) {
-        case "reservations.html":
-            loadContent("/demo-database/reservations-page-content.json")
-            break
-        default:
-            loadContent("/demo-database/logged-out-reservations-page-content.json")
-    }
-})
+w3IncludeHTML(() => loadContent("/demo-database/reservations-page-content.json"))
 
 function loadContent(path) {
     fetch(path).then(response => response.json()).then(data => {
@@ -27,12 +17,9 @@ function loadPage(pageContent) {
     const rightButton = document.querySelector(".right-button")
     rightButton.innerHTML = pageContent.rightButtonLabel
     rightButton.href = pageContent.rightButtonHref
-    if (filename === "reservations.html") {
-        loadReservations(pageContent, middleButton)
-        middleButton.disabled = !document.querySelector(".selected-row")
-        return middleButton.addEventListener("click", cancelReservation)
-    }
-    document.querySelector(".info").innerHTML = pageContent.info
+    loadReservations(pageContent, middleButton)
+    middleButton.disabled = !document.querySelector(".selected-row")
+    return middleButton.addEventListener("click", cancelReservation)
 }
 
 async function loadReservations(pageContent, cancelResButton) {

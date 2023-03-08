@@ -8,7 +8,7 @@ export default class ComplaintsController {
             res.json({ complaints })
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 
@@ -19,7 +19,7 @@ export default class ComplaintsController {
             res.json(noError)
         } catch(error) {
             console.error(error.message)
-            res.status(500).json(errorMessage(error.message))
+            res.json(errorMessage(error.message))
         }
     }
 }
