@@ -172,7 +172,7 @@ button:hover {
 }
 
 .menu-left, .menu-right {
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     width: 50%;
     background-color: var(--menu-background-color);
 }
@@ -193,18 +193,38 @@ button:hover {
 
 .sides {
     margin-top: 1rem;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .sides:last-child {
     margin-bottom: 1rem;
 }
 
-.left-side {
-    float: left;
-    padding-left: 2em;
+.left-side-image {
+    position: relative;
+    box-sizing: content-box;
+    width: 5vw;
+    height: 5vw;
+    display: block;
+    margin-left: 2em;
 }
 
-.left-side p, .right-side p{
+.left-side-image img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+    border-radius: 5em;
+}
+
+.left-side-text {
+    padding-left: 2em;
+    width: 30em;
+}
+
+.left-side-text p, .right-side-text p{
     line-height: 1.3em;
 }
 
@@ -213,16 +233,8 @@ button:hover {
     font-weight: bold;
 }
 
-.right-side {
-    float: right;
-    text-align: right;
+.right-side-text {
     padding-right: 3em;
-}
-
-.sides:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 
 #main-content:after {
