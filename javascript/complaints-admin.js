@@ -1,6 +1,4 @@
 // JavaScript source code
-w3IncludeHTML(loadContent("/demo-database/complaints.json"));
-
 function loadContent(path) {
     fetch(path).then(response => response.json()).then(data => {
         loadPage(data)

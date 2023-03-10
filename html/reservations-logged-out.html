@@ -14,5 +14,12 @@
     <section class="content-section" w3-include-html="/html/templates/info-buttons.html">
     </section>
     <script src="/javascript/reservations.js"></script>
+    <script src="/javascript/navbar.js"></script>
+    <script>
+        w3IncludeHTML(() => {
+            loadContent("/demo-database/logged-out-reservations-page-content.json")
+            initNavbar()
+        })
+    </script>
 </body>
 </html>

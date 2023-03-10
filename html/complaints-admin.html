@@ -26,5 +26,12 @@
         <button  class="back-button left-button management-button"> Atras </button>
     </section>
     <script src="/javascript/complaints-admin.js"></script>
+    <script src="/javascript/navbar.js"></script>
+    <script>
+        w3IncludeHTML(() => {
+            loadContent("/demo-database/complaints-admin-page-content.json")
+            initNavbar()
+        })
+    </script>
 </body>
 </html>

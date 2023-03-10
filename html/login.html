@@ -12,5 +12,12 @@
     <section w3-include-html="/html/templates/form-page.html">
     </section>
     <script src="/javascript/form-pages.js"></script>
+    <script src="/javascript/navbar.js"></script>
+    <script>
+        w3IncludeHTML(() => {
+            loadContent("/demo-database/login-page-content.json")
+            initNavbar()
+        })
+    </script>
 </body>
 </html>
