@@ -4,8 +4,6 @@ function loadContent(path) {
     })
 }
 
-loadContent("/demo-database/index-page-content.json")
-
 function loadPage(pageContent) {
     document.querySelector(".slide-image-thing__center-text").innerHTML = pageContent.slideShowTitle
     document.querySelector(".slide-image-thing__center-text-p").innerHTML = pageContent.slideShowAddress

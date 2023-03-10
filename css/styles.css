@@ -16,7 +16,6 @@
     margin: 0;
     padding: 0;
     border: 0;
-    box-sizing: border-box;
     font-family: Verdana, Arial, sans-serif;
 }
 
@@ -73,6 +72,15 @@ button:hover {
 .navbar-list__logo {
     flex-grow: 2;
     padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hamburger-button {
+    background: none;
+    margin-right: 3rem;
+    display: none;
 }
 
 .navbar-list a {
@@ -124,7 +132,6 @@ button:hover {
 
 #slide-image__left-arrow, #slide-image__right-arrow {
     position: relative;
-    box-sizing: content-box;
     width: 2vw;
     height: 2vw;
     display: block;
@@ -159,22 +166,19 @@ button:hover {
 
 .menu {
     display: flex;
+    flex-direction: row;
 }
 
 .menu-left, .menu-right {
     border: 1px solid black;
     padding-bottom: 1rem;
+    width: 50%;
+    background-color: var(--menu-background-color);
 }
 
 #main-content h2 {
     text-align: center;
     margin: 3em 0 1.5em 0;
-}
-
-.menu-left, .menu-right {
-    border-radius: 1rem;
-    width: 50%;
-    background-color: var(--menu-background-color);
 }
 
 .menu-left h3, .menu-right h3 {
@@ -193,18 +197,38 @@ button:hover {
 
 .sides {
     margin-top: 1rem;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
 .sides:last-child {
     margin-bottom: 1rem;
 }
 
-.left-side {
-    float: left;
-    padding-left: 2em;
+.left-side-image {
+    position: relative;
+    box-sizing: content-box;
+    width: 5vw;
+    height: 5vw;
+    display: block;
+    margin-left: 2em;
 }
 
-.left-side p, .right-side p{
+.left-side-image img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+    border-radius: 5em;
+}
+
+.left-side-text {
+    padding-left: 2em;
+    width: 30rem;
+}
+
+.left-side-text p, .right-side-text p{
     line-height: 1.3em;
 }
 
@@ -213,16 +237,8 @@ button:hover {
     font-weight: bold;
 }
 
-.right-side {
-    float: right;
-    text-align: right;
+.right-side-text {
     padding-right: 3em;
-}
-
-.sides:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 
 #main-content:after {
@@ -429,14 +445,22 @@ hr{
 
 /* -------------BUTTONS------------- */
 
+.buttons-container {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 2rem 0 2rem 0;
+}
+
 .management-button {
     display: block;
-    font-size: 1vw;
-    width: 20%;
-    padding: 1vw;
+    font-size: 1.2rem;
+    width: 20rem;
+    padding: 1.2rem;
     text-align: center;
     text-decoration: none;
-    float: left;
+    margin: 0 2rem;
 }
 
 .management-button:hover {
@@ -446,19 +470,16 @@ hr{
 .left-button {
     color: black;
     background-color: var(--back-button-color);
-    margin: 2% 3% 0 17%;
 }
 
 .middle-button {
     color: white;
     background-color: var(--cancel-button-color);
-    margin-top: 2%;
 }
 
 .right-button {
     color: black;
     background-color: var(--confirm-button-color);
-    margin: 2% 17% 0 3%;
 }
 
 
@@ -512,25 +533,6 @@ hr{
 
 
 /* -------------BUTTONS------------- */
-
-.buttons-container {
-    width: 100%;
-    display: block;
-    text-align: center;
-}
-
-.cancel-button, .submit-button {
-    display: inline-block;
-    font-size: 1.2rem;
-    width: 20%;
-    padding: 1rem;
-    margin: 0 3rem 2rem 3rem;
-    text-align: center;
-}
-
-.cancel-button:hover, .submit-button:hover {
-    cursor: pointer;
-}
 
 .cancel-button {
     background-color: var(--cancel-button-color);
@@ -594,6 +596,10 @@ hr{
         font-size: 14px;
     }
 
+    #nav-bar-container {
+        flex-wrap: nowrap;
+    }
+
     .page-title {
         margin-top: 17rem;
     }
@@ -655,22 +661,25 @@ hr{
 
 /* ------------- MOBILE PHONE ------------- */
 
-@media screen and (max-width: 943px) {
+@media screen and (max-width: 600px) {
     html {
         font-size: 12px;
-        box-sizing: content-box;
     }
 
     .page-title {
-        margin-top: 3rem;
+        margin-top: 14rem;
     }
 
-    #nav-bar-container {
-        position: static;
+    .navbar-list li:not(.navbar-list__logo) {
+        display: none;
     }
 
     .navbar-list {
         flex-direction: column;
+    }
+
+    .hamburger-button {
+        display: block;
     }
 
     .navbar-list li {
@@ -680,7 +689,7 @@ hr{
     }
 
     .navbar-list a:not(#la-nostra-casa-nav-logo):not(.user-icon) {
-        padding: 18px 0;
+        padding: 15px 0;
     }
 
     .navbar-list .user-icon {
@@ -692,7 +701,65 @@ hr{
     }
 
 
-    .navbar-list a:hover {
-        background-color: var(--emphasis-color);
+    /* ----- MENU ----- */
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-left, .menu-right {
+        height: 100%;
+        width: 100%;
+    }
+
+    /* ----- ABOUT US ----- */
+    .about-us-content {
+        flex-direction: column-reverse;
+    }
+
+    .about-us-image, .about-us-description {
+        height: 100%;
+        width: 100%;
+    }
+
+    /* ----- HOJA DE RECLAMACIONES BOTON ----- */
+    .complaints {
+        width: 20em;
+        height: 5em;
+        margin: 3em auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ----- FOOTER ----- */
+    #footer-container {
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+
+    .social-list {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .social-icons {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: center;
+        padding: 2em;
+    }
+
+    .contact-list {
+        line-height: 1.8em;
+    }
+
+    .hours li h3 {
+        padding: 2em 0;
     }
 }

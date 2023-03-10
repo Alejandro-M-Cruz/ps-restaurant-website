@@ -2,16 +2,6 @@ const path = window.location.pathname
 const filename = path.substring(path.lastIndexOf('/') + 1)
 const MAX_RESERVATIONS = 5
 
-w3IncludeHTML(() => {
-    switch(filename) {
-        case "reservations.html":
-            loadContent("/demo-database/reservations-page-content.json")
-            break
-        default:
-            loadContent("/demo-database/logged-out-reservations-page-content.json")
-    }
-})
-
 function loadContent(path) {
     fetch(path).then(response => response.json()).then(data => {
         loadPage(data)

@@ -14,5 +14,12 @@
     <section w3-include-html="/html/templates/table-buttons.html">
     </section>
     <script src="/javascript/my-account.js"></script>
+    <script src="/javascript/navbar.js"></script>
+    <script>
+        w3IncludeHTML(() => {
+            loadContent("/demo-database/my-account-page-content.json")
+            initNavbar()
+        })
+    </script>
 </body>
 </html>

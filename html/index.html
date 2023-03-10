@@ -57,10 +57,14 @@
         </section>
     </div>
 
-    <script>
-        w3IncludeHTML()
-    </script>
     <script src="/javascript/index.js"></script>
     <script src="/javascript/menu.js"></script>
+    <script src="/javascript/navbar.js"></script>
+    <script>
+        w3IncludeHTML(() => {
+            loadContent("/demo-database/index-page-content.json")
+            initNavbar()
+        })
+    </script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-function loadContent(path, element) {
+function loadMenuItems(path, element) {
     fetch(path).then(response => response.json()).then(data => {
         loadMenu(data, element)
     })
@@ -7,8 +7,8 @@ function loadContent(path, element) {
 const menuLeft = document.querySelector(".menu-left")
 const menuRight = document.querySelector(".menu-right")
 
-loadContent("/demo-database/menu-left.json", menuLeft)
-loadContent("/demo-database/menu-right.json", menuRight)
+loadMenuItems("/demo-database/menu-left.json", menuLeft)
+loadMenuItems("/demo-database/menu-right.json", menuRight)
 
 function loadMenu(data, element) {
     const template = document.createElement("template")
