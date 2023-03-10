@@ -591,7 +591,7 @@ hr{
 
 /* ------------- TABLET / LAPTOP ------------- */
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1280px) {
     html {
         font-size: 14px;
     }
@@ -602,6 +602,7 @@ hr{
 
     .page-title {
         margin-top: 17rem;
+        font-size: 2rem;
     }
 
     .navbar-list__logo {
@@ -620,13 +621,7 @@ hr{
         font-size: 12px;
     }
 
-    .menu {
-        flex-direction: column;
-    }
-    
-    .menu-left, .menu-right {
-        width: 100%;
-    }
+    /* ----- ABOUT US ----- */
 
     .about-us-content {
         flex-direction: column-reverse;
@@ -642,18 +637,73 @@ hr{
         margin-top: 5rem;
     }
 
+    /* ----- MENU ----- */
+
+    .menu {
+        flex-direction: column;
+    }
+    
+    .menu-left, .menu-right {
+        width: 100%;
+    }
+
     .menu-left h3, .menu-right h3 {
         font-size: 1.5em;
     }
 
+    .menu-left p, .menu-right p {
+        margin-left: 2em;
+    }
+
     .left-side__ingredients {
         font-size: 1em;
+        margin-left: 2em;
     }
 
     .right-side {
         font-size: 1.2em;
+        margin-right: 2em;
     }
 
+    /* ----- HOJA DE RECLAMACIONES BOTON ----- */
+    .complaints {
+        width: 20em;
+        height: 5em;
+        margin: 3em auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ----- BUTTONS ----- */
+    
+    .management-button {
+        font-size: 1rem;
+        width: 12rem;
+    }
+
+    /* ----- TABLE ----- */
+
+    .data-table {
+        width: 85vw;
+        margin: 4vw auto 3vw auto;
+        box-sizing: border-box;
+    }
+
+    /* ----- FORM ----- */
+
+    .user-form {
+        font-size: 1.4rem;
+    }
+    
+    .user-form input, .user-form textarea {
+        font-size: 1.2rem;
+    }
+    
+    .user-form input {
+        height: 1.7rem;
+        width: 20rem;
+    }
 
 }
     
