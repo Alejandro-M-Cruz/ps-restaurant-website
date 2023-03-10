@@ -1,23 +1,6 @@
 const path = window.location.pathname
 const filename = path.substring(path.lastIndexOf('/') + 1)
 
-w3IncludeHTML(() => {
-    switch (filename) {
-        case "login.html":
-            loadContent("/demo-database/login-page-content.json")
-            break
-        case "signup.html":
-            loadContent("/demo-database/signup-page-content.json")
-            break
-        case "new-reservation.html":
-            loadContent("/demo-database/new-reservation-page-content.json")
-            break
-        default:
-            loadContent("/demo-database/complaints-page-content.json")
-    }
-    document.querySelector(".user-form").addEventListener("submit", e => submit(e))
-})
-
 function loadContent(path) {
     fetch(path).then(response => response.json()).then(data => {
         loadPage(data)

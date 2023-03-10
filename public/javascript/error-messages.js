@@ -11,7 +11,7 @@ const errorMessages = {
 }
 
 export function errorMessage(message) {
-    return { error: errorMessages[errorMessages[message] ? message : "UNKNOWN_ERROR"] }
+    return errorMessages[errorMessages[message] ? message : "UNKNOWN_ERROR"]
 }
 
 export const noError = { error: null }

@@ -1,6 +1,6 @@
 import dao from "../dao/reservationsDAO.js"
-import { API } from "../server.js"
-import { errorMessage, noError } from "../error-messages.js"
+
+const USERS_URL = "http://localhost:8080/api/v1/users"
 
 const MIN_DAYS_BEFORE_RESERVATION = 2
 const MAX_DAYS_BEFORE_RESERVATION = 30
@@ -55,17 +55,17 @@ export default class ReservationsController {
                 res.json({ available })
         } catch(error) {
             console.error(error.message)
-            res.json(errorMessage(error.message))
+            res.json({ error: error.message })
         }
     }
 
-    static async apiGetAllReservations(req, res) {
+    static async apiGetReservations(req, res) {
         try {
             const reservations = await dao.getAllReservations()
             res.json({ reservations })
         } catch(error) {
             console.error(error.message)
-            res.json(errorMessage(error.message))
+            res.json({ error: error.message })
         }
     }
 
@@ -75,27 +75,27 @@ export default class ReservationsController {
             res.json({ reservations: userReservations })
         } catch(error) {
             console.error(error.message)
-            res.json(errorMessage(error.message))
+            res.json({ error: error.message })
         }
     }
 
     static async apiPostReservation(req, res) {
         try {
-            const user = await (await fetch(`http://localhost:8080${API}/users`)).json()
+            const user = await (await fetch(USERS_URL)).json()
             if (req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
-                return res.json(errorMessage("MAX_CUSTOMERS_EXCEEDED"))
+                return res.json("MAX_CUSTOMERS_EXCEEDED")
             if (user.error) return res.json({ error: user.error })
             const datetime = new Date(req.body.date + " " + req.body.time)
             const userReservations = await dao.getReservationsByUserId(user.id)
-            userReservations.forEach(reservation => {
-                if (reservation.datetime.toISOString() === datetime.toISOString()) 
-                    throw new Error("RESERVATION_SAME_DAY")
-            })
+            for (const reservation of userReservations) {
+                if (reservation.datetime.toISOString() === datetime.toISOString())
+                    return res.json({ error: "RESERVATION_SAME_DAY" })
+            }
             const customers = await dao.getTotalCustomersByDatetime(datetime)
             if (customers[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME) {
                 if (customers[0].total_customers + req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
-                    return res.json(errorMessage("MAX_CUSTOMERS_EXCEEDED"))
-                return res.json(errorMessage("RESERVATIONS_FULL"))
+                    return res.json({ error: "MAX_CUSTOMERS_EXCEEDED" })
+                return res.json({ error: "RESERVATIONS_FULL" })
             }
             const newReservation = {
                 user_id: user.id,
@@ -104,20 +104,20 @@ export default class ReservationsController {
                 name: req.body.name
             }
             await dao.addReservation(newReservation)
-            res.json(noError)
+            res.json({ error: null })
         } catch(error) { 
             console.error(error)
-            res.json(errorMessage(error.message)) 
+            res.json({ error: error.message }) 
         }
     }
 
     static async apiDeleteReservation(req, res) {
         try {
             await dao.deleteReservation(req.params.id)
-            res.json(noError)
+            res.json({ error: null })
         } catch(error) {
             console.error(error.message)
-            res.json(errorMessage(error.message))
+            res.json({ error: error.message })
         }
     }
 }

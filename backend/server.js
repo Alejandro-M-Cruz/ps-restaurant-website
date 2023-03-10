@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import path from "path"
-import { errorMessage, noError } from "./error-messages.js"
+import { errorMessage, noError } from "../public/javascript/error-messages.js"
 import users from "./api/users-route.js"
 import reservations from "./api/reservations-route.js"
 import menu from "./api/menu-route.js"

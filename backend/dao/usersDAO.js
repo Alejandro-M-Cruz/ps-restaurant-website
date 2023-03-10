@@ -9,7 +9,7 @@ export default class UsersDAO {
     static addUser(user) {
         return new Promise((resolve, reject) => {
             this.connection.query(
-                "INSERT INTO Users (phone_number, email, password, creation_date) VALUES (?, ?, ?, CURDATE())",
+                "INSERT INTO users (phone_number, email, password, creation_date) VALUES (?, ?, ?, CURDATE())",
                 [user.phone_number, user.email, user.password],
                 (err, result) => {
                     if (err) return reject(err)
@@ -22,7 +22,7 @@ export default class UsersDAO {
     static getUser(phoneNumber, password) {
         return new Promise((resolve, reject) => {
             this.connection.query(
-                "SELECT * FROM Users WHERE phone_number = ? AND password = ?",
+                "SELECT * FROM users WHERE phone_number = ? AND password = ?",
                 [phoneNumber, password],
                 (err, result) => {
                     if (err) return reject(err)
@@ -34,7 +34,7 @@ export default class UsersDAO {
 
     static deleteUser(userId) {
         return new Promise((resolve, reject) => {
-            this.connection.query("DELETE FROM Users WHERE id = ?", [userId], (err, result) => {
+            this.connection.query("DELETE FROM users WHERE id = ?", [userId], (err, result) => {
                 if (err) return reject(err)
                 resolve(result)
             })

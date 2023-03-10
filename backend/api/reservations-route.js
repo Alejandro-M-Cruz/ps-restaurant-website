@@ -4,7 +4,7 @@ import ReservationsController from "./reservations-controller.js"
 const router = express.Router()
 
 router.route("/")
-    .get(ReservationsController.apiGetAllReservations)
+    .get(ReservationsController.apiGetReservations)
     .post(ReservationsController.apiPostReservation)
 router.route("/:id")
     .delete(ReservationsController.apiDeleteReservation)

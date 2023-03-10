@@ -18,7 +18,7 @@ export default class ComplaintsDAO {
     static addComplaint(complaint) {
         return new Promise((resolve, reject) => {
             this.connection.query(
-                "INSERT INTO Complaints (content, creation_date) VALUES(?, SYSDATE())", 
+                "INSERT INTO complaints (content, creation_date) VALUES(?, SYSDATE())", 
                 [complaint.content], 
                 (err, result) => {
                     if (err) return reject(err)

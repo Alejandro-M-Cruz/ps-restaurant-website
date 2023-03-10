@@ -1,5 +1,4 @@
 import dao from "../dao/complaintsDAO.js"
-import { errorMessage, noError } from "../error-messages.js"
 
 export default class ComplaintsController {
     static async apiGetAllComplaints(req, res) {
@@ -8,7 +7,7 @@ export default class ComplaintsController {
             res.json({ complaints })
         } catch(error) {
             console.error(error.message)
-            res.json(errorMessage(error.message))
+            res.json({ error: error.message })
         }
     }
 
@@ -16,10 +15,10 @@ export default class ComplaintsController {
         try {
             const complaint = { content: req.body.content }
             await dao.addComplaint(complaint)
-            res.json(noError)
+            res.json({ error: null })
         } catch(error) {
             console.error(error.message)
-            res.json(errorMessage(error.message))
+            res.json({ error: error.message })
         }
     }
 }
