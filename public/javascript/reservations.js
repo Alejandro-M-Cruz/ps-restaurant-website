@@ -23,7 +23,7 @@ function loadPage(pageContent) {
 }
 
 async function loadReservations(pageContent, cancelResButton) {
-    const user = await (await fetch("/api/v1/users/")).json()
+    const user = window.sessionStorage.getItem("user")
     fetch(`/api/v1/reservations/user/${user.id}`).then(response => response.json()).then(data => {
         fillTable(document.querySelector(".data-table"), data.reservations, pageContent, cancelResButton)
     })

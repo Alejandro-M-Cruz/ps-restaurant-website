@@ -15,10 +15,10 @@
     <script type="module" src="/javascript/error-messages.js"></script>
     <script type="module" src="/javascript/login.js"></script>
     <script type="module">
-        import submit from "/javascript/login.js"
+        import login from "/javascript/login.js"
         w3IncludeHTML(() => {
             loadContent("/demo-database/login-page-content.json")
-            document.querySelector(".user-form").addEventListener("submit", e => submit(e))
+            document.querySelector(".user-form").addEventListener("submit", e => login(e))
         })
     </script>
 </body>

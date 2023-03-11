@@ -19,6 +19,10 @@ function loadPage(pageContent) {
         for (const attribute in field) {
             if (attribute !== "tag" && attribute !== "label") input[attribute] = field[attribute]
         }
+        input.addEventListener("change", e => {
+            input.setCustomValidity("")
+            input.reportValidity()
+        })
         inputsFragment.appendChild(input)
     })
     const formInputs = document.querySelector(".inputs-container")

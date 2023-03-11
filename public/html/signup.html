@@ -12,6 +12,14 @@
     <section w3-include-html="/html/templates/form-page.html">
     </section>
     <script src="/javascript/form-pages.js"></script>
-    <script src="/javascript/signup.js"></script>
+    <script type="module" src="/javascript/error-messages.js"></script>
+    <script type="module" src="/javascript/signup.js"></script>
+    <script type="module">
+        import signup from "/javascript/signup.js"
+        w3IncludeHTML(() => {
+            loadContent("/demo-database/signup-page-content.json")
+            document.querySelector(".user-form").addEventListener("submit", e => signup(e))
+        })
+    </script>
 </body>
 </html>

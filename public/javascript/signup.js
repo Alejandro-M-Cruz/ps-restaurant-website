@@ -1,17 +1,36 @@
-function submit(e) {
+import { errorMessage } from "./error-messages.js";
+
+const SIGNUP_URL = "/api/v1/users"
+
+export default function submit(e) {
     e.preventDefault()
     const formData = new FormData(e.target)
     const phone_number = formData.get("phone_number")
     const password = formData.get("password")
     const password_confirmation = formData.get("password_confirmation")
-    fetch("/api/v1/users", {
+    if (password !== password_confirmation)
+        return e.target.querySelector("#password_confirmation").setCustomValidity(errorMessage("PASSWORDS_DONT_MATCH"))
+    fetch(SIGNUP_URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ phone_number, password, password_confirmation })
+        body: JSON.stringify({ phone_number, password })
     }).then(res => res.json()).then(data => {
-        if (data.error) return alert(data.error)
-        window.location.href = "/"
+        if (!data.error) {
+            window.sessionStorage.setItem("user", JSON.stringify(data))
+            return window.location.href = "/"
+        }
+        const message = errorMessage(data.error)
+        let invalidInput
+        switch(data.error) {
+            case "DUPLICATE_USER":
+                invalidInput = e.target.querySelector("#phone-number")
+                break
+            default:
+                return alert(message)
+        }
+        invalidInput.setCustomValidity(message)
+        invalidInput.reportValidity()
     })
 }
