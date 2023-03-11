@@ -31,7 +31,7 @@ button:hover {
     width: 50%;
     font-size: 2.5rem;
     text-align: center;
-    margin: 10rem auto 0 auto;
+    margin: 3rem auto 0 auto;
 }
 
 .dark-filter {
@@ -43,16 +43,33 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#index-wrapper {
+.grid-div {
+    display: grid;
+    grid-template-rows: 120px 1fr 360px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "footer";
     margin: 0 auto;
     width: 100%;
     height: 100%;
 }
 
+.navbar-header {
+    grid-area: header;
+}
+
+.grid-div main {
+    grid-area: main;
+}
+
+.footer-section {
+    margin-top: 5rem;
+    grid-area: footer;
+}
+
 
 /* -------------NAVBAR------------- */
 
-#nav-bar-container {
+.navbar-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -99,7 +116,7 @@ button:hover {
 .slide-image {
     width: 60vw;
     height: 32vw;
-    margin: 7vw auto 0;
+    margin: auto;
     z-index: 1;
 }
 
@@ -176,7 +193,7 @@ button:hover {
     background-color: var(--menu-background-color);
 }
 
-#main-content h2 {
+#menu-section h2 {
     text-align: center;
     margin: 3em 0 1.5em 0;
 }
@@ -241,7 +258,7 @@ button:hover {
     padding-right: 3em;
 }
 
-#main-content:after {
+#menu-section:after {
     content: "";
     display: table;
     clear: both;
@@ -596,7 +613,7 @@ hr{
         font-size: 14px;
     }
 
-    #nav-bar-container {
+    .navbar-header {
         flex-wrap: nowrap;
     }
 

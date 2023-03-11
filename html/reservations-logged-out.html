@@ -7,12 +7,19 @@
     <script src="http://www.w3schools.com/lib/w3data.js"></script>
 </head>
 <body>
-    <header w3-include-html="/html/templates/navbar.html">
-    </header>
-    <h2 class="page-title">
-    </h2>
-    <section class="content-section" w3-include-html="/html/templates/info-buttons.html">
-    </section>
+    <div class="grid-div">
+        <header class="navbar-header" w3-include-html="/html/templates/navbar.html">
+        </header>
+        <main>
+            <h2 class="page-title">
+            </h2>
+            <section class="content-section" w3-include-html="/html/templates/info-buttons.html">
+            </section>
+        </main>
+        <footer class="footer-section" w3-include-html="/html/templates/footer.html">
+        </footer>
+    </div>
+
     <script src="/javascript/reservations.js"></script>
     <script src="/javascript/navbar.js"></script>
     <script>

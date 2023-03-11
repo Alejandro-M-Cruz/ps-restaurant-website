@@ -7,24 +7,28 @@
     <script src="http://www.w3schools.com/lib/w3data.js"></script>
 </head>
 <body>
-    <header w3-include-html="/html/templates/navbar.html">
-    </header>
-    <h2 class="page-title">Reclamaciones</h2>
-    <section id="complaints-admin-section" class="content-section">
-        <table id="complaints-admin-table" class="data-table">
-            <thead>
-                <tr>
-                    <th>Usuarios</th>
-                    <th>Fecha</th>
-                    <th>Reclamación o sugerencia recientes</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+    <div class="grid-div">
+        <header class="navbar-header" w3-include-html="/html/templates/navbar.html">
+        </header>
+        <main>
+            <h2 class="page-title">Reclamaciones</h2>
+            <section id="complaints-admin-section" class="content-section">
+                <table id="complaints-admin-table" class="data-table">
+                    <thead>
+                    <tr>
+                        <th>Usuarios</th>
+                        <th>Fecha</th>
+                        <th>Reclamación o sugerencia recientes</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <button  class="back-button left-button management-button"> Atras </button>
+            </section>
+        </main>
+    </div>
 
-        <button  class="back-button left-button management-button"> Atras </button>
-    </section>
     <script src="/javascript/complaints-admin.js"></script>
     <script src="/javascript/navbar.js"></script>
     <script>
