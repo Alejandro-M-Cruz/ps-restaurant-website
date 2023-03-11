@@ -1,19 +1,13 @@
-export default class MenuDAO {
-    static connection
+import QueryPromiseFactory from "./QueryPromiseFactory.js";
 
+export default class MenuDAO {
     static setConnection(connection) {
         if (this.connection) return
         this.connection = connection
+        this.queryPromiseFactory = new QueryPromiseFactory(connection)
     }
 
-    static getAllMenuSections() {
-        return new Promise((resolve, reject) => {
-            this.connection.query("SELECT * FROM menu_sections", (err, result) => {
-                if (err) return reject(err)
-                resolve(result)
-            })
-        })
-    }
+    static getAllMenuSections = () => this.queryPromiseFactory.create("SELECT * FROM menu_sections")
 
     static updateMenuSection(id, menuSection) {
         return new Promise((resolve, reject) => {

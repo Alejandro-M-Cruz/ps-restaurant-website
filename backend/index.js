@@ -1,9 +1,9 @@
 import { app } from "./server.js";
 import mysql from "mysql"
-import UsersDAO from "./dao/usersDAO.js"
-import ReservationsDAO from "./dao/reservationsDAO.js"
-import MenuDAO from "./dao/menuDAO.js"
-import ComplaintsDAO from "./dao/complaintsDAO.js"
+import UsersDAO from "./dao/UsersDAO.js"
+import ReservationsDAO from "./dao/ReservationsDAO.js"
+import MenuDAO from "./dao/MenuDAO.js"
+import ComplaintsDAO from "./dao/ComplaintsDAO.js"
 
 const PORT = 8080
 

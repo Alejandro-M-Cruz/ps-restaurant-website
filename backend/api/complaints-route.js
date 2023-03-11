@@ -1,5 +1,5 @@
 import express from "express"
-import ComplaintsController from "./complaints-controller.js"
+import ComplaintsController from "./ComplaintsController.js"
 
 const router = express.Router()
 

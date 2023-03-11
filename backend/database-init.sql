@@ -34,7 +34,7 @@ CREATE TABLE menu_items (
 CREATE TABLE complaints (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     content VARCHAR(255) NOT NULL,
-    creation_date DATETIME NOT NULL
+    creation_datetime DATETIME NOT NULL
 );
 
 INSERT INTO users (phone_number, password, creation_date, admin) VALUES (

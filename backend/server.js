@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import path from "path"
-import { errorMessage, noError } from "../public/javascript/error-messages.js"
+import { errorMessage } from "../public/javascript/error-messages.js"
 import users from "./api/users-route.js"
 import reservations from "./api/reservations-route.js"
 import menu from "./api/menu-route.js"
@@ -14,7 +14,6 @@ async function getLoggedUser() {
     return response.json()
 }
 
-app.use(express.static("public"))
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
@@ -27,12 +26,14 @@ app.get("/", (req, res) => {
     res.sendFile(path.resolve("public/html/index.html"))
 })
 
-app.get("/html/reservations.html", (req, res) => {
-    console.log(req.path)
+app.get("/html/reservations.html", async (req, res) => {
+    const user = await getLoggedUser()
+    if (user.error) return res.sendFile(path.resolve("public/html/login.html"))
+    if (user.admin) return res.sendFile(path.resolve("public/html/my-account.html"))
+    res.sendFile(path.resolve("public/html/reservations.html"))
 })
 
-
-
+app.use(express.static("public"))
 app.use("*", (req, res) => res.status(404).json(errorMessage("NOT_FOUND")))
 
 export { API, app }

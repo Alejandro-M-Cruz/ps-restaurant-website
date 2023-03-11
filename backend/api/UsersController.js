@@ -1,4 +1,4 @@
-import dao from "../dao/usersDAO.js"
+import dao from "../dao/UsersDAO.js"
 
 let user
 const login = loggedUser => user = loggedUser

@@ -1,4 +1,4 @@
-import dao from "../dao/complaintsDAO.js"
+import dao from "../dao/ComplaintsDAO.js"
 
 export default class ComplaintsController {
     static async apiGetAllComplaints(req, res) {
