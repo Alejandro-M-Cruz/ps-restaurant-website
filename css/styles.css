@@ -613,12 +613,12 @@ hr{
         font-size: 14px;
     }
 
-    .navbar-header {
-        flex-wrap: nowrap;
+    .grid-div {
+        grid-template-rows: 200px 1fr 360px;
     }
 
-    .page-title {
-        margin-top: 17rem;
+    .navbar-header {
+        flex-wrap: nowrap;
     }
 
     .navbar-list__logo {
@@ -636,10 +636,6 @@ hr{
 @media screen and (max-width: 600px) {
     html {
         font-size: 12px;
-    }
-
-    .page-title {
-        margin-top: 14rem;
     }
 
     .navbar-list li:not(.navbar-list__logo) {
