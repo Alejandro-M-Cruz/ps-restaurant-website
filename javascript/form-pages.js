@@ -9,8 +9,8 @@ function loadContent(path) {
 
 function loadPage(pageContent) {
     document.querySelector(".page-title").innerHTML = pageContent.title
-    document.querySelector(".cancel-button").innerHTML = pageContent.cancelButtonLabel
-    document.querySelector(".submit-button").innerHTML = pageContent.confirmButtonLabel
+    document.querySelector(".back-button").innerHTML = pageContent.cancelButtonLabel
+    document.querySelector(".confirm-button").innerHTML = pageContent.confirmButtonLabel
     let labelsHTML = ""
     let inputsFragment = new DocumentFragment()
     pageContent.formFields.forEach(field => {

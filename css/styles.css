@@ -488,17 +488,17 @@ hr{
     cursor: pointer;
 }
 
-.left-button {
+.back-button {
     color: black;
     background-color: var(--back-button-color);
 }
 
-.middle-button {
+.cancel-button {
     color: white;
     background-color: var(--cancel-button-color);
 }
 
-.right-button {
+.confirm-button {
     color: black;
     background-color: var(--confirm-button-color);
 }
@@ -549,18 +549,6 @@ hr{
 
 .user-form input:focus, .user-form textarea:focus {
     background-color: var(--input-focus-color);
-}
-
-
-/* -------------BUTTONS------------- */
-
-.cancel-button {
-    background-color: var(--cancel-button-color);
-    color: white;
-}
-
-.submit-button {
-    background-color: var(--confirm-button-color);
 }
 
 

@@ -10,24 +10,24 @@ function loadContent(path) {
 
 function loadPage(pageContent) {
     document.querySelector(".page-title").innerHTML = pageContent.title
-    document.querySelector(".left-button").innerHTML = pageContent.leftButtonLabel
-    const middleButton = document.querySelector(".middle-button")
-    middleButton.innerHTML = pageContent.middleButtonLabel
-    middleButton.href = pageContent.middleButtonHref
-    const rightButton = document.querySelector(".right-button")
-    rightButton.innerHTML = pageContent.rightButtonLabel
-    rightButton.href = pageContent.rightButtonHref
+    document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
+    const cancelButton = document.querySelector(".cancel-button")
+    cancelButton.innerHTML = pageContent.cancelButtonLabel
+    cancelButton.href = pageContent.cancelButtonHref
+    const newResButton = document.querySelector(".confirm-button")
+    newResButton.innerHTML = pageContent.newResButtonLabel
+    newResButton.href = pageContent.newResButtonHref
     if (filename === "reservations.html") return loadReservations(pageContent)
     document.querySelector(".info").innerHTML = pageContent.info
 }
 
 function loadReservations(pageContent) {
     fetch("/demo-database/reservations.json").then(response => response.json()).then(data => {
-        fillTable(document.querySelector(".data-table"), data, pageContent)
+        fillUserTable(document.querySelector(".data-table"), data, pageContent)
     })
 }
 
-function fillTable(table, reservations, pageContent) {
+function fillUserTable(table, reservations, pageContent) {
     const fragment = new DocumentFragment()
     tableTitleHTML(pageContent, fragment)
     reservations.forEach(reservation => reservationHTML(pageContent, reservation, fragment))

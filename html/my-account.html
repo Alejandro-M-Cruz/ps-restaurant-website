@@ -13,7 +13,15 @@
         <main>
             <h2 class="page-title">
             </h2>
-            <section w3-include-html="/html/templates/table-buttons.html">
+            <section>
+                <table class="data-table">
+                </table>
+
+                <div class="buttons-container">
+                    <button class="management-button back-button" onclick="window.history.back()"></button>
+                    <button class="management-button cancel-button"></button>
+                    <a class="management-button confirm-button" href="/html/login.html"></a>
+                </div>
             </section>
         </main>
         <footer class="footer-section" w3-include-html="/html/templates/footer.html">

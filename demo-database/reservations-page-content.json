@@ -10,7 +10,7 @@
             "name": "time"
         },
         {
-            "header": "Número de personas",
+            "header": "Comensales",
             "name": "numberOfPeople"
         },
         {
@@ -19,10 +19,10 @@
         }
     ],
     "availableResLabel": "Puede realizar $ reserva/s más",
-    "leftButtonLabel": "Atrás",
-    "middleButtonLabel": "Cancelar reserva",
-    "rightButtonLabel": "Realizar nueva reserva",
-    "rightButtonHref": "new-reservation.html",
+    "backButtonLabel": "Atrás",
+    "cancelButtonLabel": "Cancelar reserva",
+    "newResButtonLabel": "Realizar nueva reserva",
+    "newResButtonHref": "new-reservation.html",
     "selectResAlertMessage": "Seleccione una reserva para poder cancelarla",
     "confirmCancelMessage": "¿Seguro que desea eliminar la reserva seleccionada?",
     "maxResAlertMessage": "Ha alcanzado el máximo de reservas"
