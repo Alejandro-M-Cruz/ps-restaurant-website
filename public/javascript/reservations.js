@@ -24,7 +24,8 @@ function loadPage(pageContent) {
 
 async function loadReservations(pageContent, cancelResButton) {
     const user = window.sessionStorage.getItem("user")
-    fetch(`/api/v1/reservations/user/${user.id}`).then(response => response.json()).then(data => {
+    const RESERVATIONS_URL = user.admin ? "/api/v1/reservations" : `/api/v1/reservations/user/${user.id}`
+    fetch(RESERVATIONS_URL).then(response => response.json()).then(data => {
         fillTable(document.querySelector(".data-table"), data.reservations, pageContent, cancelResButton)
     })
 }

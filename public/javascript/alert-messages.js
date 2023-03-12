@@ -1,4 +1,4 @@
-const errorMessages = {
+const alertMessages = {
     "NOT_FOUND": "El recurso solicitado no está disponible",
     "UNKNOWN_ERROR": "Se ha producido un error, inténtelo de nuevo",
     "PASSWORDS_DONT_MATCH": "Las contraseñas no coinciden",
@@ -9,11 +9,10 @@ const errorMessages = {
     "INVALID_TIME": "La hora seleccionada no es válida",
     "RESERVATION_SAME_DAY": "Ya ha realizado una reserva para la fecha seleccionada",
     "RESERVATIONS_FULL": "No hay más reservas disponibles para la hora seleccionada",
-    "MAX_CUSTOMERS_EXCEEDED": "Ha seleccionado más asientos de los disponibles"
+    "MAX_CUSTOMERS_EXCEEDED": "Ha seleccionado más asientos de los disponibles",
+    "CONFIRM_CANCEL_RESERVATION": "¿Está seguro de que desea cancelar la reserva?"
 }
 
-export function errorMessage(message) {
-    return errorMessages[errorMessages[message] ? message : "UNKNOWN_ERROR"]
+export function alertMessage(message) {
+    return alertMessages[alertMessages[message] ? message : "UNKNOWN_ERROR"]
 }
-
-export const noError = { error: null }

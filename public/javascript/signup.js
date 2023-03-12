@@ -1,4 +1,4 @@
-import { errorMessage } from "./error-messages.js";
+import { alertMessage } from "./alert-messages.js";
 
 const SIGNUP_URL = "/api/v1/users"
 
@@ -9,7 +9,7 @@ export default function submit(e) {
     const password = formData.get("password")
     const password_confirmation = formData.get("password_confirmation")
     if (password !== password_confirmation)
-        return e.target.querySelector("#password_confirmation").setCustomValidity(errorMessage("PASSWORDS_DONT_MATCH"))
+        return e.target.querySelector("#password_confirmation").setCustomValidity(alertMessage("PASSWORDS_DONT_MATCH"))
     fetch(SIGNUP_URL, {
         method: "POST",
         headers: {
@@ -21,7 +21,7 @@ export default function submit(e) {
             window.sessionStorage.setItem("user", JSON.stringify(data))
             return window.location.href = "/"
         }
-        const message = errorMessage(data.error)
+        const message = alertMessage(data.error)
         let invalidInput
         switch(data.error) {
             case "DUPLICATE_USER":

@@ -7,7 +7,8 @@ export default class ComplaintsDAO {
         this.queryPromiseFactory = new QueryPromiseFactory(connection)
     }
 
-    static getAllComplaints = () => this.queryPromiseFactory.create("SELECT * FROM complaints")
+    static getAllComplaints = () =>
+        this.queryPromiseFactory.create("SELECT * FROM complaints ORDER BY creation_datetime DESC")
 
     static addComplaint = complaint =>
         this.queryPromiseFactory.create(

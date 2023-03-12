@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import path from "path"
-import { errorMessage } from "../public/javascript/error-messages.js"
+import { alertMessage } from "../public/javascript/alert-messages.js"
 import users from "./api/users-route.js"
 import reservations from "./api/reservations-route.js"
 import menu from "./api/menu-route.js"
@@ -34,6 +34,6 @@ app.get("/html/reservations.html", async (req, res) => {
 })
 
 app.use(express.static("public"))
-app.use("*", (req, res) => res.status(404).json(errorMessage("NOT_FOUND")))
+app.use("*", (req, res) => res.status(404).json(alertMessage("NOT_FOUND")))
 
 export { API, app }

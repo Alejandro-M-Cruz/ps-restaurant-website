@@ -33,7 +33,7 @@ CREATE TABLE menu_items (
 
 CREATE TABLE complaints (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    content VARCHAR(255) NOT NULL,
+    content VARCHAR(2000) NOT NULL,
     creation_datetime DATETIME NOT NULL
 );
 

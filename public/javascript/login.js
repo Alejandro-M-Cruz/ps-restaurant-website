@@ -1,4 +1,4 @@
-import { errorMessage } from "./error-messages.js"
+import { alertMessage } from "./alert-messages.js"
 
 const LOGIN_URL = "/api/v1/users/login"
 
@@ -18,7 +18,7 @@ export default function submit(e) {
             window.sessionStorage.setItem("user", JSON.stringify(data))
             return window.location.href = "/"
         }
-        const message = errorMessage(data.error)
+        const message = alertMessage(data.error)
         let invalidInput
         switch(data.error) {
             case "FAILED_LOGIN":

@@ -13,10 +13,14 @@ export default class ReservationsDAO {
     static deleteReservation = id =>
         this.queryPromiseFactory.create("DELETE FROM reservations WHERE id = ?", [id])
 
-    static getAllReservations = () => this.queryPromiseFactory.create("SELECT * FROM reservations")
+    static getAllReservations = () =>
+        this.queryPromiseFactory.create("SELECT * FROM reservations ORDER BY datetime")
 
     static getReservationsByUserId = userId =>
-        this.queryPromiseFactory.create("SELECT * FROM reservations WHERE user_id = ?", [userId])
+        this.queryPromiseFactory.create(
+            "SELECT * FROM reservations WHERE user_id = ? ORDER BY datetime",
+            [userId]
+        )
 
     static getTotalCustomersForEachDatetime = () =>
         this.queryPromiseFactory.create(

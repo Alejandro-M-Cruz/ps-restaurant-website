@@ -1,4 +1,4 @@
-import { errorMessage } from "./error-messages.js";
+import { alertMessage } from "./alert-messages.js";
 
 const RESERVATIONS_URL = "/api/v1/reservations"
 
@@ -17,7 +17,7 @@ export default function submit(e) {
         body: JSON.stringify({ name, date, time, customers })
     }).then(res => res.json()).then(data => {
         if (!data.error) return window.location.href = "/html/reservations.html"
-        const message = errorMessage(data.error)
+        const message = alertMessage(data.error)
         let invalidInput
         switch(data.error) {
             case "MAX_CUSTOMERS_EXCEEDED":

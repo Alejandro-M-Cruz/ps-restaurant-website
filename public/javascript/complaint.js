@@ -1,4 +1,4 @@
-import { errorMessage } from "./error-messages.js";
+import { alertMessage } from "./alert-messages.js";
 
 const COMPLAINTS_URL = "/api/v1/complaints"
 
@@ -13,7 +13,7 @@ export default function submit(e) {
         },
         body: JSON.stringify({ complaint })
     }).then(res => res.json()).then(data => {
-        if (data.error) return alert(errorMessage(data.error))
+        if (data.error) return alert(alertMessage(data.error))
         window.location.href = "/"
     })
 }

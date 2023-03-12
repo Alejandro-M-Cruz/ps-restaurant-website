@@ -1,10 +1,14 @@
+import { alertMessage } from "./alert-messages.js"
+
+const RESERVATIONS_URL = "/api/v1/users/reservations/"
+
 function cancelReservation() {
-    if (!confirm("¿Está seguro de que desea cancelar la reserva?")) return
+    if (!confirm(alertMessage("CONFIRM_CANCEL_RESERVATION"))) return
     const reservationId = selectedRow.id.replace("reservation", "")
-    fetch(`/api/v1/reservations/${reservationId}`, {
+    fetch(RESERVATIONS_URL + reservationId, {
         method: "DELETE"
     }).then(res => res.json).then(data => {
-        if (response.error) return alert(response.error)
+        if (data.error) return alert(data.error)
         window.location.href = "/html/reservations.html"
     })
 }
