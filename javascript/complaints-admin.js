@@ -6,25 +6,20 @@ function loadContent(path) {
 }
 
 function loadPage(pageContent) {
-    let table = document.getElementById("complaints-admin-table");
-    const complaints = pageContent.formFields;
-    complaints.slice().reverse().forEach(complaint => 
-        createRow(complaint)
-    );
-
+    document.querySelector(".page-title").innerHTML = pageContent.title
+    fetch("/demo-database/complaints.json").then(response => response.json()).then(data => {
+        let grid = document.querySelector(".cards-grid")
+        let cardsHTML = ""
+        data.forEach(complaint => cardsHTML += cardHTML(complaint.creation_datetime, complaint.content))
+        grid.innerHTML = cardsHTML
+    })
 }
 
-function createRow(info) {
-    let row = document.createElement("tr");
-    row.appendChild(createTdElement("users-column",info.userPhone));
-    row.appendChild(createTdElement("date-column",info.date));
-    row.appendChild(createTdElement("messages-column",info.message));
-    document.querySelector("#complaints-admin-table").querySelector("tbody").appendChild(row);
-}
-
-function createTdElement(className, inner) {
-    let tdElement = document.createElement("td");
-    tdElement.className = className;
-    tdElement.innerHTML = inner;
-    return tdElement;
+function cardHTML(creation_datetime, content) {
+    return `
+        <div class="card-div">
+            <p class="card-title">${creation_datetime}</p>
+            <p class="card-content">${content}</p>
+        </div>
+    `
 }

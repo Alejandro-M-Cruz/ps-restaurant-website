@@ -104,7 +104,11 @@ button:hover {
     display: block;
 }
 
-.navbar-list a:not(.navbar-list__logo) {
+.navbar-list li:not(.navbar-list__logo) {
+    display: block;
+}
+
+.navbar-list a:not(.navbar-list__logo a) {
     color: black;
     padding: 0 3rem;
     font-size: 1.2rem;
@@ -548,7 +552,6 @@ hr{
 }
 
 
-
 /* -------------BUTTONS------------- */
 
 .cancel-button {
@@ -586,29 +589,39 @@ hr{
 
 /* -------------COMPLAINTS AND SUGGESTIONS/ ADMIN------------- */
 
-#complaints-admin-section{
-    margin-bottom:10em;
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-#complaints-admin-table .users-column{
-    width:15%;
+.card-div {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: var(--emphasis-color);
+    border-radius: 1rem;
+    color: white;
+    height: 15rem;
 }
 
-#complaints-admin-table .date-column{
-    width:15%;
+.card-title {
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 0 0 1rem;
 }
 
-#complaints-admin-table .messages-column {
-    width: 70%;
+.card-content {
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    text-align: justify;
+    height: 80%;
+    overflow: auto;
 }
-
-
-
 
 
 /* ------------- TABLET / LAPTOP ------------- */
 
-@media screen and (max-width: 1268px) {
+@media screen and (max-width: 1268px) and (min-width: 601px) {
     html {
         font-size: 14px;
     }
@@ -627,6 +640,10 @@ hr{
 
     .navbar-list a {
         margin-bottom: 0.5rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -729,5 +746,14 @@ hr{
 
     .hours li h3 {
         padding: 2em 0;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-div {
+        height: auto;
+        max-height: 20rem;
     }
 }
