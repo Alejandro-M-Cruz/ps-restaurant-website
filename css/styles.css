@@ -188,7 +188,7 @@ button:hover {
 }
 
 .menu-left p {
-    line-height: 2.5em;
+    line-height: 2em;
 }
 
 .menu-right p {
@@ -640,7 +640,7 @@ hr{
     /* ----- MENU ----- */
 
     .menu {
-        flex-direction: column;
+        flex-direction:row;
     }
     
     .menu-left, .menu-right {
@@ -675,6 +675,13 @@ hr{
         justify-content: center;
     }
 
+    /* ----- FOOTER ----- */
+
+    .contact-list li {
+        font-size: 0.9em;
+    }
+
+
     /* ----- BUTTONS ----- */
     
     .management-button {
@@ -685,9 +692,21 @@ hr{
     /* ----- TABLE ----- */
 
     .data-table {
-        width: 85vw;
+        width: 75vw;
         margin: 4vw auto 3vw auto;
         box-sizing: border-box;
+    }
+
+    .data-table th, .data-table td {
+        padding: 1.8vw;
+    }
+    
+    .data-table th {
+        font-size: 1vw;
+    }
+    
+    .data-table td {
+        font-size: 1.8vw;
     }
 
     /* ----- FORM ----- */
