@@ -1,8 +1,10 @@
+import { tableTitleHTML, reservationHTML, emptyRowHTML } from "./reservations-table.js"
+
 const path = window.location.pathname
 const filename = path.substring(path.lastIndexOf('/') + 1)
 const MAX_RESERVATIONS = 5
 
-function loadContent(path) {
+export default function loadContent(path) {
     fetch(path).then(response => response.json()).then(data => {
         loadPage(data)
     })
@@ -23,16 +25,22 @@ function loadPage(pageContent) {
 
 function loadReservations(pageContent) {
     fetch("/demo-database/reservations.json").then(response => response.json()).then(data => {
-        fillUserTable(document.querySelector(".data-table"), data, pageContent)
+        fillTable(document.querySelector(".data-table"), data, pageContent)
     })
 }
 
-function fillUserTable(table, reservations, pageContent) {
+function fillTable(table, reservations, pageContent) {
     const fragment = new DocumentFragment()
-    tableTitleHTML(pageContent, fragment)
-    reservations.forEach(reservation => reservationHTML(pageContent, reservation, fragment))
+    fragment.appendChild(tableTitleHTML(pageContent))
+    reservations.forEach(reservation => {
+        fragment.appendChild(reservationHTML(pageContent, reservation))
+    })
     for (let i = reservations.length; i < MAX_RESERVATIONS; i++) {
-        emptyRowHTML(pageContent, reservations.length, fragment)
+        fragment.appendChild(emptyRowHTML(
+            pageContent,
+            reservations.length,
+            MAX_RESERVATIONS)
+        )
     }
     // Rows selection
     const rows = fragment.querySelectorAll("tr:not(.title-row):not(.empty-row)")
@@ -45,37 +53,4 @@ function fillUserTable(table, reservations, pageContent) {
         }
     })
     table.appendChild(fragment)
-}
-
-function tableTitleHTML(pageContent, fragment) {
-    const titleRow = document.createElement("tr")
-    titleRow.className = "title-row"
-    pageContent.tableFields.forEach(tableField => {
-        const header = document.createElement("th")
-        header.innerHTML = tableField.header
-        titleRow.appendChild(header)
-    })
-    fragment.appendChild(titleRow)
-}
-
-function reservationHTML(pageContent, reservation, fragment) {
-    const row = document.createElement("tr")
-    row.id = `reservation${reservation.id}`
-    pageContent.tableFields.forEach(tableField => {
-        const data = document.createElement("td")
-        data.innerHTML = reservation[tableField.name]
-        row.appendChild(data)
-    })
-    fragment.appendChild(row)
-}
-
-function emptyRowHTML(pageContent, nReservations, fragment) {
-    const emptyRow = document.createElement("tr")
-    emptyRow.className = "empty-row"
-    emptyRow.innerHTML = `
-        <td colspan="${pageContent.tableFields.length}">
-            ${pageContent.availableResLabel.replace("$", (MAX_RESERVATIONS-nReservations).toString())}
-        </td>
-    `
-    fragment.appendChild(emptyRow)
 }
