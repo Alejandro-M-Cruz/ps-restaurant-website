@@ -85,7 +85,7 @@ function fillTable(table, reservations, pageContent) {
         fragment.appendChild(reservationHTML(pageContent, reservation))
     })
     // Rows selection
-    const rows = fragment.querySelectorAll("tr:not(.title-row):not(.empty-row)")
+    const rows = fragment.querySelectorAll("tr:not(.title-row)")
     rows.forEach(row => {
         row.onclick = () => {
             rows.forEach(r => {

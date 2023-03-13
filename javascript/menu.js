@@ -4,6 +4,12 @@ function loadMenuItems(path, element) {
     })
 }
 
+async function loadContent2(path, element) {
+    const response = await fetch(path);
+    const menu = await response.json();
+    loadMenu(menu, element);
+}
+
 const menuLeft = document.querySelector(".menu-left")
 const menuRight = document.querySelector(".menu-right")
 
@@ -18,11 +24,15 @@ function loadMenu(data, element) {
         section.dishes.forEach(dish => {
             dishesHTML += `
                 <div class="sides">
-                    <div class="left-side">
+                    <div class="left-side-image">
+                        <img src = "${dish.imageSrc}" alt = "food"> </img>
+                    </div>
+                    <div class="left-side-text">
                         <p>${dish.name}</p>
                         <p class="left-side__ingredients">${dish.ingredients}</p>
                     </div>
-                    <div class="right-side">
+                    
+                    <div class="right-side-text">
                         <p>${dish.price}</p>
                     </div>
                </div>

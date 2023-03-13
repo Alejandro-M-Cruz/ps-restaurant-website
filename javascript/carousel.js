@@ -11,7 +11,6 @@ window.onload = function () {
     let $backButton = document.querySelector('#slide-image__left-arrow');
     let $advanceButton = document.querySelector('#slide-image__right-arrow');
     let $imagen = document.querySelector('.slide-image-thing');
-    let $imagentexto = document.querySelector('.slide-image-thing-text');
     
     function nextImage() {
         if (posicionActual >= IMAGENES.length - 1) {
