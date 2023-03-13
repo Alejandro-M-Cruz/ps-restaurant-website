@@ -608,14 +608,15 @@ hr{
 
 /*----------------- Menú Edit ----------------*/
 .menu-form {
-    font-size: 1em;
+    font-size: 1rem;
     text-align: center;
-    padding: 1em;
-    margin: 1em;
+    padding: 2rem;
+    margin: 2rem;
+    margin-bottom: 10rem;
 }
 
 .menu-form select {
-    font-size: 2em;
+    font-size: 2rem;
 }
 
 .menu-form option {

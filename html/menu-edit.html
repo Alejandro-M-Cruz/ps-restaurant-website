@@ -11,7 +11,7 @@
         <header class="navbar-header" w3-include-html="/html/templates/navbar.html"></header>
         <main>
             <div>
-                <h3 class="page-title">Editar Menú</h3>
+                <h3 class="page-title">Editar Secciones</h3>
             </div>
             <form class="menu-form" name="Sección" method="post">
                 <Select name="Sección" > 
@@ -22,17 +22,13 @@
                 </Select>
             </form>
             <section class="buttons-container">
-                <button class="management-button back-button" onclick="window.history.back()">
-                    <p>Editar Sección</p>
+                <button class="management-button back-button"  onclick="/html/section-edit.html">
                 </button>
             
-                <button class="management-button cancel-button">
-                    <p>Eliminar Sección</p>
-                </button>
+                <button class="management-button cancel-button"></button>
             
-                <button class="management-button confirm-button">
-                    <p>Agregar Sección</p>
-                </button>
+                <button class="management-button confirm-button"> </button>
+                <a href="/html/section-add.html"></a>
             </section>
 
         </main>
@@ -43,6 +39,7 @@
     <script>
         w3IncludeHTML(() => {
             initNavbar()
+            loadContent("/demo-database/menu-sections-edit-content.json")
         })
     </script>
 </body>
