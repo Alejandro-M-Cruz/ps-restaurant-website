@@ -115,67 +115,66 @@ button:hover {
 /* -------------SLIDE SHOW------------- */
 
 .slide-image {
-    width: 60vw;
-    height: 32vw;
-    margin: auto;
+    width: 35rem;
+    height: 20rem;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
 }
 
 .slide-image-thing {
-    position: relative;
-    width: 50vw;
-    height: 30vw;
-    margin: 2vw auto;
-    text-align: center;
+    width: 100%;
+    height: 100%;
     background-size: cover;
 }
 
-.slide-image-thing__center-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: white;
-    font-size: 1.5em;
+.dark-filter {
+    display: flex;
+    align-items: center;
+    align-content: center;
 }
 
-.slide-image-thing__center-text-p {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+.slide-image-thing-text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+}
+
+.slide-image-thing__center-text {
     color: white;
     font-size: 1em;
 }
 
+.slide-image-thing__center-text-p {
+    color: white;
+    font-size: 0.8em;
+}
+
 #slide-image__left-arrow, #slide-image__right-arrow {
-    position: relative;
-    width: 2vw;
-    height: 2vw;
+    width: 5vw;
+    height: 5vw;
     display: block;
-    padding-top: 14vw;
 }
 
 #slide-image__left-arrow {
-    float: left;
-    padding-left: 1vw;
     background-color: white;
 }
 
 #slide-image__right-arrow {
-    float: right;
-    padding-right: 1vw;
     background-color: white;
 }
 
 #slide-image__left-arrow img {
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
 }
 
 #slide-image__right-arrow img {
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -654,11 +653,11 @@ hr{
     }
 
     .page-title {
-        margin-top: 17rem;
         font-size: 2rem;
     }
     
-        .navbar-header {
+    .navbar-header {
+        position: static;
         flex-wrap: nowrap;
     }
 
@@ -810,6 +809,10 @@ hr{
     .navbar-list__user-icon img {
         width: 40px;
     }
+
+    /* ----- CARRUSEL DE IMAGENES ----- */
+
+
 
 
     /* ----- MENU ----- */
