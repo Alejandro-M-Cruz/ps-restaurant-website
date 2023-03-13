@@ -31,7 +31,7 @@ button:hover {
     width: 50%;
     font-size: 2.5rem;
     text-align: center;
-    margin: 10rem auto 0 auto;
+    margin: 3rem auto 0 auto;
 }
 
 .dark-filter {
@@ -43,16 +43,33 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#index-wrapper {
+.grid-div {
+    display: grid;
+    grid-template-rows: 120px 1fr 360px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "footer";
     margin: 0 auto;
     width: 100%;
     height: 100%;
 }
 
+.navbar-header {
+    grid-area: header;
+}
+
+.grid-div main {
+    grid-area: main;
+}
+
+.footer-section {
+    margin-top: 5rem;
+    grid-area: footer;
+}
+
 
 /* -------------NAVBAR------------- */
 
-#nav-bar-container {
+.navbar-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -87,7 +104,11 @@ button:hover {
     display: block;
 }
 
-.navbar-list a:not(.navbar-list__logo) {
+.navbar-list li:not(.navbar-list__logo) {
+    display: block;
+}
+
+.navbar-list a:not(.navbar-list__logo a) {
     color: black;
     padding: 0 3rem;
     font-size: 1.2rem;
@@ -99,7 +120,7 @@ button:hover {
 .slide-image {
     width: 60vw;
     height: 32vw;
-    margin: 7vw auto 0;
+    margin: auto;
     z-index: 1;
 }
 
@@ -176,7 +197,7 @@ button:hover {
     background-color: var(--menu-background-color);
 }
 
-#main-content h2 {
+#menu-section h2 {
     text-align: center;
     margin: 3em 0 1.5em 0;
 }
@@ -187,12 +208,9 @@ button:hover {
     padding: 1.3em 0 0 1.3em;
 }
 
-.menu-left p {
+.menu-left p, .menu-right p {
     line-height: 2em;
-}
-
-.menu-right p {
-    line-height: 2em;
+    margin-left: 2em;
 }
 
 .sides {
@@ -235,13 +253,18 @@ button:hover {
 .left-side__ingredients {
     font-size: 0.8em;
     font-weight: bold;
+    margin-left: 2em;
 }
 
 .right-side-text {
     padding-right: 3em;
 }
 
-#main-content:after {
+.right-side {
+    margin-right: 2em;
+}
+
+#menu-section:after {
     content: "";
     display: table;
     clear: both;
@@ -443,12 +466,46 @@ hr{
     font-size: 2.5rem;
 }
 
+
+/* -------------ADMIN RESERVATIONS SELECTOR------------- */
+
+.reservations-selector {
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5rem;
+    background-color: var(--main-color);
+    border-radius: 0.5rem;
+}
+
+.reservations-selector button {
+    padding: 0.5rem;
+    background: none;
+}
+
+.reservations-selector button:disabled {
+    background-color: #dddddd;
+    cursor: default;
+    border-radius: 0.5rem;
+}
+
+.counter {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--main-color);
+    color: white;
+}
+
+
 /* -------------BUTTONS------------- */
 
 .buttons-container {
     width: 100%;
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     margin: 2rem 0 2rem 0;
 }
@@ -467,17 +524,17 @@ hr{
     cursor: pointer;
 }
 
-.left-button {
+.back-button {
     color: black;
     background-color: var(--back-button-color);
 }
 
-.middle-button {
+.cancel-button {
     color: white;
     background-color: var(--cancel-button-color);
 }
 
-.right-button {
+.confirm-button {
     color: black;
     background-color: var(--confirm-button-color);
 }
@@ -531,19 +588,6 @@ hr{
 }
 
 
-
-/* -------------BUTTONS------------- */
-
-.cancel-button {
-    background-color: var(--cancel-button-color);
-    color: white;
-}
-
-.submit-button {
-    background-color: var(--confirm-button-color);
-}
-
-
 /* -------------LINK TO LOGIN / SIGNUP------------- */
 
 .already-paragraph {
@@ -569,40 +613,54 @@ hr{
 
 /* -------------COMPLAINTS AND SUGGESTIONS/ ADMIN------------- */
 
-#complaints-admin-section{
-    margin-bottom:10em;
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
 }
 
-#complaints-admin-table .users-column{
-    width:15%;
+.card-div {
+    margin: 1rem;
+    padding: 1rem;
+    background-color: var(--emphasis-color);
+    border-radius: 1rem;
+    color: white;
+    height: 15rem;
 }
 
-#complaints-admin-table .date-column{
-    width:15%;
+.card-title {
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 0 0 1rem;
 }
 
-#complaints-admin-table .messages-column {
-    width: 70%;
+.card-content {
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    text-align: justify;
+    height: 80%;
+    overflow: auto;
 }
-
-
-
 
 
 /* ------------- TABLET / LAPTOP ------------- */
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1268px) and (min-width: 601px) {
     html {
         font-size: 14px;
     }
 
-    #nav-bar-container {
-        flex-wrap: nowrap;
+    .grid-div {
+        grid-template-rows: 200px 1fr 360px;
     }
 
     .page-title {
         margin-top: 17rem;
         font-size: 2rem;
+    }
+    
+        .navbar-header {
+        flex-wrap: nowrap;
     }
 
     .navbar-list__logo {
@@ -639,30 +697,16 @@ hr{
 
     /* ----- MENU ----- */
 
-    .menu {
-        flex-direction:row;
-    }
-    
-    .menu-left, .menu-right {
-        width: 100%;
-    }
-
     .menu-left h3, .menu-right h3 {
         font-size: 1.5em;
     }
 
-    .menu-left p, .menu-right p {
-        margin-left: 2em;
-    }
-
     .left-side__ingredients {
         font-size: 1em;
-        margin-left: 2em;
     }
 
     .right-side {
         font-size: 1.2em;
-        margin-right: 2em;
     }
 
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
@@ -702,7 +746,7 @@ hr{
     }
     
     .data-table th {
-        font-size: 1vw;
+        font-size: 1.8vw;
     }
     
     .data-table td {
@@ -724,6 +768,9 @@ hr{
         width: 20rem;
     }
 
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
     
 
@@ -733,10 +780,6 @@ hr{
 @media screen and (max-width: 600px) {
     html {
         font-size: 12px;
-    }
-
-    .page-title {
-        margin-top: 14rem;
     }
 
     .navbar-list li:not(.navbar-list__logo) {
@@ -830,5 +873,14 @@ hr{
 
     .hours li h3 {
         padding: 2em 0;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-div {
+        height: auto;
+        max-height: 20rem;
     }
 }

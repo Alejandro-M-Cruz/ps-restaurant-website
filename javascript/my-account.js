@@ -24,7 +24,7 @@ function loadPage(pageContent, userData) {
     })
 
     document.querySelector(".data-table").appendChild(fragment)
-    document.querySelector(".left-button").innerHTML = pageContent.backButtonLabel
-    document.querySelector(".middle-button").innerHTML = pageContent.deleteButtonLabel
-    document.querySelector(".right-button").innerHTML = pageContent.logoutButtonLabel
+    document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
+    document.querySelector(".back-button").innerHTML = pageContent.deleteButtonLabel
+    document.querySelector(".confirm-button").innerHTML = pageContent.logoutButtonLabel
 }

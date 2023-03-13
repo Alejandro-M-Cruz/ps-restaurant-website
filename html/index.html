@@ -8,53 +8,56 @@
     <script src="/javascript/carousel.js"></script>
 </head>
 <body>
-    <div id="index-wrapper">
-        <header id="nav-bar-container" w3-include-html="/html/templates/navbar.html">
+    <div class="grid-div">
+        <header class="navbar-header" w3-include-html="/html/templates/navbar.html">
         </header>
 
-        <section class="slide-image">
-            <button id="slide-image__left-arrow"> <img src="/images/left-arrow.png" alt="left arrow"></button>
-            <button id="slide-image__right-arrow"> <img src="/images/right_arrow.png" alt="right arrow"> </button>
-            <div class="slide-image-thing">
-                <div class="dark-filter"></div>
-                <div class="slide-image-thing-text">
-                    <h3 class = "slide-image-thing__center-text"></h3>
-                    <p class = "slide-image-thing__center-text-p"></p>
-                </div>                
-            </div>
-        </section>
+        <main>
+            <section class="slide-image">
+                <button id="slide-image__left-arrow"> <img src="/images/left-arrow.png" alt="left arrow"></button>
+                <button id="slide-image__right-arrow"> <img src="/images/right_arrow.png" alt="right arrow"> </button>
+                <div class="slide-image-thing">
+                    <div class="dark-filter"></div>
+                    <div class="slide-image-thing-text">
+                        <h3 class = "slide-image-thing__center-text"></h3>
+                        <p class = "slide-image-thing__center-text-p"></p>
+                    </div>
+                </div>
+            </section>
 
-        <main id="main-content">
-            <h2></h2>
-            <div class="menu">
-                <div class="menu-left">
+            <section id="menu-section">
+                <h2></h2>
+                <div class="menu">
+                    <div class="menu-left">
+                    </div>
+                    <div class="menu-right">
+                    </div>
                 </div>
-                <div class="menu-right">
+            </section>
+
+            <section class="reserva">
+                <a href="reservations.html"><h2></h2></a>
+            </section>
+
+            <section id="about-us-section">
+                <h2></h2>
+                <div class="about-us-content">
+                    <div class="about-us-description">
+                        <p></p>
+                    </div>
+                    <div class="about-us-image">
+                        <img src="/images/carousel/restaurante-1.jpg" alt="restaurante">
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <section class="complaints">
+                <a href="complaints.html"><h2></h2></a>
+            </section>
         </main>
-        <section class="reserva">
-            <a href="reservations.html"><h2></h2></a>
-        </section>
 
-        <section id="about-us-section">
-            <h2></h2>
-            <div class="about-us-content">
-                <div class="about-us-description">
-                    <p></p>
-                </div>
-                <div class="about-us-image">
-                    <img src="/images/carousel/restaurante-1.jpg" alt="restaurante">
-                </div>
-            </div>
-        </section>
-
-        <section class="complaints">
-            <a href="complaints.html"><h2></h2></a>
-        </section>
-
-        <section id="footer-section" w3-include-html="/html/templates/footer.html">
-        </section>
+        <footer id="home-footer" class="footer-section" w3-include-html="/html/templates/footer.html">
+        </footer>
     </div>
 
     <script src="/javascript/index.js"></script>

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head w3-include-html="/html/templates/head.html">
     <meta charset="UTF-8">
@@ -7,31 +7,25 @@
     <script src="http://www.w3schools.com/lib/w3data.js"></script>
 </head>
 <body>
-    <header w3-include-html="/html/templates/navbar.html">
+<div class="grid-div">
+    <header class="navbar-header" w3-include-html="/html/templates/navbar.html">
     </header>
-    <h2 class="page-title">Reclamaciones</h2>
-    <section id="complaints-admin-section" class="content-section">
-        <table id="complaints-admin-table" class="data-table">
-            <thead>
-                <tr>
-                    <th>Usuarios</th>
-                    <th>Fecha</th>
-                    <th>Reclamación o sugerencia recientes</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
+    <main>
+        <h2 class="page-title"></h2>
+        <section class="cards-grid">
+        </section>
+        <button  class="back-button back-button management-button"> Atras </button>
+    </main>
+    <footer class="footer-section" w3-include-html="/html/templates/footer.html"></footer>
+</div>
 
-        <button  class="back-button left-button management-button"> Atras </button>
-    </section>
-    <script src="/javascript/complaints-admin.js"></script>
-    <script src="/javascript/navbar.js"></script>
-    <script>
-        w3IncludeHTML(() => {
-            loadContent("/demo-database/complaints-admin-page-content.json")
-            initNavbar()
-        })
-    </script>
+<script src="/javascript/complaints-admin.js"></script>
+<script src="/javascript/navbar.js"></script>
+<script>
+    w3IncludeHTML(() => {
+        loadContent("/demo-database/complaints-admin-page-content.json")
+        initNavbar()
+    })
+</script>
 </body>
 </html>
