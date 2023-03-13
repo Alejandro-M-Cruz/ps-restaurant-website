@@ -5,36 +5,45 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="http://www.w3schools.com/lib/w3data.js"></script>
-
 </head>
 <body>
-    <header id="nav-bar-container" w3-include-html="/html/templates/navbar.html"></header>
-    <h3 class="page-title">Editar Menú</h3>
+    <div class="grid-div">
+        <header class="navbar-header" w3-include-html="/html/templates/navbar.html"></header>
+        <main>
+            <div>
+                <h3 class="page-title">Editar Menú</h3>
+            </div>
+            <form class="menu-form" name="Sección" method="post">
+                <Select name="Sección" > 
+                    <option value="0" selected>Entrantes</option></option>
+                    <option value="1">Pizzas</option></option>
+                    <option value="2">Pasta</option></option>
+                    <option value="3">Postres</option></option>
+                </Select>
+            </form>
+            <section class="buttons-container">
+                <button class="management-button back-button" onclick="window.history.back()">
+                    <p>Editar Sección</p>
+                </button>
+            
+                <button class="management-button cancel-button">
+                    <p>Eliminar Sección</p>
+                </button>
+            
+                <button class="management-button confirm-button">
+                    <p>Agregar Sección</p>
+                </button>
+            </section>
 
-    <form class="menu-form" name="Sección" method="post">
-        <Select name="Sección" > 
-            <option value="0" selected>Entrantes</option></option>
-            <option value="1">Pizzas</option></option>
-            <option value="2">Pasta</option></option>
-            <option value="3">Postres</option></option>
-        </Select>
-    </form>
+        </main>
+        <footer class="footer-section" w3-include-html="/html/templates/footer.html"></footer>
+    </div>
 
-    <button class="management-button left-button" onclick="window.history.back()">
-        <p>Editar Sección</p>
-    </button>
-
-    <button class="management-button middle-button">
-        <p>Eliminar Sección</p>
-    </button>
-
-    <button class="management-button right-button">
-        <p>Agregar Sección</p>
-    </button>
-
-    
+    <script src="/javascript/navbar.js"></script>
     <script>
-        w3IncludeHTML()
+        w3IncludeHTML(() => {
+            initNavbar()
+        })
     </script>
 </body>
 </html>
