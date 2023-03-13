@@ -842,9 +842,14 @@ hr{
         flex-direction: column-reverse;
     }
 
-    .about-us-image, .about-us-description {
+    .about-us-image {
         height: 100%;
         width: 100%;
+    }
+
+    .about-us-description {
+        width: 80%;
+        font-size: 1.3rem;
     }
 
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
