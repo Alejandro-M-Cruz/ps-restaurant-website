@@ -655,11 +655,11 @@ hr{
     }
 
     .page-title {
-        margin-top: 17rem;
         font-size: 2rem;
     }
     
-        .navbar-header {
+    .navbar-header {
+        position: static;
         flex-wrap: nowrap;
     }
 
