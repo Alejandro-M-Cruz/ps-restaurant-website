@@ -1,10 +1,9 @@
-w3IncludeHTML(() => {
-    fetch(`/demo-database/my-account-page-content.json`).then(response => response.json()).then(pageContent => {
-        fetch(`/demo-database/logged-user.json`).then(response => response.json()).then(userData => {
-            loadPage(pageContent, userData)
-        })
+function loadContent(path) {
+    fetch(path).then(response => response.json()).then(async data => {
+        const userData = await (await fetch(`/demo-database/logged-user.json`)).json()
+        loadPage(data, userData)
     })
-})
+}
 
 function loadPage(pageContent, userData) {
     document.querySelector(".page-title").innerHTML = pageContent.title
@@ -25,7 +24,7 @@ function loadPage(pageContent, userData) {
     })
 
     document.querySelector(".data-table").appendChild(fragment)
-    document.querySelector(".left-button").innerHTML = pageContent.backButtonLabel
-    document.querySelector(".middle-button").innerHTML = pageContent.deleteButtonLabel
-    document.querySelector(".right-button").innerHTML = pageContent.logoutButtonLabel
+    document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
+    document.querySelector(".back-button").innerHTML = pageContent.deleteButtonLabel
+    document.querySelector(".confirm-button").innerHTML = pageContent.logoutButtonLabel
 }

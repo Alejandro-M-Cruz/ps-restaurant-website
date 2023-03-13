@@ -3,26 +3,31 @@
         "title": "Pasta",
         "dishes": [
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
             },
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
             },
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
             },
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
             },
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
@@ -33,26 +38,31 @@
         "title": "Postres",
         "dishes": [
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
             },
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
             },
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
             },
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"
             },
             {
+                "imageSrc": "/images/pizza-menu.jpg",
                 "name": "Margarita",
                 "ingredients": "Masa, tomate, queso y orégano",
                 "price": "8.00€"

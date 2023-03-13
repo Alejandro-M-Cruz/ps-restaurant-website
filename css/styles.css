@@ -16,7 +16,6 @@
     margin: 0;
     padding: 0;
     border: 0;
-    box-sizing: border-box;
     font-family: Verdana, Arial, sans-serif;
 }
 
@@ -32,7 +31,7 @@ button:hover {
     width: 50%;
     font-size: 2.5rem;
     text-align: center;
-    margin: 7rem auto 0 auto;
+    margin: 3rem auto 0 auto;
 }
 
 .dark-filter {
@@ -44,16 +43,30 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
-#index-wrapper {
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
+.grid-div {
+    display: grid;
+    grid-template-rows: 120px 1fr 360px;
+    grid-template-columns: 1fr;
+    grid-template-areas: "header" "main" "footer";
+}
+
+.navbar-header {
+    grid-area: header;
+}
+
+.grid-div main {
+    grid-area: main;
+}
+
+.footer-section {
+    margin-top: 5rem;
+    grid-area: footer;
 }
 
 
 /* -------------NAVBAR------------- */
 
-#nav-bar-container {
+.navbar-header {
     position: fixed;
     top: 0;
     left: 0;
@@ -62,125 +75,106 @@ button:hover {
     z-index: 999;
 }
 
-.lista-paginas {
+.navbar-list {
     list-style-type: none;
     display: flex;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
 }
 
-.lista-paginas__titulo {
-    flex-grow: 10;
+.navbar-list__logo {
+    flex-grow: 2;
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-#la-nostra-casa-nav-title {
-    font-size: 2.2rem;
-    color: white;
+.hamburger-button {
+    background: none;
+    margin-right: 3rem;
+    display: none;
 }
 
-#la-nostra-casa-nav-title:hover {
-    font-size: 2.3rem;
-}
-
-li[class^='lista-paginas'], li[class*=' lista-paginas'] {
-    display: inline-block;
-}
-
-nav a {
+.navbar-list a {
     display: block;
+}
+
+.navbar-list li:not(.navbar-list__logo) {
+    display: block;
+}
+
+.navbar-list a:not(.navbar-list__logo a) {
     color: black;
-    margin: 0 1.5vw;
-    padding: 1.25rem;
-    line-height: 2.2rem;
-    font-size: 1.1rem;
-}
-
-nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
-    background-color: var(--emphasis-color);
-}
-
-.user-icon {
-    margin-right: 5vw;
-}
-
-.user-icon:hover img {
-    transform: scale(1.2, 1.2);
-}
-
-.user-icon img {
-    position: absolute;
-    top: 25%;
-    height: 2.2rem;
-    width: 2.2rem;
+    padding: 0 3rem;
+    font-size: 1.2rem;
 }
 
 
 /* -------------SLIDE SHOW------------- */
 
 .slide-image {
-    width: 60vw;
-    height: 32vw;
-    margin: 7vw auto 0;
+    width: 35rem;
+    height: 20rem;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
 }
 
 .slide-image-thing {
-    position: relative;
-    width: 50vw;
-    height: 30vw;
-    margin: 2vw auto;
-    text-align: center;
+    width: 100%;
+    height: 100%;
     background-size: cover;
 }
 
+.dark-filter {
+    display: flex;
+    align-items: center;
+    align-content: center;
+}
+
+.slide-image-thing-text {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    align-content: center;
+}
+
 .slide-image-thing__center-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: white;
-    font-size: 1.5em;
+    font-size: 1em;
 }
 
 .slide-image-thing__center-text-p {
-    position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     color: white;
-    font-size: 15px;
+    font-size: 0.8em;
 }
 
 #slide-image__left-arrow, #slide-image__right-arrow {
-    position: relative;
-    box-sizing: content-box;
-    width: 2vw;
-    height: 2vw;
+    width: 5vw;
+    height: 5vw;
     display: block;
-    padding-top: 14vw;
 }
 
 #slide-image__left-arrow {
-    float: left;
-    padding-left: 1vw;
     background-color: white;
 }
 
 #slide-image__right-arrow {
-    float: right;
-    padding-right: 1vw;
     background-color: white;
 }
 
 #slide-image__left-arrow img {
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
 }
 
 #slide-image__right-arrow img {
-    width: 40px;
-    height: 40px;
+    width: 100%;
+    height: 100%;
 }
 
 
@@ -189,22 +183,19 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
 
 .menu {
     display: flex;
+    flex-direction: row;
 }
 
 .menu-left, .menu-right {
     border: 1px solid black;
     padding-bottom: 1rem;
-}
-
-#main-content h2 {
-    text-align: center;
-    margin: 3em 0 1.5em 0;
-}
-
-.menu-left, .menu-right {
-    border-radius: 1rem;
     width: 50%;
     background-color: var(--menu-background-color);
+}
+
+#menu-section h2 {
+    text-align: center;
+    margin: 3em 0 1.5em 0;
 }
 
 .menu-left h3, .menu-right h3 {
@@ -213,49 +204,63 @@ nav a:not(.user-icon):not(#la-nostra-casa-nav-title):hover {
     padding: 1.3em 0 0 1.3em;
 }
 
-.menu-left p {
-    line-height: 2.5em;
-}
-
-.menu-right p {
+.menu-left p, .menu-right p {
     line-height: 2em;
+    margin-left: 2em;
 }
 
 .sides {
     margin-top: 1rem;
+    align-items: center;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
 }
 
 .sides:last-child {
     margin-bottom: 1rem;
 }
 
-.left-side {
-    float: left;
-    padding-left: 2em;
+.left-side-image {
+    position: relative;
+    box-sizing: content-box;
+    width: 5vw;
+    height: 5vw;
+    display: block;
+    margin-left: 2em;
 }
 
-.left-side p, .right-side p{
+.left-side-image img {
+    width: 100%;
+    height: 100%;
+    filter: brightness(50%);
+    border-radius: 5em;
+}
+
+.left-side-text {
+    padding-left: 2em;
+    width: 30rem;
+}
+
+.left-side-text p, .right-side-text p{
     line-height: 1.3em;
 }
 
 .left-side__ingredients {
     font-size: 0.8em;
     font-weight: bold;
+    margin-left: 2em;
 }
 
-.right-side {
-    float: right;
-    text-align: right;
+.right-side-text {
     padding-right: 3em;
 }
 
-.sides:after {
-    content: "";
-    display: table;
-    clear: both;
+.right-side {
+    margin-right: 2em;
 }
 
-#main-content:after {
+#menu-section:after {
     content: "";
     display: table;
     clear: both;
@@ -457,38 +462,77 @@ hr{
     font-size: 2.5rem;
 }
 
+
+/* -------------ADMIN RESERVATIONS SELECTOR------------- */
+
+.reservations-selector {
+    visibility: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 5rem;
+    background-color: var(--main-color);
+    border-radius: 0.5rem;
+}
+
+.reservations-selector button {
+    padding: 0.5rem;
+    background: none;
+}
+
+.reservations-selector button:disabled {
+    background-color: #dddddd;
+    cursor: default;
+    border-radius: 0.5rem;
+}
+
+.counter {
+    font-size: 2rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    background-color: var(--main-color);
+    color: white;
+}
+
+
 /* -------------BUTTONS------------- */
+
+.buttons-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0 2rem 0;
+}
 
 .management-button {
     display: block;
-    font-size: 1vw;
-    width: 20%;
-    padding: 1vw;
+    font-size: 1.2rem;
+    width: 20rem;
+    padding: 1.2rem;
     text-align: center;
     text-decoration: none;
-    float: left;
+    margin: 0 2rem;
 }
 
 .management-button:hover {
     cursor: pointer;
 }
 
-.left-button {
+.back-button {
     color: black;
     background-color: var(--back-button-color);
-    margin: 2% 3% 0 17%;
 }
 
-.middle-button {
+.cancel-button {
     color: white;
     background-color: var(--cancel-button-color);
-    margin-top: 2%;
 }
 
-.right-button {
+.confirm-button {
     color: black;
     background-color: var(--confirm-button-color);
-    margin: 2% 17% 0 3%;
 }
 
 
@@ -540,38 +584,6 @@ hr{
 }
 
 
-
-/* -------------BUTTONS------------- */
-
-.buttons-container {
-    width: 100%;
-    display: block;
-    text-align: center;
-}
-
-.cancel-button, .submit-button {
-    display: inline-block;
-    font-size: 1.2rem;
-    width: 20%;
-    padding: 1rem;
-    margin: 0 3rem 2rem 3rem;
-    text-align: center;
-}
-
-.cancel-button:hover, .submit-button:hover {
-    cursor: pointer;
-}
-
-.cancel-button {
-    background-color: var(--cancel-button-color);
-    color: white;
-}
-
-.submit-button {
-    background-color: var(--confirm-button-color);
-}
-
-
 /* -------------LINK TO LOGIN / SIGNUP------------- */
 
 .already-paragraph {
@@ -610,3 +622,333 @@ hr{
     font-size: 20px;
     text-align: center;
 }
+
+/* -------------COMPLAINTS AND SUGGESTIONS/ ADMIN------------- */
+
+.cards-grid {
+    margin: 2rem 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.card-div {
+    margin: 1rem;
+    padding: 1rem;
+    background-color:white;
+    border-radius: 1rem;
+    height: 15rem;
+    border: var(--main-color) solid 5px;
+}
+
+.card-title {
+    color: var(--emphasis-color);
+    text-align: center;
+    font-size: 1.6rem;
+    margin: 0 0 1rem;
+}
+
+.card-content {
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    padding: 0.5rem;
+    text-align: justify;
+    height: 80%;
+    overflow: auto;
+}
+
+
+/* ------------- TABLET / LAPTOP ------------- */
+
+@media screen and (max-width: 1268px) and (min-width: 751px) {
+    html {
+        font-size: 14px;
+    }
+
+    .grid-div {
+        grid-template-rows: 200px 1fr 360px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+    }
+    
+    .navbar-header {
+        position: static;
+        flex-wrap: nowrap;
+    }
+
+    .navbar-list__logo {
+        flex-basis: 100%;
+    }
+
+    .navbar-list a {
+        margin-bottom: 0.5rem;
+    }
+
+    .slide-image-thing__center-text {
+        font-size: 1em;
+    }
+    
+    .slide-image-thing__center-text-p {
+        font-size: 12px;
+    }
+
+    /* ----- ABOUT US ----- */
+
+    .about-us-content {
+        flex-direction: column-reverse;
+    }
+
+    .about-us-description {
+        width: 75%;
+        font-size: 1.3rem;
+    }
+        
+    .about-us-image {
+        width: 50%;
+        margin-top: 5rem;
+    }
+
+    /* ----- MENU ----- */
+
+    .menu-left h3, .menu-right h3 {
+        font-size: 1.5em;
+    }
+
+    .left-side__ingredients {
+        font-size: 1em;
+    }
+
+    .right-side {
+        font-size: 1.2em;
+    }
+
+    /* ----- HOJA DE RECLAMACIONES BOTON ----- */
+    .complaints {
+        width: 20em;
+        height: 5em;
+        margin: 3em auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ----- FOOTER ----- */
+
+    .contact-list li {
+        font-size: 0.9em;
+    }
+
+
+    /* ----- BUTTONS ----- */
+    
+    .management-button {
+        font-size: 1rem;
+        width: 12rem;
+    }
+
+    /* ----- TABLE ----- */
+
+    .data-table {
+        width: 75vw;
+        margin: 4vw auto 3vw auto;
+        box-sizing: border-box;
+    }
+
+    .data-table th, .data-table td {
+        padding: 1.8vw;
+    }
+    
+    .data-table th {
+        font-size: 1.8vw;
+    }
+    
+    .data-table td {
+        font-size: 1.8vw;
+    }
+
+    /* ----- FORM ----- */
+
+    .user-form {
+        font-size: 1.4rem;
+    }
+    
+    .user-form input, .user-form textarea {
+        font-size: 1.2rem;
+    }
+    
+    .user-form input {
+        height: 1.7rem;
+        width: 20rem;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+    
+
+
+/* ------------- MOBILE PHONE ------------- */
+
+@media screen and (max-width: 750px) {
+    html {
+        font-size: 12px;
+    }
+
+    .navbar-list li:not(.navbar-list__logo) {
+        display: none;
+    }
+
+    .navbar-list {
+        flex-direction: column;
+    }
+
+    .hamburger-button {
+        display: block;
+    }
+
+    .navbar-list li {
+        width: 100%;
+        border-top: 1px solid black;
+        text-align: center;
+    }
+
+    .navbar-list a:not(#la-nostra-casa-nav-logo):not(.user-icon) {
+        padding: 15px 0;
+    }
+
+    .navbar-list .user-icon {
+        margin: 5px;
+    }
+
+    .navbar-list__user-icon img {
+        width: 40px;
+    }
+
+    /* ----- CARRUSEL DE IMAGENES ----- */
+
+
+
+
+    /* ----- MENU ----- */
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu-left, .menu-right {
+        height: 100%;
+        width: 100%;
+    }
+
+    /* ----- RESERVE HERE ----- */
+    
+    .reserva {
+        width: 30em;
+        height: 5em;
+        margin: 3em auto 10em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ----- ABOUT US ----- */
+    .about-us-content {
+        flex-direction: column-reverse;
+    }
+
+    .about-us-image {
+        height: 100%;
+        width: 100%;
+    }
+
+    .about-us-description {
+        width: 80%;
+        font-size: 1.3rem;
+    }
+
+    /* ----- HOJA DE RECLAMACIONES BOTON ----- */
+    .complaints {
+        width: 20em;
+        height: 5em;
+        margin: 3em auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ----- BUTTONS ----- */
+    
+    .management-button {
+        font-size: 1.5rem;
+        width: 75%;
+        margin-top: 1rem;
+    }
+
+    .buttons-container {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    /* ----- TABLE ----- */
+
+    .data-table {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .data-table th, .data-table td {
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+    }
+    
+    .data-table th {
+        font-size: 3vw;
+    }
+    
+    .data-table td {
+        font-size: 3vw;
+    }
+
+    /* ----- FOOTER ----- */
+    #footer-container {
+        flex-direction: column;
+        width: 100%;
+        height: 40rem;
+    }
+
+    .social-list {
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+    }
+
+    .social-icons {
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        width: 100%;
+        flex-wrap: nowrap;
+        justify-content: center;
+        padding: 2em;
+    }
+
+    .contact-list {
+        line-height: 1.8em;
+    }
+
+    .hours li h3 {
+        padding: 2em 0;
+    }
+
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .card-div {
+        height: auto;
+        max-height: 20rem;
+    }
+}
+
