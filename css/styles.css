@@ -856,6 +856,25 @@ hr{
         justify-content: center;
     }
 
+    /* ----- TABLE ----- */
+
+    .data-table {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .data-table th, .data-table td {
+        padding: 0.5vw;
+    }
+    
+    .data-table th {
+        font-size: 1.8vw;
+    }
+    
+    .data-table td {
+        font-size: 1.8vw;
+    }
+
     /* ----- FOOTER ----- */
     #footer-container {
         flex-direction: column;
