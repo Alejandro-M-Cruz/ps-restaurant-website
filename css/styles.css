@@ -207,12 +207,9 @@ button:hover {
     padding: 1.3em 0 0 1.3em;
 }
 
-.menu-left p {
-    line-height: 2.5em;
-}
-
-.menu-right p {
+.menu-left p, .menu-right p {
     line-height: 2em;
+    margin-left: 2em;
 }
 
 .sides {
@@ -255,10 +252,15 @@ button:hover {
 .left-side__ingredients {
     font-size: 0.8em;
     font-weight: bold;
+    margin-left: 2em;
 }
 
 .right-side-text {
     padding-right: 3em;
+}
+
+.right-side {
+    margin-right: 2em;
 }
 
 #menu-section:after {
@@ -653,7 +655,12 @@ hr{
         grid-template-rows: 200px 1fr 360px;
     }
 
-    .navbar-header {
+    .page-title {
+        margin-top: 17rem;
+        font-size: 2rem;
+    }
+    
+        .navbar-header {
         flex-wrap: nowrap;
     }
 
@@ -665,10 +672,108 @@ hr{
         margin-bottom: 0.5rem;
     }
 
+    .slide-image-thing__center-text {
+        font-size: 1em;
+    }
+    
+    .slide-image-thing__center-text-p {
+        font-size: 12px;
+    }
+
+    /* ----- ABOUT US ----- */
+
+    .about-us-content {
+        flex-direction: column-reverse;
+    }
+
+    .about-us-description {
+        width: 75%;
+        font-size: 1.3rem;
+    }
+        
+    .about-us-image {
+        width: 50%;
+        margin-top: 5rem;
+    }
+
+    /* ----- MENU ----- */
+
+    .menu-left h3, .menu-right h3 {
+        font-size: 1.5em;
+    }
+
+    .left-side__ingredients {
+        font-size: 1em;
+    }
+
+    .right-side {
+        font-size: 1.2em;
+    }
+
+    /* ----- HOJA DE RECLAMACIONES BOTON ----- */
+    .complaints {
+        width: 20em;
+        height: 5em;
+        margin: 3em auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ----- FOOTER ----- */
+
+    .contact-list li {
+        font-size: 0.9em;
+    }
+
+
+    /* ----- BUTTONS ----- */
+    
+    .management-button {
+        font-size: 1rem;
+        width: 12rem;
+    }
+
+    /* ----- TABLE ----- */
+
+    .data-table {
+        width: 75vw;
+        margin: 4vw auto 3vw auto;
+        box-sizing: border-box;
+    }
+
+    .data-table th, .data-table td {
+        padding: 1.8vw;
+    }
+    
+    .data-table th {
+        font-size: 1.8vw;
+    }
+    
+    .data-table td {
+        font-size: 1.8vw;
+    }
+
+    /* ----- FORM ----- */
+
+    .user-form {
+        font-size: 1.4rem;
+    }
+    
+    .user-form input, .user-form textarea {
+        font-size: 1.2rem;
+    }
+    
+    .user-form input {
+        height: 1.7rem;
+        width: 20rem;
+    }
+
     .cards-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+    
 
 
 /* ------------- MOBILE PHONE ------------- */
