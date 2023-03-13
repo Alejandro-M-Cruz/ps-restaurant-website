@@ -1,4 +1,4 @@
-import { alertMessage } from "./alert-messages.js"
+import { alertMessage } from "../alert-messages.js"
 
 const LOGIN_URL = "/api/v1/users/login"
 
