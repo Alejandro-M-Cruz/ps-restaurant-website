@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head w3-include-html="/html/templates/head.html">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+
+</head>
+<body>
+    <header id="nav-bar-container" w3-include-html="/html/templates/navbar.html"></header>
+    <h3 class="page-title">Editar Menú</h3>
+
+    <form class="menu-form" name="Sección" method="post">
+        <Select name="Sección" > 
+            <option value="0" selected>Entrantes</option></option>
+            <option value="1">Pizzas</option></option>
+            <option value="2">Pasta</option></option>
+            <option value="3">Postres</option></option>
+        </Select>
+    </form>
+
+    <button class="management-button left-button" onclick="window.history.back()">
+        <p>Editar Sección</p>
+    </button>
+
+    <button class="management-button middle-button">
+        <p>Eliminar Sección</p>
+    </button>
+
+    <button class="management-button right-button">
+        <p>Agregar Sección</p>
+    </button>
+
+    
+    <script>
+        w3IncludeHTML()
+    </script>
+</body>
+</html>

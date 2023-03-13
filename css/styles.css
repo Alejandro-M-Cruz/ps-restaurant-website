@@ -593,3 +593,20 @@ hr{
 .go-to-login-signup:hover {
     cursor: pointer;
 }
+
+/*----------------- Menú Edit ----------------*/
+.menu-form {
+    font-size: 1em;
+    text-align: center;
+    padding: 1em;
+    margin: 1em;
+}
+
+.menu-form select {
+    font-size: 2em;
+}
+
+.menu-form option {
+    font-size: 20px;
+    text-align: center;
+}
