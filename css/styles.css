@@ -148,7 +148,7 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    font-size: 15px;
+    font-size: 1em;
 }
 
 #slide-image__left-arrow, #slide-image__right-arrow {
@@ -717,6 +717,17 @@ hr{
     .menu-left, .menu-right {
         height: 100%;
         width: 100%;
+    }
+
+    /* ----- RESERVE HERE ----- */
+    
+    .reserva {
+        width: 30em;
+        height: 5em;
+        margin: 3em auto 10em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* ----- ABOUT US ----- */
