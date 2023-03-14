@@ -197,7 +197,6 @@ input:focus, textarea:focus {
 }
 
 .menu-left, .menu-right {
-    border: 1px solid black;
     padding-bottom: 1rem;
     width: 50%;
     background-color: var(--menu-background-color);
@@ -216,7 +215,6 @@ input:focus, textarea:focus {
 
 .menu-left p, .menu-right p {
     line-height: 2em;
-    margin-left: 2em;
 }
 
 .sides {
@@ -224,7 +222,7 @@ input:focus, textarea:focus {
     align-items: center;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    gap: 2em;
 }
 
 .sides:last-child {
@@ -234,6 +232,7 @@ input:focus, textarea:focus {
 .left-side-image {
     position: relative;
     box-sizing: content-box;
+    min-width: 5vw;
     width: 5vw;
     height: 5vw;
     display: block;
@@ -249,7 +248,6 @@ input:focus, textarea:focus {
 
 .left-side-text {
     padding-left: 2em;
-    width: 30rem;
 }
 
 .left-side-text p, .right-side-text p{
@@ -259,7 +257,6 @@ input:focus, textarea:focus {
 .left-side__ingredients {
     font-size: 0.8em;
     font-weight: bold;
-    margin-left: 2em;
 }
 
 .right-side-text {
@@ -268,12 +265,6 @@ input:focus, textarea:focus {
 
 .right-side {
     margin-right: 2em;
-}
-
-#menu-section:after {
-    content: "";
-    display: table;
-    clear: both;
 }
 
 
@@ -564,10 +555,6 @@ hr{
     margin-right: 2rem;
 }
 
-.inputs-container {
-    margin-left: 2rem;
-}
-
 .user-form label, .user-form input {
     display: block;
     margin: 5rem 0;
@@ -815,7 +802,7 @@ hr{
     
     .user-form input {
         height: 1.7rem;
-        width: 20rem;
+        /* width: 20rem; */
     }
 
     .cards-grid {
@@ -882,12 +869,17 @@ hr{
     /* ----- RESERVE HERE ----- */
     
     .reserva {
-        width: 30em;
-        height: 5em;
+        width: 60%;
+        height: 3%;
         margin: 3em auto 10em;
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .reserva a {
+        width: 100%;
+        height: 100%;
     }
 
     /* ----- ABOUT US ----- */
@@ -901,14 +893,13 @@ hr{
     }
 
     .about-us-description {
-        width: 80%;
         font-size: 1.3rem;
     }
 
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
     .complaints {
-        width: 20em;
-        height: 5em;
+        width: 70%;
+        height: 3%;
         margin: 3em auto;
         display: flex;
         align-items: center;
@@ -961,7 +952,6 @@ hr{
     }
 
     .social-list {
-        width: 100%;
         height: 100%;
         flex-direction: column;
     }
