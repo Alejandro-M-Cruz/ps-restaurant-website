@@ -607,6 +607,23 @@ hr{
     cursor: pointer;
 }
 
+/*----------------- Menú Edit ----------------*/
+.menu-form {
+    font-size: 1rem;
+    text-align: center;
+    padding: 2rem;
+    margin: 2rem;
+    margin-bottom: 10rem;
+}
+
+.menu-form select {
+    font-size: 2rem;
+}
+
+.menu-form option {
+    font-size: 20px;
+    text-align: center;
+}
 
 /* -------------COMPLAINTS AND SUGGESTIONS/ ADMIN------------- */
 
@@ -644,7 +661,7 @@ hr{
 
 /* ------------- TABLET / LAPTOP ------------- */
 
-@media screen and (max-width: 1268px) and (min-width: 601px) {
+@media screen and (max-width: 1268px) and (min-width: 751px) {
     html {
         font-size: 14px;
     }
@@ -781,7 +798,7 @@ hr{
 
 /* ------------- MOBILE PHONE ------------- */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 750px) {
     html {
         font-size: 12px;
     }
@@ -848,9 +865,14 @@ hr{
         flex-direction: column-reverse;
     }
 
-    .about-us-image, .about-us-description {
+    .about-us-image {
         height: 100%;
         width: 100%;
+    }
+
+    .about-us-description {
+        width: 80%;
+        font-size: 1.3rem;
     }
 
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
@@ -861,6 +883,39 @@ hr{
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    /* ----- BUTTONS ----- */
+    
+    .management-button {
+        font-size: 1.5rem;
+        width: 75%;
+        margin-top: 1rem;
+    }
+
+    .buttons-container {
+        flex-direction: column-reverse;
+        width: 100%;
+    }
+
+    /* ----- TABLE ----- */
+
+    .data-table {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .data-table th, .data-table td {
+        padding-top: 2vw;
+        padding-bottom: 2vw;
+    }
+    
+    .data-table th {
+        font-size: 3vw;
+    }
+    
+    .data-table td {
+        font-size: 3vw;
     }
 
     /* ----- FOOTER ----- */
@@ -908,3 +963,4 @@ hr{
         max-height: 20rem;
     }
 }
+
