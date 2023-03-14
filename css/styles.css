@@ -538,6 +538,10 @@ hr{
     background-color: var(--confirm-button-color);
 }
 
+.edit-button {
+    color: white;
+    background-color: royalblue;
+}
 
 /* -------------FORM PAGE------------- */
 
