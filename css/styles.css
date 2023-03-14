@@ -206,7 +206,7 @@ button:hover {
 
 .menu-left p, .menu-right p {
     line-height: 2em;
-    margin-left: 2em;
+    margin-left: 0.2em;
 }
 
 .sides {
@@ -238,8 +238,7 @@ button:hover {
 }
 
 .left-side-text {
-    padding-left: 2em;
-    width: 30rem;
+    width:50%;
 }
 
 .left-side-text p, .right-side-text p{
@@ -554,10 +553,6 @@ hr{
     margin-right: 2rem;
 }
 
-.inputs-container {
-    margin-left: 2rem;
-}
-
 .user-form label, .user-form input {
     display: block;
     margin: 5rem 0;
@@ -643,9 +638,9 @@ hr{
 
 /* ------------- TABLET / LAPTOP ------------- */
 
-@media screen and (max-width: 1268px) and (min-width: 751px) {
+@media screen and (max-width: 1268px) and (min-width: 601px) {
     html {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .grid-div {
@@ -709,7 +704,7 @@ hr{
 
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
     .complaints {
-        width: 20em;
+        width: 30%;
         height: 5em;
         margin: 3em auto;
         display: flex;
@@ -775,9 +770,9 @@ hr{
 
 /* ------------- MOBILE PHONE ------------- */
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 600px) {
     html {
-        font-size: 12px;
+        font-size: 9px;
     }
 
     .navbar-list li:not(.navbar-list__logo) {
@@ -826,6 +821,26 @@ hr{
         width: 100%;
     }
 
+    .menu-left p, .menu-right p {
+        font-size: 1.3em;
+    }
+
+    .left-side__ingredients {
+        font-size: 1.3em;
+    }
+
+    .right-side-text {
+        font-size: 1.3em;
+    }
+
+    .left-side-text {
+        width:75%;
+    }
+
+    .menu-left h3, .menu-right h3 {
+        font-size: 1.5em;
+    }
+
     /* ----- RESERVE HERE ----- */
     
     .reserva {
@@ -861,6 +876,12 @@ hr{
         align-items: center;
         justify-content: center;
     }
+
+    /* ----- HOJA DE RECLAMACIONES ----- */
+
+        #complaint {
+            width: 75%;
+        }
 
     /* ----- BUTTONS ----- */
     
@@ -903,7 +924,6 @@ hr{
     }
 
     .social-list {
-        width: 100%;
         height: 100%;
         flex-direction: column;
     }
