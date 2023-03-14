@@ -11,6 +11,7 @@ export default function loadContent(path) {
 }
 
 function loadPage(pageContent) {
+    document.querySelector("title").innerHTML = pageContent.title
     document.querySelector(".page-title").innerHTML = pageContent.title
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
     const cancelButton = document.querySelector(".cancel-button")
@@ -82,7 +83,7 @@ function fillTable(table, reservations, pageContent) {
     const fragment = new DocumentFragment()
     fragment.appendChild(tableTitleHTML(pageContent))
     reservations.forEach(reservation => {
-        fragment.appendChild(reservationHTML(pageContent, reservation))
+        fragment.appendChild(reservationHTML(pageContent, reservation, "reservation"))
     })
     // Rows selection
     const rows = fragment.querySelectorAll("tr:not(.title-row)")

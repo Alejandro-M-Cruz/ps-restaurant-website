@@ -13,6 +13,7 @@
 }
 
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
     border: 0;
@@ -45,7 +46,7 @@ button:hover {
 
 .grid-div {
     display: grid;
-    grid-template-rows: 120px 1fr 360px;
+    grid-template-rows: 120px 1fr 300px;
     grid-template-columns: 1fr;
     grid-template-areas: "header" "main" "footer";
 }
@@ -61,6 +62,15 @@ button:hover {
 .footer-section {
     margin-top: 5rem;
     grid-area: footer;
+}
+
+input, textarea {
+    border: black solid 1px;
+    padding-left: 2px;
+}
+
+input:focus, textarea:focus {
+    background-color: var(--input-focus-color);
 }
 
 
@@ -187,7 +197,6 @@ button:hover {
 }
 
 .menu-left, .menu-right {
-    /* border: 1px solid black; */
     padding-bottom: 1rem;
     width: 50%;
     background-color: var(--menu-background-color);
@@ -195,7 +204,7 @@ button:hover {
 
 #menu-section h2 {
     text-align: center;
-    /* margin: 3em 0 1.5em 0; */
+    margin: 3em 0 1.5em 0;
 }
 
 .menu-left h3, .menu-right h3 {
@@ -223,6 +232,7 @@ button:hover {
 .left-side-image {
     position: relative;
     box-sizing: content-box;
+    min-width: 5vw;
     width: 5vw;
     height: 5vw;
     display: block;
@@ -248,7 +258,6 @@ button:hover {
 .left-side__ingredients {
     font-size: 0.8em;
     font-weight: bold;
-    /* margin-left: 2em; */
 }
 
 .right-side-text {
@@ -332,7 +341,7 @@ button:hover {
     background-color: var(--footer-background-color);
     width: 100%;
     height: 300px;
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items:center;
@@ -353,14 +362,14 @@ button:hover {
 }
 
 .contact-list .copyright{
-    font-size:0.8em;
+    font-size: 0.8em;
 }
 
 .hours {
     display: flex;
     flex-direction: column;
     justify-content:space-between;
-    height:100%;
+    height: 100%;
     align-items:center;
 }
 
@@ -555,8 +564,6 @@ hr{
 .user-form input, .user-form textarea {
     display: block;
     font-size: 1.4rem;
-    border: black solid 1px;
-    padding-left: 3px;
 }
 
 .user-form input {
@@ -566,10 +573,6 @@ hr{
 
 .user-form textarea {
     margin: 3rem auto;
-}
-
-.user-form input:focus, .user-form textarea:focus {
-    background-color: var(--input-focus-color);
 }
 
 
@@ -631,9 +634,10 @@ hr{
 }
 
 .card-title {
+    width: 100%;
     color: var(--emphasis-color);
     text-align: center;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin: 0 0 1rem;
 }
 
@@ -647,6 +651,32 @@ hr{
 }
 
 
+/* -------------MENU ITEMS------------- */
+.menu-card-div {
+    margin: 1rem;
+    border-radius: 1rem;
+    background-color: white;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--main-color);
+}
+
+.menu-card-div .name-input {
+    padding: 3px 0;
+}
+
+.menu-card-div .ingredients-textarea {
+    display: block;
+    height: 4rem;
+    width: 100%;
+}
+
+.menu-card-div input {
+    margin: 0.5rem 0;
+}
+
+
+
 /* ------------- TABLET / LAPTOP ------------- */
 
 @media screen and (max-width: 1268px) and (min-width: 601px) {
@@ -656,6 +686,10 @@ hr{
 
     .grid-div {
         grid-template-rows: 200px 1fr 360px;
+    }
+
+    .navbar-list li:not(.navbar-list__logo) {
+        display: block;
     }
 
     .page-title {
@@ -780,6 +814,7 @@ hr{
     
 
 
+
 /* ------------- MOBILE PHONE ------------- */
 
 @media screen and (max-width: 600px) {
@@ -869,6 +904,11 @@ hr{
         justify-content: center;
     }
 
+    .reserva a {
+        width: 100%;
+        height: 100%;
+    }
+
     /* ----- ABOUT US ----- */
     .about-us-content {
         flex-direction: column-reverse;
@@ -937,10 +977,15 @@ hr{
     }
 
     /* ----- FOOTER ----- */
-    #footer-container {
-        flex-direction: column;
+    .footer-section {
         width: 100%;
         height: 40rem;
+    }
+
+    #footer-container {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
     }
 
     .social-list {
