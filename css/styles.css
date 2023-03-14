@@ -547,7 +547,7 @@ hr{
 
 .user-form label, .user-form input {
     display: block;
-    margin: 5rem 0;
+    margin: 0.5rem 0;
 }
 
 .user-form input, .user-form textarea {
@@ -568,6 +568,20 @@ hr{
 
 .user-form input:focus, .user-form textarea:focus {
     background-color: var(--input-focus-color);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4em 0;
+}
+
+.label-input-combo {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin: 0.8rem;
 }
 
 
