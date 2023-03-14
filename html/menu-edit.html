@@ -15,17 +15,13 @@
             </div>
             <form class="menu-form" name="Sección" method="post">
                 <Select name="Sección" > 
-                    <option value="0" selected>Entrantes</option></option>
-                    <option value="1">Pizzas</option></option>
-                    <option value="2">Pasta</option></option>
-                    <option value="3">Postres</option></option>
+                    
                 </Select>
             </form>
             <section class="buttons-container">
                 <button class="management-button back-button"></button>
-            
+                <button class="management-button edit-button"></button>           
                 <button class="management-button cancel-button"></button>
-            
                 <button class="management-button confirm-button"> </button>
                 <a href="/html/section-add.html"></a>
             </section>
@@ -35,6 +31,7 @@
     </div>
 
     <script src="/javascript/navbar.js"></script>
+    <script src="/javascript/menu-edit.js"></script>
     <script>
         w3IncludeHTML(() => {
             initNavbar()
