@@ -25,6 +25,6 @@ function loadPage(pageContent, userData) {
 
     document.querySelector(".data-table").appendChild(fragment)
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
-    document.querySelector(".back-button").innerHTML = pageContent.deleteButtonLabel
+    document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel
     document.querySelector(".confirm-button").innerHTML = pageContent.logoutButtonLabel
 }
