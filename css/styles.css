@@ -248,6 +248,7 @@ input:focus, textarea:focus {
 }
 
 .left-side-text {
+    width:50%;
     padding-left: 2em;
 }
 
@@ -684,9 +685,9 @@ hr{
 
 /* ------------- TABLET / LAPTOP ------------- */
 
-@media screen and (max-width: 1268px) and (min-width: 751px) {
+@media screen and (max-width: 1268px) and (min-width: 601px) {
     html {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .grid-div {
@@ -754,7 +755,7 @@ hr{
 
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
     .complaints {
-        width: 20em;
+        width: 30%;
         height: 5em;
         margin: 3em auto;
         display: flex;
@@ -773,7 +774,8 @@ hr{
     
     .management-button {
         font-size: 1rem;
-        width: 12rem;
+        width: 30%;
+        justify-content: center;
     }
 
     /* ----- TABLE ----- */
@@ -821,9 +823,14 @@ hr{
 
 /* ------------- MOBILE PHONE ------------- */
 
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 600px) {
     html {
-        font-size: 12px;
+        font-size: 9px;
+    }
+
+    .page-title {
+        font-size: 1.8em;
+        width: 75%;
     }
 
     .navbar-list li:not(.navbar-list__logo) {
@@ -872,6 +879,26 @@ hr{
         width: 100%;
     }
 
+    .menu-left p, .menu-right p {
+        font-size: 1.3em;
+    }
+
+    .left-side__ingredients {
+        font-size: 1.3em;
+    }
+
+    .right-side-text {
+        font-size: 1.3em;
+    }
+
+    .left-side-text {
+        width:75%;
+    }
+
+    .menu-left h3, .menu-right h3 {
+        font-size: 1.5em;
+    }
+
     /* ----- RESERVE HERE ----- */
     
     .reserva {
@@ -912,6 +939,12 @@ hr{
         justify-content: center;
     }
 
+    /* ----- HOJA DE RECLAMACIONES ----- */
+
+        #complaint {
+            width: 75%;
+        }
+
     /* ----- BUTTONS ----- */
     
     .management-button {
@@ -923,6 +956,10 @@ hr{
     .buttons-container {
         flex-direction: column-reverse;
         width: 100%;
+    }
+
+    .reservations-selector {
+        order: 1;
     }
 
     /* ----- TABLE ----- */
