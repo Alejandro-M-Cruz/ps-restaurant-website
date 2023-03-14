@@ -8,6 +8,7 @@ function loadContent(path) {
 }
 
 function loadPage(pageContent) {
+    document.querySelector("title").innerHTML = pageContent.tabTitle ? pageContent.tabTitle : pageContent.title
     document.querySelector(".page-title").innerHTML = pageContent.title
     document.querySelector(".back-button").innerHTML = pageContent.cancelButtonLabel
     document.querySelector(".confirm-button").innerHTML = pageContent.confirmButtonLabel

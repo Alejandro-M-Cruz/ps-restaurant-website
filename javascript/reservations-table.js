@@ -9,23 +9,23 @@ export function tableTitleHTML(pageContent) {
     return titleRow
 }
 
-export function reservationHTML(pageContent, reservation) {
+export function reservationHTML(pageContent, data, label) {
     const row = document.createElement("tr")
-    row.id = `reservation${reservation.id}`
+    row.id = `${label}${data.id}`
     pageContent.tableFields.forEach(tableField => {
-        const data = document.createElement("td")
-        data.innerHTML = reservation[tableField.name]
-        row.appendChild(data)
+        const tableData = document.createElement("td")
+        tableData.innerHTML = data[tableField.name]
+        row.appendChild(tableData)
     })
     return row
 }
 
-export function emptyRowHTML(pageContent, nReservations, maxReservations) {
+export function emptyRowHTML(pageContent, n, max) {
     const emptyRow = document.createElement("tr")
     emptyRow.className = "empty-row"
     emptyRow.innerHTML = `
         <td colspan="${pageContent.tableFields.length}">
-            ${pageContent.availableResLabel.replace("$", (maxReservations-nReservations).toString())}
+            ${pageContent.availableResLabel.replace("$", (max-n).toString())}
         </td>
     `
     return emptyRow

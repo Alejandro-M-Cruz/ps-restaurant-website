@@ -6,6 +6,7 @@ function loadContent(path) {
 }
 
 function loadPage(pageContent, userData) {
+    document.querySelector("title").innerHTML = pageContent.title
     document.querySelector(".page-title").innerHTML = pageContent.title
     const fragment = new DocumentFragment()
     const titleRow = document.createElement("tr")
@@ -25,6 +26,6 @@ function loadPage(pageContent, userData) {
 
     document.querySelector(".data-table").appendChild(fragment)
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
-    document.querySelector(".back-button").innerHTML = pageContent.deleteButtonLabel
+    document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel
     document.querySelector(".confirm-button").innerHTML = pageContent.logoutButtonLabel
 }
