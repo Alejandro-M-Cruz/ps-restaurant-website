@@ -6,6 +6,7 @@ function loadContent(path) {
 }
 
 function loadPage(pageContent, userData) {
+    document.querySelector("title").innerHTML = pageContent.title
     document.querySelector(".page-title").innerHTML = pageContent.title
     const fragment = new DocumentFragment()
     const titleRow = document.createElement("tr")
