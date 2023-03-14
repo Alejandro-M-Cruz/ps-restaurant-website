@@ -10,6 +10,7 @@
     --input-focus-color: #eeeeee;
     --menu-background-color: #dddddd;
     --footer-background-color: #dddddd;
+    --page-title-font-size: 2.5rem;
 }
 
 * {
@@ -30,7 +31,7 @@ button:hover {
 
 .page-title {
     width: 50%;
-    font-size: 2.5rem;
+    font-size: var(--page-title-font-size);
     text-align: center;
     margin: 3rem auto 0 auto;
 }
@@ -537,6 +538,10 @@ hr{
     background-color: var(--confirm-button-color);
 }
 
+.edit-button {
+    color: white;
+    background-color: royalblue;
+}
 
 /* -------------FORM PAGE------------- */
 
@@ -652,6 +657,11 @@ hr{
 
 
 /* -------------MENU ITEMS------------- */
+.page-title input {
+    font-size: var(--page-title-font-size);
+    text-align: center;
+}
+
 .menu-card-div {
     margin: 1rem;
     border-radius: 1rem;

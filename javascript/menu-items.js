@@ -8,14 +8,14 @@ function loadContent(path) {
 function loadPage(pageContent, menuItems) {
     const title = menuItems[0].section
     document.querySelector("title").innerHTML = title
-    document.querySelector(".page-title").innerHTML = title
+    document.querySelector(".page-title").innerHTML = `<input type="text" value="${title}">`
     let menuItemsHTML = ""
     menuItems.forEach(item => {
         menuItemsHTML += `
             <div class="menu-card-div">
                 <input class="card-title name-input" type="text" value="${item.name}">
                 <textarea name="ingredients" class="ingredients-textarea">${item.ingredients}</textarea>
-                <input class="price-input" type="text" value="${item.price}€">
+                <input class="price-input" type="text" value="${(Math.round(item.price * 100) / 100).toFixed(2)}€">
                 <select name="section" class="section-select" selected="${item.section}">
                     <option value="1">Pizzas</option>
                     <option value="2">Pasta</option>
