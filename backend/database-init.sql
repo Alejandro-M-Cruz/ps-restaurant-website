@@ -26,7 +26,7 @@ CREATE TABLE menu_items (
     name VARCHAR(255) NOT NULL,
     ingredients VARCHAR(255) NOT NULL,
     price DECIMAL(10, 2) NOT NULL,
-    image VARCHAR(255) NOT NULL,
+    image_src VARCHAR(255) NOT NULL,
     section_id INT,
     FOREIGN KEY (section_id) REFERENCES menu_sections(id)
 );
