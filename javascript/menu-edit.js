@@ -7,8 +7,9 @@ function loadContent(path) {
 function loadPage(pageContent) {
     document.querySelector(".page-title").innerHTML = pageContent.title;
     document.querySelector(".confirm-button").innerHTML = pageContent.addButtonLabel;
-    document.querySelector(".back-button").innerHTML = pageContent.editButtonLabel;
+    document.querySelector(".edit-button").innerHTML = pageContent.editButtonLabel;
     document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel;
+    document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel;
     fetch("/demo-database/menu-sections.json").then(response => response.json()).then(data => {
        let select = document.querySelector(".menu-form").querySelector("select");
        let value = 0;
@@ -25,5 +26,5 @@ function loadPage(pageContent) {
 
 
 function redirectPage(isNew){
-    window.location.href = "menu-items-edit.html?isNew=" + isNew;
+    window.location.href = "menu-items.html?isNew" + isNew;
 }

@@ -1,5 +1,6 @@
 {
     "title": "Editar secciones",
+    "backButtonLabel": "Atrás",
     "editButtonLabel": "Editar sección",
     "deleteButtonLabel": "Eliminar sección",
     "addButtonLabel": "Añadir sección"
