@@ -15,8 +15,11 @@ export default class MenuDAO {
     static addMenuSection = menuSection =>
         this.queryPromiseFactory.create("INSERT INTO menu_sections SET ?", menuSection)
 
-    static deleteMenuSection = (id) =>
-        this.queryPromiseFactory.create("DELETE FROM menu_sections WHERE id = ?", [id])
+    static deleteMenuSection = id => {
+        this.deleteMenuItemsBySectionId(id).then(() => {
+            this.queryPromiseFactory.create("DELETE FROM menu_sections WHERE id = ?", [id])
+        })
+    }
 
     static getAllMenuItems = () =>
         this.queryPromiseFactory.create("SELECT * FROM menu_items ORDER BY section_id")
@@ -32,4 +35,7 @@ export default class MenuDAO {
 
     static updateMenuItem = (id, menuItem) =>
         this.queryPromiseFactory.create("UPDATE menu_items SET ? WHERE id = ?", [menuItem, id])
+
+    static deleteMenuItemsBySectionId = sectionId =>
+        this.queryPromiseFactory.create("DELETE FROM menu_items WHERE section_id = ?", [sectionId])
 }

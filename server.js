@@ -1,7 +1,7 @@
 import express from "express"
 import cors from "cors"
 import path from "path"
-import { alertMessage } from "../public/javascript/alert-messages.js"
+import { alertMessage } from "./public/javascript/alert-messages.js"
 import users from "./api/users-route.js"
 import reservations from "./api/reservations-route.js"
 import menu from "./api/menu-route.js"
@@ -26,14 +26,6 @@ app.get("/", (req, res) => {
     res.sendFile(path.resolve("public/html/index.html"))
 })
 
-app.get("/html/reservations.html", async (req, res) => {
-    const user = await getLoggedUser()
-    if (user.error) return res.sendFile(path.resolve("public/html/login.html"))
-    if (user.admin) return res.sendFile(path.resolve("public/html/my-account.html"))
-    res.sendFile(path.resolve("public/html/reservations.html"))
-})
-
-app.use(express.static("public"))
 app.use("*", (req, res) => res.status(404).json(alertMessage("NOT_FOUND")))
 
 export { API, app }
