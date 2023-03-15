@@ -1,4 +1,4 @@
-import { tableTitleHTML, reservationHTML } from "./reservations-table.js"
+import { tableTitle, reservationRow } from "./reservations-table.js"
 
 const RESERVATIONS_PER_TABLE = 5
 let counter = 1
@@ -81,9 +81,9 @@ function nextPrevListeners(prev, next, table, pageContent, counterElement) {
 function fillTable(table, reservations, pageContent) {
     table.innerHTML = ""
     const fragment = new DocumentFragment()
-    fragment.appendChild(tableTitleHTML(pageContent))
+    fragment.appendChild(tableTitle(pageContent))
     reservations.forEach(reservation => {
-        fragment.appendChild(reservationHTML(pageContent, reservation, "reservation"))
+        fragment.appendChild(reservationRow(pageContent, reservation, "reservation"))
     })
     // Rows selection
     const rows = fragment.querySelectorAll("tr:not(.title-row)")
