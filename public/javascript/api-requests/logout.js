@@ -7,7 +7,7 @@ export default function logout() {
         method: "POST"
     }).then(res => res.json()).then(data => {
         if(data.error) return alert(alertMessage(data.error))
-        window.sessionStorage.removeItem("user")
+        window.localStorage.removeItem("user")
         window.location.href = "/"
     })
 }

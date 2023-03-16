@@ -15,7 +15,7 @@ export default function submit(e) {
         body: JSON.stringify({ phone_number, password })
     }).then(res => res.json()).then(data => {
         if (!data.error) {
-            window.sessionStorage.setItem("user", JSON.stringify(data))
+            window.localStorage.setItem("user", JSON.stringify(data))
             return window.location.href = "/"
         }
         const message = alertMessage(data.error)
