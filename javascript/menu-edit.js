@@ -5,6 +5,8 @@ function loadContent(path) {
 }
 
 function loadPage(pageContent) {
+    
+    
     document.querySelector(".page-title").innerHTML = pageContent.title;
     document.querySelector(".confirm-button").innerHTML = pageContent.addButtonLabel;
     document.querySelector(".edit-button").innerHTML = pageContent.editButtonLabel;
@@ -15,16 +17,19 @@ function loadPage(pageContent) {
        let value = 0;
        data.forEach(element => {
             let section = document.createElement("option");
+            if(value==0) section.selected = true;
             section.nodeValue = value++;
             section.innerHTML = element.sectionName;
             select.appendChild(section);
        });
        
     })
-    document.querySelector(".confirm-button").addEventListener("click",() => redirectPage(true))
+    document.querySelector(".confirm-button").addEventListener("click",() =>  addSection());
+    document.querySelector(".back-button").addEventListener("click", () => history.back());
+    
 }
 
 
-function redirectPage(isNew){
-    window.location.href = "menu-items.html?isNew" + isNew;
+function addSection(){
+    console.log(typeof window.prompt("Añada la sección deseada",''));
 }
