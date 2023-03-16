@@ -1,4 +1,4 @@
-export function tableTitleHTML(pageContent) {
+export function tableTitle(pageContent) {
     const titleRow = document.createElement("tr")
     titleRow.className = "title-row"
     pageContent.tableFields.forEach(tableField => {
@@ -9,7 +9,7 @@ export function tableTitleHTML(pageContent) {
     return titleRow
 }
 
-export function reservationHTML(pageContent, data, label) {
+export function reservationRow(pageContent, data, label) {
     const row = document.createElement("tr")
     row.id = `${label}${data.id}`
     pageContent.tableFields.forEach(tableField => {
@@ -20,7 +20,7 @@ export function reservationHTML(pageContent, data, label) {
     return row
 }
 
-export function emptyRowHTML(pageContent, n, max) {
+export function emptyRow(pageContent, n, max) {
     const emptyRow = document.createElement("tr")
     emptyRow.className = "empty-row"
     emptyRow.innerHTML = `

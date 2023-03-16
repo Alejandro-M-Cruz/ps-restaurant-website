@@ -16,7 +16,7 @@
                 </div>
                 <div class="buttons-container">
                     <button class="management-button back-button" onclick="window.history.back()"></button>
-                    <button type="reset" class="management-button cancel-button"></button>
+                    <button class="management-button cancel-button"></button>
                     <button class="management-button edit-button"></button>
                     <button type="submit" class="management-button confirm-button"></button>
                 </div>
@@ -26,8 +26,9 @@
     </div>
 
     <script src="/javascript/navbar.js"></script>
-    <script src="/javascript/menu-items.js"></script>
-    <script>   
+    <script type="module" src="/javascript/menu-items.js"></script>
+    <script type="module">
+        import loadContent from "/javascript/menu-items.js"
         w3IncludeHTML(() => {
             initNavbar()
             loadContent("/demo-database/menu-items-page-content.json")
