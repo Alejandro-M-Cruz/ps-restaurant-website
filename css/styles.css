@@ -796,7 +796,7 @@ hr{
     
     .management-button {
         font-size: 1rem;
-        width: 30%;
+        width: 20%;
         justify-content: center;
     }
 
@@ -827,12 +827,12 @@ hr{
     }
     
     .user-form input, .user-form textarea {
-        font-size: 1.2rem;
+        font-size: 1.7rem;
     }
     
     .user-form input {
         height: 1.7rem;
-        /* width: 20rem; */
+        justify-content: center;
     }
 
     .cards-grid {
