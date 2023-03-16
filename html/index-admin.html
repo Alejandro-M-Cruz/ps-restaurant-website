@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head w3-include-html="/html/templates/head.html">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <script src="/javascript/carousel.js"></script>
+</head>
+<body>
+<div class="grid-div">
+    <header class="navbar-header" w3-include-html="/html/templates/navbar.html">
+    </header>
+
+    <main>
+        <section class="index-admin-links">
+            <a class="reservations-admin-link" href="reservations.html"><h2></h2></a>
+            <a class="complaints-admin-link" href="complaints.html"><h2></h2></a>
+        </section>
+        <section class="menu-edit-section">
+            <a href="menu-edit.html"><h2></h2></a>
+        </section>
+        <section id="menu-section">
+            <div class="menu">
+                <div class="menu-left">
+                </div>
+                <div class="menu-right">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="home-footer" class="footer-section" w3-include-html="/html/templates/footer.html">
+    </footer>
+</div>
+
+<script src="/javascript/index-admin.js"></script>
+<script src="/javascript/menu.js"></script>
+<script src="/javascript/navbar.js"></script>
+<script>
+    w3IncludeHTML(() => {
+        loadContent("/demo-database/index-admin-page-content.json")
+        initNavbar()
+    })
+</script>
+</body>
+</html>
