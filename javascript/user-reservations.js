@@ -1,4 +1,4 @@
-import { tableTitleHTML, reservationHTML, emptyRowHTML } from "./reservations-table.js"
+import { tableTitle, reservationRow, emptyRow } from "./reservations-table.js"
 
 const path = window.location.pathname
 const filename = path.substring(path.lastIndexOf('/') + 1)
@@ -32,26 +32,24 @@ function loadReservations(pageContent) {
 
 function fillTable(table, reservations, pageContent) {
     const fragment = new DocumentFragment()
-    fragment.appendChild(tableTitleHTML(pageContent))
+    fragment.appendChild(tableTitle(pageContent))
     reservations.forEach(reservation => {
-        fragment.appendChild(reservationHTML(pageContent, reservation, "reservation"))
+        fragment.appendChild(reservationRow(pageContent, reservation, "reservation"))
+        const clickedRow = fragment.lastElementChild
+        clickedRow.addEventListener("click", e => {
+            clickedRow.classList.toggle("selected-row")
+            document.querySelectorAll(`.selected-row:not(#${clickedRow.id})`)
+                .forEach(row => {
+                    row.classList.remove("selected-row")
+                })
+        })
     })
     for (let i = reservations.length; i < MAX_RESERVATIONS; i++) {
-        fragment.appendChild(emptyRowHTML(
+        fragment.appendChild(emptyRow(
             pageContent,
             reservations.length,
             MAX_RESERVATIONS)
         )
     }
-    // Rows selection
-    const rows = fragment.querySelectorAll("tr:not(.title-row):not(.empty-row)")
-    rows.forEach(row => {
-        row.onclick = () => {
-            rows.forEach(r => {
-                if (r !== row) r.classList.remove("selected-row")
-            })
-            row.classList.toggle("selected-row")
-        }
-    })
     table.appendChild(fragment)
 }

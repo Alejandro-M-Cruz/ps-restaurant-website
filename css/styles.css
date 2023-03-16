@@ -4,6 +4,7 @@
     --cancel-button-color: #fa372b;
     --confirm-button-color: limegreen;
     --back-button-color: #ffd232;
+    --edit-button-color: royalblue;
     --hover-row-color: #eeeeee;
     --selected-row-color: rgba(255, 165, 0, 0.7);
     --empty-row-color: #dddddd;
@@ -11,6 +12,7 @@
     --menu-background-color: #dddddd;
     --footer-background-color: #dddddd;
     --page-title-font-size: 2.5rem;
+    --big-links-font-size: 1.5rem;
 }
 
 * {
@@ -280,7 +282,7 @@ input:focus, textarea:focus {
 }
 
 .reserva h2 {
-    font-size: 1.5rem;
+    font-size: var(--big-links-font-size);
     color: white;
     display: block;
     padding: 3rem;
@@ -417,6 +419,45 @@ hr{
 }
 
 
+/* -------------ADMIN INDEX------------- */
+
+.index-admin-links {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.reservations-admin-link, .complaints-admin-link {
+    width: 40%;
+    padding: 3rem;
+    border-radius: 1rem;
+    margin: 2rem;
+    text-align: center;
+}
+
+.reservations-admin-link {
+    color: white;
+    background-color: var(--confirm-button-color);
+}
+
+.complaints-admin-link {
+    color: white;
+    background-color: var(--cancel-button-color);
+}
+
+.menu-edit-section h2 {
+    color: white;
+    background-color: var(--edit-button-color);
+    width: 70%;
+    margin: 2rem auto;
+    padding: 3rem;
+    border-radius: 1rem;
+    text-align: center;
+}
+
+
 /* -------------TABLE------------- */
 
 .data-table {
@@ -512,11 +553,11 @@ hr{
 .management-button {
     display: block;
     font-size: 1.2rem;
-    width: 20rem;
+    width: 20%;
     padding: 1.2rem;
     text-align: center;
     text-decoration: none;
-    margin: 0 2rem;
+    margin: 0 1rem;
 }
 
 .management-button:hover {
@@ -540,7 +581,7 @@ hr{
 
 .edit-button {
     color: white;
-    background-color: royalblue;
+    background-color: var(--edit-button-color);
 }
 
 /* -------------FORM PAGE------------- */
@@ -563,7 +604,7 @@ hr{
 
 .user-form label, .user-form input {
     display: block;
-    margin: 5rem 0;
+    margin: 0.5rem 0;
 }
 
 .user-form input, .user-form textarea {
@@ -578,6 +619,24 @@ hr{
 
 .user-form textarea {
     margin: 3rem auto;
+}
+
+.user-form input:focus, .user-form textarea:focus {
+    background-color: var(--input-focus-color);
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4em 0;
+}
+
+.label-input-combo {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    margin: 0.8rem;
 }
 
 
@@ -642,7 +701,7 @@ hr{
     width: 100%;
     color: var(--emphasis-color);
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     margin: 0 0 1rem;
 }
 
@@ -667,12 +726,22 @@ hr{
     border-radius: 1rem;
     background-color: white;
     padding: 1rem;
-    text-align: center;
     background-color: var(--main-color);
 }
 
 .menu-card-div .name-input {
     padding: 3px 0;
+    width: 90%;
+}
+
+.menu-card-div .delete-item-button {
+    background: none;
+    margin-left: 1%;
+    width: 5%;
+}
+
+.menu-card-div .image-input {
+    width: 100%;
 }
 
 .menu-card-div .ingredients-textarea {

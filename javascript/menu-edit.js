@@ -19,7 +19,7 @@ function loadPage(pageContent) {
             let section = document.createElement("option");
             if(value==0) section.selected = true;
             section.nodeValue = value++;
-            section.innerHTML = element.sectionName;
+            section.innerHTML = element.name;
             select.appendChild(section);
        });
        
@@ -29,7 +29,7 @@ function loadPage(pageContent) {
     
 }
 
-
+function addOption
 function addSection(){
-    console.log(typeof window.prompt("Añada la sección deseada",''));
+    console.log(typeof window.prompt("Añada la sección deseada"));
 }
