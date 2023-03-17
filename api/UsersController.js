@@ -1,18 +1,13 @@
 import dao from "../dao/UsersDAO.js"
 
-let user
-const login = loggedUser => user = loggedUser
-const logout = () => user = null
-
 export default class UsersController {
     static apiGetUser(req, res) {
         try {
-            if (!user) return res.json({ error: "NOT_LOGGED_IN" })
             res.json({
-                id: user.id,
-                phone_number: user.phone_number,
-                admin: user.admin,
-                creation_date: user.creation_date
+                id: req.session.user.id,
+                phone_number: req.session.user.phone_number,
+                admin: req.session.user.admin,
+                creation_date: req.session.user.creation_date
             })
         } catch(error) {
             console.error(error.message)
@@ -38,6 +33,7 @@ export default class UsersController {
 
     static async apiDeleteUser(req, res) {
         try {
+            if (req.session.user.id !== req.params.id) return res.sendStatus(403)
             await dao.deleteUser(req.params.id)
             res.json({ error: null })
         } catch(error) {
@@ -50,8 +46,9 @@ export default class UsersController {
         try {
             const result = await dao.getUser(req.body.phone_number, req.body.password)
             if (result.length === 0) return res.json({ error: "FAILED_LOGIN" })
-            login(result[0])
-            res.json({ id: result[0].id, admin: result[0].admin === 1 })
+            result[0].admin = result[0].admin === 1
+            req.session.user = result[0]
+            res.json({ id: result[0].id, admin: result[0].admin })
         } catch(error) {
             console.error(error.message)
             res.json({ error: error.message })
@@ -60,8 +57,7 @@ export default class UsersController {
 
     static apiLogout(req, res) {
         try {
-            if (!user) return res.json({ error: "NOT_LOGGED_IN" })
-            logout()
+            req.session.user = null
             res.json({ error: null })
         } catch(error) {
             console.error(error.message)

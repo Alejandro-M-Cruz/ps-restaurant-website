@@ -1,16 +1,17 @@
 import express from "express"
 import UsersController from "./UsersController.js"
+import { redirectToLogin } from "./middleware.js"
 
 const router = express.Router()
 
 router.route("/")
-    .get(UsersController.apiGetUser)
+    .get(redirectToLogin, UsersController.apiGetUser)
     .post(UsersController.apiPostUser)
 router.route("/:id")
-    .delete(UsersController.apiDeleteUser)
+    .delete(redirectToLogin, UsersController.apiDeleteUser)
 router.route("/login")
     .post(UsersController.apiLogin)
 router.route("/logout")
-    .post(UsersController.apiLogout)
+    .post(redirectToLogin, UsersController.apiLogout)
 
 export default router

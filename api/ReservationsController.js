@@ -1,8 +1,5 @@
 import dao from "../dao/ReservationsDAO.js"
 
-const USERS_URL = "http://localhost:8080/api/v1/users"
-const AVAILABLE_URL = "http://localhost:8080/api/v1/reservations/available"
-
 const MIN_DAYS_BEFORE_RESERVATION = 2
 const MAX_DAYS_BEFORE_RESERVATION = 30
 const MIN_TIME = 12 * 60 * 60 * 1000    // 12:00
@@ -72,6 +69,7 @@ export default class ReservationsController {
 
     static async apiGetReservationsByUserId(req, res) {
         try {
+            if (req.session.user.id !== req.params.id && !req.session.user.admin) return res.sendStatus(403)
             const userReservations = await dao.getReservationsByUserId(req.params.id)
             res.json({ reservations: userReservations })
         } catch(error) {
@@ -82,9 +80,7 @@ export default class ReservationsController {
 
     static async apiPostReservation(req, res) {
         try {
-            const user = await (await fetch(USERS_URL)).json()
-            if (user.error) return res.json(user)
-            const available = await (await fetch(AVAILABLE_URL)).json()
+            const available = this.apiGetAvailableReservations(req, res)
             if (available.error) return res.json(available)
             if (!available[req.body.date]) return res.json({ error: "INVALID_DATE" })
             if (!available[req.body.date][req.body.time]) return res.json({ error: "INVALID_TIME" })

@@ -1,16 +1,17 @@
 import express from "express"
 import ReservationsController from "./ReservationsController.js"
+import { checkAdmin, redirectToLogin } from "./middleware.js"
 
 const router = express.Router()
 
 router.route("/")
-    .get(ReservationsController.apiGetReservations)
-    .post(ReservationsController.apiPostReservation)
+    .get(checkAdmin, ReservationsController.apiGetReservations)
+    .post(redirectToLogin, ReservationsController.apiPostReservation)
 router.route("/:id")
-    .delete(ReservationsController.apiDeleteReservation)
+    .delete(redirectToLogin, ReservationsController.apiDeleteReservation)
 router.route("/available")
-    .get(ReservationsController.apiGetAvailableReservations)
+    .get(redirectToLogin, ReservationsController.apiGetAvailableReservations)
 router.route("/user/:id")
-    .get(ReservationsController.apiGetReservationsByUserId)
+    .get(redirectToLogin, ReservationsController.apiGetReservationsByUserId)
 
 export default router
