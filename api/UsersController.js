@@ -1,4 +1,4 @@
-import dao from "../dao/UsersDAO.js"
+import dao from "../database/UsersDAO.js"
 
 export default class UsersController {
     static apiGetUser(req, res) {

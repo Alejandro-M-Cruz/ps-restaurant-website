@@ -1,4 +1,4 @@
-import dao from "../dao/MenuDAO.js"
+import dao from "../database/MenuDAO.js"
 
 export default class MenuController {
     static async apiGetMenuSections(req, res) {

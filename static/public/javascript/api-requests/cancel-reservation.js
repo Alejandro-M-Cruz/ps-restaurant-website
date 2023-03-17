@@ -9,6 +9,6 @@ function cancelReservation() {
         method: "DELETE"
     }).then(res => res.json).then(data => {
         if (data.error) return alert(data.error)
-        window.location.href = "/html/reservations.html"
+        window.location.href = "../../html/reservations.html"
     })
 }

@@ -1,4 +1,4 @@
-import dao from "../dao/ReservationsDAO.js"
+import dao from "../database/ReservationsDAO.js"
 
 const MIN_DAYS_BEFORE_RESERVATION = 2
 const MAX_DAYS_BEFORE_RESERVATION = 30
