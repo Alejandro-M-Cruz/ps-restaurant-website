@@ -13,14 +13,10 @@ function loadPage(pageContent) {
     document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel;
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel;
     fetch("/demo-database/menu-sections.json").then(response => response.json()).then(data => {
-       let select = document.querySelector(".menu-form").querySelector("select");
-       let value = 0;
+       
+       
        data.forEach(element => {
-            let section = document.createElement("option");
-            if(value==0) section.selected = true;
-            section.nodeValue = value++;
-            section.innerHTML = element.sectionName;
-            select.appendChild(section);
+            addOption(element.name);
        });
        
     })
@@ -29,7 +25,19 @@ function loadPage(pageContent) {
     
 }
 
-
+function addOption(element){
+    let select = document.querySelector(".menu-form").querySelector("select");
+    let value = 0;
+    let section = document.createElement("option");
+    if(value==0) section.selected = true;
+    section.nodeValue = value++;
+    section.innerHTML = element;
+    select.appendChild(section);
+}
 function addSection(){
-    console.log(typeof window.prompt("Añada la sección deseada",''));
+    let section = window.prompt("Añada la sección deseada")
+    if (section == null) return;
+    addOption(section);
+    /* Añadir a la base de datos la nueva sección*/
+//  ...
 }
