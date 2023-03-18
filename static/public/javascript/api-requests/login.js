@@ -1,8 +1,6 @@
-import { alertMessage } from "../alert-messages.js"
-
 const LOGIN_URL = "/api/v1/users/login"
 
-export default function submit(e) {
+function submit(e) {
     e.preventDefault()
     const formData = new FormData(e.target)
     const phone_number = formData.get("phone_number")

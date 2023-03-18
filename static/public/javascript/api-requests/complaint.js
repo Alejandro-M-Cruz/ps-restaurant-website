@@ -1,8 +1,6 @@
-import { alertMessage } from "../alert-messages.js";
-
 const COMPLAINTS_URL = "/api/v1/complaints"
 
-export default function submit(e) {
+function submit(e) {
     e.preventDefault()
     const formData = new FormData(e.target)
     const content = formData.get("complaint")

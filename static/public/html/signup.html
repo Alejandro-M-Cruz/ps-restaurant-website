@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-<head w3-include-html="/html/templates/head.html">
+<head include-html="/html/templates/head.html">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <script src="/javascript/utils.js"></script>
 </head>
 <body>
-    <header w3-include-html="/html/templates/navbar.html">
-    </header>
-    <section w3-include-html="/html/templates/form-page.html">
-    </section>
+    <div class="grid-div">
+        <header class="navbar-header" include-html="/html/templates/navbar.html">
+        </header>
+        <main>
+            <section include-html="/html/templates/form-page.html"></section>
+        </main>
+        <footer class="footer-section" include-html="/html/templates/footer.html">
+        </footer>
+    </div>
+
     <script src="/javascript/form-pages.js"></script>
-    <script type="module" src="/javascript/alert-messages.js"></script>
-    <script type="module" src="/javascript/signup.js"></script>
-    <script type="module">
-        import signup from "/javascript/signup.js"
-        w3IncludeHTML(() => {
-            loadContent("/demo-database/signup-page-content.json")
-            document.querySelector(".user-form").addEventListener("submit", e => signup(e))
-        })
+    <script src="/javascript/api-requests/signup.js"></script>
+    <script src="/javascript/alert-messages.js"></script>
+    <script>
+        includeHTML()
+            .then(() => {
+                initNavbar()
+                return loadFromJson("/json/signup-page-content.json")
+            })
+            .then(data => loadPage(data))
     </script>
 </body>
 </html>

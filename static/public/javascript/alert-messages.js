@@ -13,6 +13,6 @@ const alertMessages = {
     "CONFIRM_CANCEL_RESERVATION": "¿Está seguro de que desea cancelar la reserva?"
 }
 
-export function alertMessage(message) {
+function alertMessage(message) {
     return alertMessages[alertMessages[message] ? message : "UNKNOWN_ERROR"]
 }

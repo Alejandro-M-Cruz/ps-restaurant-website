@@ -1,0 +1,26 @@
+[
+    {
+        "href": "/html/index.html",
+        "label": "Inicio"
+    },
+    {
+        "href": "/html/index.html#menu-section",
+        "label": "Menú"
+    },
+    {
+        "href": "/logged-in/html/reservations.html",
+        "label": "Reservas"
+    },
+    {
+        "href": "/html/index.html#about-us-section",
+        "label": "Sobre nosotros"
+    },
+    {
+        "href": "/html/index.html#home-footer",
+        "label": "Contacto"
+    },
+    {
+        "href": "/html/login.html",
+        "label": "Iniciar sesión"
+    }
+]

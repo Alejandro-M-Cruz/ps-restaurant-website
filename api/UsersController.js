@@ -1,4 +1,5 @@
 import dao from "../database/UsersDAO.js"
+import { dateFormat, timeFormat } from "./date-formatting.js";
 
 export default class UsersController {
     static apiGetUser(req, res) {
@@ -7,7 +8,7 @@ export default class UsersController {
                 id: req.session.user.id,
                 phone_number: req.session.user.phone_number,
                 admin: req.session.user.admin,
-                creation_date: req.session.user.creation_date
+                creation_date: dateFormat(req.session.user.creation_date)
             })
         } catch(error) {
             console.error(error.message)
