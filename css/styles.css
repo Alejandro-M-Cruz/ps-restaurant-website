@@ -756,7 +756,7 @@ hr{
 
 
 
-/* ------------- TABLET / LAPTOP ------------- */
+/* ------------- TABLET ------------- */
 
 @media screen and (max-width: 1268px) and (min-width: 601px) {
     html {
@@ -771,6 +771,11 @@ hr{
         display: block;
     }
 
+    .navbar-list {
+        display: grid;
+        grid-template-columns: 150px repeat(6, 1fr);
+    }
+
     .page-title {
         font-size: 2rem;
     }
@@ -778,6 +783,7 @@ hr{
     .navbar-header {
         position: static;
         flex-wrap: nowrap;
+        height: max-content;
     }
 
     .navbar-list__logo {
@@ -787,6 +793,8 @@ hr{
     .navbar-list a {
         margin-bottom: 0.5rem;
     }
+
+
 
     .slide-image-thing__center-text {
         font-size: 1em;
@@ -998,8 +1006,13 @@ hr{
         width: 100%;
     }
 
+    .about-us-image img{
+        border-radius: 0rem;
+    }
+
     .about-us-description {
         font-size: 1.3rem;
+        width: 90%;
     }
 
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
@@ -1034,6 +1047,7 @@ hr{
     .reservations-selector {
         order: 1;
     }
+    
 
     /* ----- TABLE ----- */
 

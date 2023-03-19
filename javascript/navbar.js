@@ -8,8 +8,15 @@ async function initNavbar() {
     })
     const navbarLinks = document.querySelectorAll(".navbar-list li:not(.navbar-list__logo)")
     document.querySelector(".hamburger-button").onclick = () => {
-        const display = navbarLinks[0].style.display === "block" ? "none" : "block"
+        let display = navbarLinks[0].style.display === "block" ? "none" : "block"
         navbarLinks.forEach(li => li.style.display = display)
+        
     }
+    window.addEventListener('scroll', function(e) {
+        console.log(navbarLinks[0].style.display)
+        if(navbarLinks[0].style.display === "block") {
+            navbarLinks.forEach(li => li.style.display = "none")
+        }
+    })
     window.onbeforeunload = () => navbarLinks.forEach(li => li.style.display = "none")
 }
