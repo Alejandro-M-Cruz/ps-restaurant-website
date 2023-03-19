@@ -1,4 +1,4 @@
-const COMPLAINTS_URL = "/api/v1/complaints"
+const COMPLAINTS_URL = `${API_URL}/complaints`
 
 function submit(e) {
     e.preventDefault()

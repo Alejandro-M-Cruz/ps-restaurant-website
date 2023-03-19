@@ -32,4 +32,10 @@ export default class ReservationsDAO {
             "SELECT SUM(customers) as total_customers FROM reservations WHERE datetime = ?",
             [datetime]
         )
+
+    static getUserIdFromReservationId = id =>
+        this.queryPromiseFactory.create(
+            "SELECT user_id FROM reservations WHERE id = ?",
+            [id]
+        )
 }

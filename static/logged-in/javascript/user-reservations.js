@@ -1,8 +1,7 @@
-const path = window.location.pathname
-const filename = path.substring(path.lastIndexOf('/') + 1)
 const MAX_RESERVATIONS = 5
+let selectedReservation
 
-function loadPage(pageContent) {
+async function loadPage(pageContent) {
     document.querySelector("title").innerHTML = pageContent.title
     document.querySelector(".page-title").innerHTML = pageContent.title
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
@@ -12,13 +11,8 @@ function loadPage(pageContent) {
     const newResButton = document.querySelector(".confirm-button")
     newResButton.innerHTML = pageContent.newResButtonLabel
     newResButton.href = pageContent.newResButtonHref
-    if (filename === "reservations.html") return loadReservations(pageContent)
-    document.querySelector(".info").innerHTML = pageContent.info
-}
-
-async function loadReservations(pageContent) {
-    const data = await getUserReservations() ? await getUserReservations() : []
-    fillTable(document.querySelector(".data-table"), data, pageContent)
+    const data = await getUserReservations()
+    fillTable(document.querySelector(".data-table"), data ? data : [], pageContent)
 }
 
 function fillTable(table, reservations, pageContent) {

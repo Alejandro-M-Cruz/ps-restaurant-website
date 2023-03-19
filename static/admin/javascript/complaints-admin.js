@@ -1,15 +1,12 @@
-const COMPLAINTS_URL = "/api/v1/complaints/"
-
-function loadPage(pageContent) {
+async function loadPage(pageContent) {
     document.querySelector(".page-title").innerHTML = pageContent.title
-    fetch(COMPLAINTS_URL).then(response => response.json()).then(data => {
-        let grid = document.querySelector(".cards-grid")
-        let cardsHTML = ""
-        data.complaints.forEach(complaint => {
-            cardsHTML += cardHTML(complaint.creation_datetime, complaint.content)
-        })
-        grid.innerHTML = cardsHTML
+    const complaints = await getComplaints()
+    let grid = document.querySelector(".cards-grid")
+    let cardsHTML = ""
+    complaints.forEach(complaint => {
+        cardsHTML += cardHTML(complaint.creation_datetime, complaint.content)
     })
+    grid.innerHTML = cardsHTML
 }
 
 function cardHTML(creation_datetime, content) {

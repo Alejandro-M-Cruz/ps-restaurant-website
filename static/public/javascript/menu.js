@@ -4,12 +4,6 @@ function loadMenuItems(path, element) {
     })
 }
 
-async function loadContent2(path, element) {
-    const response = await fetch(path);
-    const menu = await response.json();
-    loadMenu(menu, element);
-}
-
 const menuLeft = document.querySelector(".menu-left")
 const menuRight = document.querySelector(".menu-right")
 

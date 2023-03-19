@@ -113,6 +113,10 @@ export default class ReservationsController {
 
     static async apiDeleteReservation(req, res) {
         try {
+            if (!req.session.user.admin) {
+                const userId = (await dao.getUserIdFromReservationId(req.params.id))[0].user_id
+                if (req.session.user.id !== userId) return res.sendStatus(403)
+            }
             await dao.deleteReservation(req.params.id)
             res.json({ error: null })
         } catch(error) {

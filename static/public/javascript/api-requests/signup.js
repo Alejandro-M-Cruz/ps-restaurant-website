@@ -1,4 +1,4 @@
-const SIGNUP_URL = "/api/v1/users"
+const SIGNUP_URL = `${API_URL}/users`
 
 function submit(e) {
     e.preventDefault()
