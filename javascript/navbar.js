@@ -13,7 +13,6 @@ async function initNavbar() {
         
     }
     window.addEventListener('scroll', function(e) {
-        console.log(navbarLinks[0].style.display)
         if(navbarLinks[0].style.display === "block") {
             navbarLinks.forEach(li => li.style.display = "none")
         }
