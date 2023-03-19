@@ -67,10 +67,9 @@ export default class ReservationsController {
         }
     }
 
-    static async apiGetReservationsByUserId(req, res) {
+    static async apiGetUserReservations(req, res) {
         try {
-            if (req.session.user.id !== req.params.id && !req.session.user.admin) return res.sendStatus(403)
-            const userReservations = await dao.getReservationsByUserId(req.params.id)
+            const userReservations = await dao.getReservationsByUserId(req.session.user.id)
             res.json({ reservations: userReservations })
         } catch(error) {
             console.error(error.message)

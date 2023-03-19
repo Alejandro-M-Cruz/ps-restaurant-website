@@ -34,8 +34,8 @@ export default class UsersController {
 
     static async apiDeleteUser(req, res) {
         try {
-            if (req.session.user.id !== req.params.id) return res.sendStatus(403)
-            await dao.deleteUser(req.params.id)
+            await dao.deleteUser(req.session.user.id)
+            req.session.user = null
             res.json({ error: null })
         } catch(error) {
             console.error(error.message)

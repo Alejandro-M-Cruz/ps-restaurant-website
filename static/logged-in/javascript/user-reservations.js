@@ -16,10 +16,9 @@ function loadPage(pageContent) {
     document.querySelector(".info").innerHTML = pageContent.info
 }
 
-function loadReservations(pageContent) {
-    fetch("/json/reservations.json").then(response => response.json()).then(data => {
-        fillTable(document.querySelector(".data-table"), data, pageContent)
-    })
+async function loadReservations(pageContent) {
+    const data = await getUserReservations() ? await getUserReservations() : []
+    fillTable(document.querySelector(".data-table"), data, pageContent)
 }
 
 function fillTable(table, reservations, pageContent) {

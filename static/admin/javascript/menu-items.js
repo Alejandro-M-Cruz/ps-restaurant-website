@@ -10,7 +10,8 @@ function menuItemHTML(item) {
             <input name="name" class="card-title name-input" type="text" required>
             <button class="delete-item-button"><img src="/images/delete-icon.png" width="30" alt="Delete icon"></button>
             <textarea name="ingredients" class="ingredients-textarea"></textarea>
-            <input name="price" class="price-input" type="text" required>
+            <input name="price" class="price-input" type="number" step=".01" required>
+            <p class="euro-label">€</p>
             <select name="section_id" class="section-select" required></select>
             <input name="image_src" class="image-input" type="text">
         </div>

@@ -23,7 +23,7 @@ function loadPage(pageContent) {
             htmlToAdd += `<label for="${field.id}">${field.label}</label>`
         }
         htmlToAdd += `<input id="${field.id}" type="${field.type}" name="${field.name}"
-        required="${field.required}" maxlength="${field.maxlength}"></input>`
+        required="${field.required}" maxlength="${field.maxlength}" minlength="${field.minLength}"></input>`
         htmlToAdd += `</div>`
     })
     const formContainer = document.querySelector(".form-container");

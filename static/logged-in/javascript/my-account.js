@@ -1,5 +1,5 @@
 async function loadPage(pageContent) {
-    const userData = await loadFromJson("/api/v1/users")
+    const userData = await getUser()
     document.querySelector("title").innerHTML = pageContent.title
     document.querySelector(".page-title").innerHTML = pageContent.title
     const fragment = new DocumentFragment()
@@ -26,4 +26,6 @@ async function loadPage(pageContent) {
     const logoutButton = document.querySelector(".confirm-button")
     logoutButton.innerHTML = pageContent.logoutButtonLabel
     logoutButton.addEventListener("click", logout)
+
+    deleteAccountButton.addEventListener("click", deleteAccount)
 }

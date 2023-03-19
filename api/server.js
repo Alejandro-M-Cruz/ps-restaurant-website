@@ -7,7 +7,7 @@ import users from "./users-routes.js"
 import reservations from "./reservations-routes.js"
 import menu from "./menu-routes.js"
 import complaints from "./complaints-routes.js"
-import { checkUser, checkAdmin } from "./middleware.js"
+import { redirectToLoginIfLoggedOut, checkAdmin } from "./middleware.js"
 
 const app = express()
 const API = "/api/v1"
@@ -19,12 +19,12 @@ app.use(session({
     saveUninitialized: false,
     store: new MySQLStore({}, dbConnection),
     cookie: {
-        maxAge: 1000 * 60 * 60 * 24 * 7     // 1 week
+        maxAge: 1000 * 60 * 60 * 24     // 24 hours
     }
 }))
 
 app.use(express.static("static/public"))
-app.use("/logged-in", checkUser)
+app.use("/logged-in", redirectToLoginIfLoggedOut)
 app.use("/logged-in", express.static("static/logged-in"))
 app.use("/admin", checkAdmin)
 app.use("/admin", express.static("static/admin"))
@@ -33,6 +33,10 @@ app.get("/", (req, res) => {
     if (!req.session.user) return res.redirect("/html/index.html")
     if (req.session.user.admin) return res.redirect("/admin/html/index-admin.html")
     res.redirect("/html/index.html")
+})
+
+app.get("/favicon.ico", (req, res) => {
+    res.sendFile(path.join(process.cwd(), "favicon.ico"))
 })
 
 app.use(express.json())
