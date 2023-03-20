@@ -1,5 +1,13 @@
+DROP DATABASE IF EXISTS la_nostra_casa;
 CREATE DATABASE la_nostra_casa;
+
 USE la_nostra_casa;
+
+DROP TABLE IF EXISTS reservations;
+DROP TABLE IF EXISTS complaints;
+DROP TABLE IF EXISTS menu_items;
+DROP TABLE IF EXISTS menu_sections;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
@@ -20,12 +28,12 @@ CREATE TABLE reservations (
 );
 
 CREATE TABLE menu_sections (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) UNIQUE NOT NULL
 );
 
 CREATE TABLE menu_items (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     ingredients VARCHAR(255),
     price DECIMAL(10, 2) NOT NULL,
@@ -35,7 +43,7 @@ CREATE TABLE menu_items (
 );
 
 CREATE TABLE complaints (
-    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     content VARCHAR(2000) NOT NULL,
     creation_datetime DATETIME NOT NULL
 );

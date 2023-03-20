@@ -23,7 +23,7 @@
         includeHTML()
             .then(() => {
                 initNavbar()
-                return loadFromJson("/json/complaints-page-content.json")
+                return loadJson("/json/complaints-page-content.json")
             })
             .then(data => loadPage(data))
     </script>

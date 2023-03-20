@@ -1,5 +1,3 @@
-const LOGIN_URL = `${API_URL}/users/login`
-
 function submit(e) {
     e.preventDefault()
     const formData = new FormData(e.target)

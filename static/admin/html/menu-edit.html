@@ -39,7 +39,7 @@
         includeHTML()
             .then(() => {
                 initNavbar()
-                return loadFromJson("/admin/json/menu-sections-edit-page-content.json")
+                return loadJson("/admin/json/menu-sections-edit-page-content.json")
             })
             .then(data => loadPage(data))
     </script>

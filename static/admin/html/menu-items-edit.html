@@ -15,7 +15,7 @@
                 <div class="cards-grid">
                 </div>
                 <div class="buttons-container">
-                    <button class="management-button back-button" onclick="window.history.back()"></button>
+                    <button class="management-button back-button" type="button" onclick="window.history.back()"></button>
                     <button class="management-button cancel-button" type="reset"></button>
                     <button class="management-button edit-button" type="button"></button>
                     <button type="submit" class="management-button confirm-button"></button>
@@ -25,14 +25,16 @@
         <footer class="footer-section" include-html="/html/templates/footer.html"></footer>
     </div>
 
+    <script src="/javascript/alert-messages.js"></script>
     <script src="/javascript/api-requests/get-menu-items.js"></script>
     <script src="/javascript/api-requests/get-menu-sections.js"></script>
+    <script src="/admin/javascript/api-requests/menu-items.js"></script>
     <script src="/admin/javascript/menu-items-edit.js"></script>
     <script>
         includeHTML()
             .then(() => {
                 initNavbar()
-                return loadFromJson("/admin/json/menu-items-page-content.json")
+                return loadJson("/admin/json/menu-items-page-content.json")
             })
             .then(data => loadPage(data))
     </script>

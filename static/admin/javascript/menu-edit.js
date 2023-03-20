@@ -15,7 +15,6 @@ async function loadPage(pageContent) {
         addOption(select, section);
     })
     document.querySelector(".confirm-button").addEventListener("click",() =>  addSection());
-    document.querySelector(".back-button").addEventListener("click", () => history.back());
 }
 
 function addOption(select, section){

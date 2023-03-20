@@ -1,5 +1,13 @@
 const API_URL = "/api/v1"
-const USER_URL = `${API_URL}/users`
+const USERS_URL = `${API_URL}/users`
+const SIGNUP_URL = `${API_URL}/users`
+const LOGIN_URL = `${API_URL}/users/login`
+const LOGOUT_URL = `${API_URL}/users/logout`
+const MENU_SECTIONS_URL = `${API_URL}/menu`
+const MENU_ITEMS_URL = `${API_URL}/menu/items`
+const COMPLAINTS_URL = `${API_URL}/complaints`
+const RESERVATIONS_URL = `${API_URL}/reservations`
+const USER_RESERVATIONS_URL = `${API_URL}/reservations/user`
 
 function includeHTML() {
     const promises = []
@@ -11,10 +19,10 @@ function includeHTML() {
     return Promise.allSettled(promises)
 }
 
-const loadFromJson = async path => (await fetch(path)).json()
+const loadJson = async path => (await fetch(path)).json()
 
 async function initNavbar() {
-    const user = await loadFromJson(USER_URL)
+    const user = await loadJson(USERS_URL)
     let navbarContentJson
     let showUserIcon = true
     if (user.error) {
@@ -24,7 +32,7 @@ async function initNavbar() {
         navbarContentJson = user.admin ? "/admin/json/navbar-admin.json" : "/logged-in/json/navbar-logged-in.json"
     }
     const navbarList = document.querySelector(".navbar-list")
-    const navbarContent = await loadFromJson(navbarContentJson)
+    const navbarContent = await loadJson(navbarContentJson)
     navbarContent.forEach(item => {
         const li = document.createElement("li")
         li.innerHTML = `<a href="${item.href}">${item.label}</a>`
