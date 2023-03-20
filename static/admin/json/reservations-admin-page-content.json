@@ -1,0 +1,26 @@
+{
+    "title": "Reservas",
+    "tableFields": [
+        {
+            "header": "Fecha",
+            "name": "date"
+        },
+        {
+            "header": "Hora",
+            "name": "time"
+        },
+        {
+            "header": "Comensales",
+            "name": "numberOfPeople"
+        },
+        {
+            "header": "A nombre de",
+            "name": "name"
+        }
+    ],
+    "emptyRowMessage": "No hay reservas en este momento",
+    "backButtonLabel": "Atrás",
+    "cancelButtonLabel": "Cancelar reserva",
+    "selectResAlertMessage": "Seleccione una reserva para poder cancelarla",
+    "confirmCancelMessage": "¿Seguro que desea eliminar la reserva seleccionada?"
+}

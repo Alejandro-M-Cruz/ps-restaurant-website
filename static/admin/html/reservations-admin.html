@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head include-html="/html/templates/head.html">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascript/utils.js"></script>
+</head>
+<body>
+    <div class="grid-div">
+        <header class="navbar-header" include-html="/html/templates/navbar.html">
+        </header>
+        <main>
+            <h2 class="page-title">
+            </h2>
+            <section class="content-section">
+                <table class="data-table">
+                </table>
+
+                <div class="buttons-container">
+                    <button class="management-button back-button" onclick="window.history.back()"></button>
+                    <div class="reservations-selector">
+                        <button class="prev-reservations" disabled><img src="/images/left-arrow.png" alt="Prev" width="40"></button>
+                        <p class="counter">1/5</p>
+                        <button class="next-reservations"><img src="/images/right_arrow.png" alt="Next" width="40"></button>
+                    </div>
+                    <button class="management-button cancel-button"></button>
+                </div>
+            </section>
+        </main>
+        <footer class="footer-section" include-html="/html/templates/footer.html">
+        </footer>
+    </div>
+
+    <script src="/logged-in/javascript/reservations-table.js"></script>
+    <script src="/admin/javascript/admin-reservations.js"></script>
+    <script>
+        includeHTML()
+            .then(() => {
+                initNavbar()
+                return loadFromJson("/admin/json/reservations-admin-page-content.json")
+            })
+            .then(data => loadPage(data))
+    </script>
+</body>
+</html>

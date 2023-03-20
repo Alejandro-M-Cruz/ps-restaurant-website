@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head include-html="/html/templates/head.html">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascript/utils.js"></script>
+</head>
+<body>
+    <div class="grid-div">
+        <header class="navbar-header" include-html="/html/templates/navbar.html"></header>
+        <main>
+            <div>
+                <h3 class="page-title">Agregar Sección</h3>
+            </div>
+        </main>
+        <footer class="footer-section" include-html="/html/templates/footer.html"></footer>
+    </div>
+
+    <script>
+        includeHTML()
+            .then(() => {
+                initNavbar()
+                return loadFromJson("/admin/json/new-section-page-content.json")
+            })
+            .then(data => loadPage(data))
+    </script>
+</body>
+</html>
