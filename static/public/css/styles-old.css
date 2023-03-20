@@ -279,15 +279,9 @@ input:focus, textarea:focus {
     text-align: center;
     margin-bottom: 10rem;
     border-radius: 1rem;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    width: 50%;
-    height: 3%;
-    margin: 3em auto 10em;
 }
 
-.reserva b {
+.reserva h2 {
     font-size: var(--big-links-font-size);
     color: white;
     display: block;
@@ -329,26 +323,18 @@ input:focus, textarea:focus {
 
 
 /* -------------LINKS TO COMPLAINTS------------- */
-
 .complaints {
-    width: 50%;
-    height: 3%;
-    margin: 3em auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: var(--cancel-button-color);
     text-align: center;
     border-radius: 1rem;
     margin-top: 7rem;
-    margin: 3em auto 10em;
 }
 
-.complaints b {
-    font-size: var(--big-links-font-size);
+.complaints h2 {
+    font-size: 1rem;
     color: white;
     display: block;
-    
+    padding: 0.5rem;
 }
 
 /* -------------FOOTER------------- */
@@ -578,6 +564,11 @@ hr{
     cursor: pointer;
 }
 
+.management-button:disabled {
+    cursor: default;
+    opacity: 50%;
+}
+
 .back-button {
     color: black;
     background-color: var(--back-button-color);
@@ -768,9 +759,13 @@ hr{
     margin: 0.5rem 0;
 }
 
+.menu-card-div .euro-label {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
 
 
-/* ------------- TABLET ------------- */
+/* ------------- TABLET / LAPTOP ------------- */
 
 @media screen and (max-width: 1268px) and (min-width: 601px) {
     html {
@@ -785,11 +780,6 @@ hr{
         display: block;
     }
 
-    .navbar-list {
-        display: grid;
-        grid-template-columns: 150px repeat(6, 1fr);
-    }
-
     .page-title {
         font-size: 2rem;
     }
@@ -797,7 +787,6 @@ hr{
     .navbar-header {
         position: static;
         flex-wrap: nowrap;
-        height: max-content;
     }
 
     .navbar-list__logo {
@@ -807,8 +796,6 @@ hr{
     .navbar-list a {
         margin-bottom: 0.5rem;
     }
-
-
 
     .slide-image-thing__center-text {
         font-size: 1em;
@@ -848,15 +835,9 @@ hr{
         font-size: 1.2em;
     }
 
-    /* ----- RESERVE HERE ----- */
-    
-    .reserva {
-        width: 40%;
-    }
-
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
     .complaints {
-        width: 40%;
+        width: 30%;
         height: 5em;
         margin: 3em auto;
         display: flex;
@@ -875,7 +856,7 @@ hr{
     
     .management-button {
         font-size: 1rem;
-        width: 20%;
+        width: 30%;
         justify-content: center;
     }
 
@@ -906,12 +887,12 @@ hr{
     }
     
     .user-form input, .user-form textarea {
-        font-size: 1.7rem;
+        font-size: 1.2rem;
     }
     
     .user-form input {
         height: 1.7rem;
-        justify-content: center;
+        /* width: 20rem; */
     }
 
     .cards-grid {
@@ -1004,6 +985,16 @@ hr{
     
     .reserva {
         width: 60%;
+        height: 3%;
+        margin: 3em auto 10em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .reserva a {
+        width: 100%;
+        height: 100%;
     }
 
     /* ----- ABOUT US ----- */
@@ -1016,18 +1007,18 @@ hr{
         width: 100%;
     }
 
-    .about-us-image img{
-        border-radius: 0rem;
-    }
-
     .about-us-description {
         font-size: 1.3rem;
-        width: 90%;
     }
 
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
     .complaints {
-        width: 60%;
+        width: 70%;
+        height: 3%;
+        margin: 3em auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     /* ----- HOJA DE RECLAMACIONES ----- */
@@ -1052,7 +1043,6 @@ hr{
     .reservations-selector {
         order: 1;
     }
-    
 
     /* ----- TABLE ----- */
 

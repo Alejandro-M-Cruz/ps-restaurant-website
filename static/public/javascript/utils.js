@@ -40,5 +40,10 @@ async function initNavbar() {
         userIcon.style.display = showUserIcon ? display : "none"
         navbarLinks.forEach(li => li.style.display = display)
     })
+    window.addEventListener('scroll', function(e) {
+        if(navbarLinks[0].style.display === "block") {
+            navbarLinks.forEach(li => li.style.display = "none")
+        }
+    })
     window.onbeforeunload = () => navbarLinks.forEach(li => li.style.display = "none")
 }
