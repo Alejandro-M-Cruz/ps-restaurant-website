@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head include-html="/html/templates/head.html">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascript/utils.js"></script>
+</head>
+<body>
+    <div class="grid-div">
+        <header class="navbar-header" include-html="/html/templates/navbar.html">
+        </header>
+        <main>
+            <h2 class="page-title">
+            </h2>
+            <section>
+                <table class="data-table">
+                </table>
+
+                <div class="buttons-container">
+                    <button class="management-button back-button" onclick="window.history.back()"></button>
+                    <button class="management-button cancel-button"></button>
+                    <a class="management-button confirm-button" href="/html/login.html"></a>
+                </div>
+            </section>
+        </main>
+        <footer class="footer-section" include-html="/html/templates/footer.html">
+        </footer>
+    </div>
+
+    <script src="/javascript/alert-messages.js"></script>
+    <script src="/logged-in/javascript/api-requests/logout.js"></script>
+    <script src="/logged-in/javascript/api-requests/delete-account.js"></script>
+    <script src="/logged-in/javascript/api-requests/user.js"></script>
+    <script src="/logged-in/javascript/my-account.js"></script>
+    <script>
+        includeHTML()
+            .then(() => {
+                initNavbar()
+                return loadFromJson("/logged-in/json/my-account-page-content.json")
+            })
+            .then(data => loadPage(data))
+    </script>
+</body>
+</html>

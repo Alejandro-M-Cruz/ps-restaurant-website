@@ -1,0 +1,18 @@
+[
+    {
+        "href": "/admin/html/index-admin.html",
+        "label": "Inicio"
+    },
+    {
+        "href": "/admin/html/menu-edit.html",
+        "label": "Editar menú"
+    },
+    {
+        "href": "/admin/html/reservations-admin.html",
+        "label": "Reservas"
+    },
+    {
+        "href": "/admin/html/complaints-admin.html",
+        "label": "Reclamaciones"
+    }
+]

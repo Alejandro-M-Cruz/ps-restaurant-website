@@ -1,0 +1,12 @@
+{
+    "hints": {
+        "name": "Nombre del producto",
+        "ingredients": "Ingredientes",
+        "price": "Precio",
+        "image_src": "Ruta de la imagen del producto"
+    },
+    "backButtonLabel": "Atrás", 
+    "undoButtonLabel": "Deshacer cambios",
+    "confirmButtonLabel": "Guardar cambios",
+    "newItemButtonLabel": "Nuevo producto"
+}

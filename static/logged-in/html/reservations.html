@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head include-html="/html/templates/head.html">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascript/utils.js"></script>
+</head>
+<body>
+    <div class="grid-div">
+        <header class="navbar-header" include-html="/html/templates/navbar.html">
+        </header>
+        <main>
+            <h2 class="page-title">
+            </h2>
+            <section class="content-section">
+                <table class="data-table">
+                </table>
+
+                <div class="buttons-container">
+                    <button class="management-button back-button" onclick="window.history.back()"></button>
+                    <button class="management-button cancel-button"></button>
+                    <a class="management-button confirm-button"></a>
+                </div>
+            </section>
+        </main>
+        <footer class="footer-section" include-html="/html/templates/footer.html">
+        </footer>
+    </div>
+
+    <script src="/logged-in/javascript/api-requests/user-reservations.js"></script>
+    <script src="/logged-in/javascript/reservations-table.js"></script>
+    <script src="/logged-in/javascript/user-reservations.js"></script>
+    <script>
+        includeHTML()
+            .then(() => {
+                initNavbar()
+                return loadFromJson("/logged-in/json/reservations-page-content.json")
+            })
+            .then(data => loadPage(data))
+    </script>
+</body>
+</html>

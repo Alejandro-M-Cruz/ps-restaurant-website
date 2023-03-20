@@ -1,0 +1,29 @@
+{
+    "title": "Reservas",
+    "tableFields": [
+        {
+            "header": "Fecha",
+            "name": "date"
+        },
+        {
+            "header": "Hora",
+            "name": "time"
+        },
+        {
+            "header": "Comensales",
+            "name": "customers"
+        },
+        {
+            "header": "A nombre de",
+            "name": "name"
+        }
+    ],
+    "availableResLabel": "Puede realizar $ reserva/s más",
+    "backButtonLabel": "Atrás",
+    "cancelButtonLabel": "Cancelar reserva",
+    "newResButtonLabel": "Realizar nueva reserva",
+    "newResButtonHref": "/logged-in/html/new-reservation.html",
+    "selectResAlertMessage": "Seleccione una reserva para poder cancelarla",
+    "confirmCancelMessage": "¿Seguro que desea eliminar la reserva seleccionada?",
+    "maxResAlertMessage": "Ha alcanzado el máximo de reservas"
+}
