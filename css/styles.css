@@ -324,7 +324,6 @@ input:focus, textarea:focus {
 .about-us-image img {
     height: 100%;
     width: 100%;
-    border-radius: 0.5rem;
 }
 
 
@@ -341,14 +340,13 @@ input:focus, textarea:focus {
     text-align: center;
     border-radius: 1rem;
     margin-top: 7rem;
-    margin: 3em auto 10em;
 }
 
 .complaints b {
     font-size: var(--big-links-font-size);
     color: white;
     display: block;
-    
+    padding: 3rem;
 }
 
 /* -------------FOOTER------------- */
@@ -830,8 +828,13 @@ hr{
     }
         
     .about-us-image {
-        width: 50%;
+        width: 60%;
         margin-top: 5rem;
+    }
+
+    .about-us-image img {
+        border-radius: 0.5rem;
+        height: 100%;
     }
 
     /* ----- MENU ----- */
