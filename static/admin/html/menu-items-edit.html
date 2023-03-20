@@ -16,8 +16,8 @@
                 </div>
                 <div class="buttons-container">
                     <button class="management-button back-button" onclick="window.history.back()"></button>
-                    <button class="management-button cancel-button"></button>
-                    <button class="management-button edit-button"></button>
+                    <button class="management-button cancel-button" type="reset"></button>
+                    <button class="management-button edit-button" type="button"></button>
                     <button type="submit" class="management-button confirm-button"></button>
                 </div>
             </form>
@@ -25,7 +25,9 @@
         <footer class="footer-section" include-html="/html/templates/footer.html"></footer>
     </div>
 
-    <script src="/admin/javascript/menu-items.js"></script>
+    <script src="/javascript/api-requests/get-menu-items.js"></script>
+    <script src="/javascript/api-requests/get-menu-sections.js"></script>
+    <script src="/admin/javascript/menu-items-edit.js"></script>
     <script>
         includeHTML()
             .then(() => {

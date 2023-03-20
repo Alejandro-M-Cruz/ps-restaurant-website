@@ -768,6 +768,11 @@ hr{
     margin: 0.5rem 0;
 }
 
+.menu-card-div .euro-label {
+    display: inline-block;
+    margin-right: 0.5rem;
+}
+
 
 
 /* ------------- TABLET ------------- */

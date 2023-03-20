@@ -3,17 +3,17 @@ let menuSections
 const updatedMenuItems = []
 const addedMenuItems = []
 
-function menuItemHTML(item) {
+function menuItemHTML(hints, item) {
     const template = document.createElement("template")
     template.innerHTML = `
         <div class="menu-card-div">
-            <input name="name" class="card-title name-input" type="text" required>
+            <input name="name" class="card-title name-input" type="text" placeholder="${hints.name}" required>
             <button class="delete-item-button"><img src="/images/delete-icon.png" width="30" alt="Delete icon"></button>
-            <textarea name="ingredients" class="ingredients-textarea"></textarea>
-            <input name="price" class="price-input" type="number" step=".01" required>
+            <textarea name="ingredients" class="ingredients-textarea" placeholder="${hints.ingredients}"></textarea>
+            <input name="price" class="price-input" type="number" step=".01" placeholder="${hints.price}" required>
             <p class="euro-label">€</p>
             <select name="section_id" class="section-select" required></select>
-            <input name="image_src" class="image-input" type="text">
+            <input name="image_src" class="image-input" type="text"  placeholder="${hints.image_src}">
         </div>
     `
     const sectionSelect = template.content.querySelector(".section-select")
@@ -31,7 +31,7 @@ function menuItemHTML(item) {
                     input.innerHTML = item.ingredients
                     break
                 case "price":
-                    input.value = (Math.round(item.price * 100) / 100).toFixed(2) + "€"
+                    input.value = (Math.round(item.price * 100) / 100).toFixed(2)
                     break
                 case "section":
                     input.value = item.section_id
@@ -54,14 +54,14 @@ function menuItemHTML(item) {
 }
 
 async function loadPage(pageContent) {
-    menuSections = (await loadFromJson(`/api/v1/menu/`)).sections
-    menuItems = (await loadFromJson(`/api/v1/menu/items`)).menuItems
+    menuSections = await getMenuSections()
+    menuItems = await getMenuItems()
     const editedSectionId = window.sessionStorage.getItem("editedSectionId")
     const title = menuSections.find(section => section.id === parseInt(editedSectionId)).name
     document.querySelector("title").innerHTML = title
     document.querySelector(".page-title").innerHTML = `<input type="text" value="${title}">`
     const menuItemsFragment = document.createDocumentFragment()
-    menuItems.forEach(item => menuItemsFragment.appendChild(menuItemHTML(item)))
+    menuItems.forEach(item => menuItemsFragment.appendChild(menuItemHTML(pageContent.hints, item)))
     const grid = document.querySelector(".cards-grid")
     grid.appendChild(menuItemsFragment)
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
@@ -77,7 +77,7 @@ async function loadPage(pageContent) {
     newItemButton.innerHTML = pageContent.newItemButtonLabel
     newItemButton.addEventListener("click", e => {
         e.preventDefault()
-        grid.appendChild(menuItemHTML())
+        grid.appendChild(menuItemHTML(pageContent.hints))
     })
 }
 

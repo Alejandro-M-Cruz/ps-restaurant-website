@@ -1,4 +1,3 @@
-CREATE DATABASE la_nostra_casa;
 USE la_nostra_casa;
 
 CREATE TABLE users (
