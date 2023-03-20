@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head include-html="/html/templates/head.html">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/javascript/utils.js"></script>
+</head>
+<body>
+<div class="grid-div">
+    <header class="navbar-header" include-html="/html/templates/navbar.html">
+    </header>
+
+    <main>
+        <section class="index-admin-links">
+            <a class="reservations-admin-link" href="/logged-in/html/reservations.html"><h2></h2></a>
+            <a class="complaints-admin-link" href="/admin/html/complaints-admin.html"><h2></h2></a>
+        </section>
+        <section class="menu-edit-section">
+            <a href="/admin/html/menu-edit.html"><h2></h2></a>
+        </section>
+        <section id="menu-section">
+            <div class="menu">
+                <div class="menu-left">
+                </div>
+                <div class="menu-right">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="home-footer" class="footer-section" include-html="/html/templates/footer.html">
+    </footer>
+</div>
+
+<script src="/admin/javascript/index-admin.js"></script>
+<script src="/javascript/menu.js"></script>
+<script>
+    includeHTML()
+        .then(() => {
+            initNavbar()
+            return loadFromJson("/admin/json/index-admin-page-content.json")
+        })
+        .then(data => loadPage(data))
+</script>
+</body>
+</html>

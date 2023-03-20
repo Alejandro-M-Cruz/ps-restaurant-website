@@ -1,0 +1,38 @@
+{
+    "tabTitle": "Registro",
+    "title": "Regístrese para poder realizar su primera reserva",
+    "formFields": [
+        {
+            "id": "phone-number",
+            "label": "Número de teléfono: ",
+            "type": "tel",
+            "name": "phone_number",
+            "required": true,
+            "minLength": 4,
+            "maxLength": 15
+        },
+        {
+            "id": "password",
+            "label": "Contraseña: ",
+            "type": "password",
+            "name": "password",
+            "required": true,
+            "minLength": 4,
+            "maxLength": 16
+        },
+        {
+            "id": "password-confirm",
+            "label": "Confirme su contraseña: ",
+            "type": "password",
+            "name": "password_confirmation",
+            "required": true,
+            "minLength": 4,
+            "maxLength": 16
+        }
+    ],
+    "cancelButtonLabel": "Atrás",
+    "confirmButtonLabel": "Registrarse",
+    "already": "Si ya se ha registrado, ",
+    "alreadyLink": "INICIE SESIÓN AQUÍ",
+    "linkHref": "login.html"
+}
