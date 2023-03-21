@@ -11,13 +11,17 @@ async function loadPage(pageContent) {
     })
     document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel;
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel;
+
+    
     (await getMenuSections()).forEach(section => {
         addOption(select, section);
     })
+    select.removeChild(select.childNodes[1]);
     document.querySelector(".confirm-button").addEventListener("click",() =>  addSection());
 }
 
 function addOption(select, section){
+    if(!section)return;
     let value = 0;
     let option = document.createElement("option");
     option.selected = value === 0;
@@ -28,9 +32,9 @@ function addOption(select, section){
 }
 
 function addSection(){
-    let section = window.prompt("Añada la sección deseada")
-    if (section == null) return;
-    addOption(section);
+    let newSection = window.prompt("Añada la sección deseada");
+    if (!newSection) return;
+    addOption(newSection);
     /* Añadir a la base de datos la nueva sección*/
 //  ...
 }

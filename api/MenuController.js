@@ -18,6 +18,7 @@ export default class MenuController {
             res.json({ error: null })
         } catch(error) {
             console.error(error.message)
+            if (error.code === "ER_DUP_ENTRY") return res.json({ error: "DUPLICATE_MENU_SECTION" })
             res.json({ error: error.message })
         }
     }
