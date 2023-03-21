@@ -1,3 +1,5 @@
+const { futimesSync } = require("fs");
+
 function loadPage(pageContent) {
 
     let select = document.querySelector(".menu-form").querySelector("select");
@@ -39,4 +41,8 @@ function addSection(){
     addOption(section);
     /* Añadir a la base de datos la nueva sección*/
 //  ...
+}
+
+function aDASD(){
+    
 }

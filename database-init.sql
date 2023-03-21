@@ -1,10 +1,6 @@
+CREATE DATABASE la_nostra_casa;
 USE la_nostra_casa;
 
-DROP TABLE menu_items;
-DROP TABLE menu_sections;
-DROP TABLE complaints;
-DROP TABLE reservations;
-DROP TABLE users;
 
 CREATE TABLE users (
     id INT PRIMARY KEY AUTO_INCREMENT,
