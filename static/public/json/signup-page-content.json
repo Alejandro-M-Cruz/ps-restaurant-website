@@ -21,7 +21,7 @@
             "maxLength": 16
         },
         {
-            "id": "password-confirm",
+            "id": "password-confirmation",
             "label": "Confirme su contraseña: ",
             "type": "password",
             "name": "password_confirmation",

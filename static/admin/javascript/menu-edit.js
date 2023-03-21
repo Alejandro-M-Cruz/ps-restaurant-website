@@ -40,7 +40,6 @@ function addOption(select, section){
 function addSection(){
     let newSection = window.prompt("Añada la sección deseada");
     if (!newSection) return;
-
     postMenuSection(newSection);
 }
 
@@ -50,7 +49,7 @@ function editSection(select){
 }
 
 function removeSection(){
+    if (!confirm(alertMessage("CONFIRM_DELETE_MENU_SECTION"))) return
     let select = document.querySelector(".menu-form").querySelector("select");
-
     deleteMenuSection(select.value);
 }

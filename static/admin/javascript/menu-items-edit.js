@@ -7,9 +7,11 @@ const deletedMenuItems = []
 const form = document.querySelector("form")
 let confirmButton
 let undoButton
-function enableButton() {
+let backButton
+function updateButtons() {
     confirmButton.disabled = false
     undoButton.disabled = false
+    backButton.disabled = true
 }
 let idCount = 1
 
@@ -35,29 +37,31 @@ function menuItemHTML(id, item, hints) {
     })
     const inputs = template.content.querySelectorAll("input, textarea, select")
     inputs.forEach(input => {
-        if (item) {
-            switch(input.name) {
-                case "ingredients":
-                    input.innerHTML = item.ingredients
-                    break
-                case "price":
-                    input.value = (Math.round(item.price * 100) / 100).toFixed(2)
-                    break
-                case "section":
-                    input.value = item.section_id
-                    break
-                default:
-                    input.value = item[input.name]
-            }
-        }
+        if (item) initInput(input, item)
         input.addEventListener("change", () => {
             item ? itemToUpdate(item, inputs) : itemToAdd(id, inputs)
-            enableButton()
+            updateButtons()
         })
     })
     template.content.querySelector(".delete-item-button")
         .addEventListener("click", e => deleteCard(e, item))
     return template.content
+}
+
+function initInput(input, item) {
+    switch(input.name) {
+        case "ingredients":
+            input.innerHTML = item.ingredients
+            break
+        case "price":
+            input.value = (Math.round(item.price * 100) / 100).toFixed(2)
+            break
+        case "section":
+            input.value = item.section_id
+            break
+        default:
+            input.value = item[input.name]
+    }
 }
 
 function itemToUpdate(item, inputs) {
@@ -82,8 +86,7 @@ async function loadPage(pageContent) {
     menuSections = await getMenuSections()
     const sectionId = window.sessionStorage.getItem("editedSectionId")
     menuItems = await getMenuItemsBySectionId(sectionId)
-    const editedSectionId = window.sessionStorage.getItem("editedSectionId")
-    const title = menuSections.find(section => section.id === parseInt(editedSectionId)).name
+    const title = menuSections.find(section => section.id === parseInt(sectionId)).name
     document.querySelector("title").innerHTML = title
     document.querySelector(".page-title").innerHTML = `<input type="text" value="${title}">`
     const menuItemsFragment = document.createDocumentFragment()
@@ -92,14 +95,11 @@ async function loadPage(pageContent) {
     })
     const grid = document.querySelector(".cards-grid")
     grid.appendChild(menuItemsFragment)
-    document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
+    backButton = document.querySelector(".back-button")
+    backButton.innerHTML = pageContent.backButtonLabel
     undoButton = document.querySelector(".cancel-button")
     undoButton.innerHTML = pageContent.undoButtonLabel
-    undoButton.addEventListener("click", e => {
-        e.preventDefault()
-        if (!confirm(alertMessage("CONFIRM_CANCEL_CHANGES"))) return
-        location.reload()
-    })
+    undoButton.addEventListener("click", undoOnClick)
     confirmButton = document.querySelector(".confirm-button")
     if (updatedMenuItems.length === 0 && addedMenuItems.length === 0 && deletedMenuItems.length === 0) {
         confirmButton.disabled = true
@@ -109,10 +109,18 @@ async function loadPage(pageContent) {
     confirmButton.addEventListener("click", confirmChanges)
     const newItemButton = document.querySelector(".edit-button")
     newItemButton.innerHTML = pageContent.newItemButtonLabel
-    newItemButton.addEventListener("click", e => {
-        enableButton()
-        grid.appendChild(menuItemHTML(idCount++, null, pageContent.hints))
-    })
+    newItemButton.addEventListener("click", newItemOnClick)
+}
+
+function undoOnClick(e) {
+    e.preventDefault()
+    if (!confirm(alertMessage("CONFIRM_CANCEL_CHANGES"))) return
+    location.reload()
+}
+
+function newItemOnClick(e) {
+    updateButtons()
+    grid.appendChild(menuItemHTML(idCount++, null, pageContent.hints))
 }
 
 function deleteCard(e, item) {
@@ -121,15 +129,12 @@ function deleteCard(e, item) {
     if (!item) return
     if (updatedMenuItems.includes(item)) updatedMenuItems.splice(updatedMenuItems.indexOf(item), 1)
     deletedMenuItems.push(item.id)
-    enableButton()
+    updateButtons()
 }
 
 function confirmChanges() {
     if (!form.checkValidity()) return form.reportValidity()
     if (!confirm(alertMessage("CONFIRM_SAVE_CHANGES"))) return
-    console.log(addedMenuItems)
-    console.log(updatedMenuItems)
-    console.log(deletedMenuItems)
     addedMenuItems.forEach(item => postMenuItem(item))
     updatedMenuItems.forEach(item => updateMenuItem(item.id, item))
     deletedMenuItems.forEach(id => deleteMenuItem(id))

@@ -3,9 +3,9 @@
     "formFields": [
         {
             "tag": "textarea",
-            "id": "complaint",
+            "id": "content",
             "type": "text",
-            "name": "complaint",
+            "name": "content",
             "required": true,
             "maxLength": 500,
             "rows": "10",

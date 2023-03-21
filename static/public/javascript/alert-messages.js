@@ -15,7 +15,8 @@ const alertMessages = {
     "CONFIRM_DELETE_ACCOUNT2": "¿Está seguro? Eliminar su cuenta no es reversible",
     "DUPLICATE_MENU_SECTION": "Ya existe una sección con ese nombre",
     "CONFIRM_CANCEL_CHANGES": "¿Está seguro de que desea cancelar los cambios?",
-    "CONFIRM_SAVE_CHANGES": "¿Está seguro de que desea guardar los cambios?"
+    "CONFIRM_SAVE_CHANGES": "¿Está seguro de que desea guardar los cambios?",
+    "CONFIRM_DELETE_MENU_SECTION": "¿Está seguro de que desea eliminar esta sección del menú y todos los productos que contiene?"
 }
 
 function alertMessage(message) {

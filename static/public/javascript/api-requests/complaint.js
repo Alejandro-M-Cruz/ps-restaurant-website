@@ -1,5 +1,3 @@
-const COMPLAINTS_URL = `${API_URL}/complaints`
-
 function submit(e) {
     e.preventDefault()
     const formData = new FormData(e.target)
