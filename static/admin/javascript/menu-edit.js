@@ -5,10 +5,7 @@ async function loadPage(pageContent) {
     document.querySelector(".confirm-button").innerHTML = pageContent.addButtonLabel;
     const editSectionButton = document.querySelector(".edit-button")
     editSectionButton.innerHTML = pageContent.editButtonLabel;
-    editSectionButton.addEventListener("click", () => {
-        window.sessionStorage.setItem("editedSectionId", select.value);
-        window.location.href = "/admin/html/menu-items-edit.html";
-    })
+    editSectionButton.addEventListener("click", (select) =>editSection(select));
     document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel;
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel;
 
@@ -17,7 +14,8 @@ async function loadPage(pageContent) {
         addOption(select, section);
     })
     select.removeChild(select.childNodes[1]);
-    document.querySelector(".confirm-button").addEventListener("click",() =>  addSection());
+    document.querySelector(".confirm-button").addEventListener("click",addSection);
+    document.querySelector(".cancel-button").addEventListener("click",removeSection);
 }
 
 function addOption(select, section){
@@ -34,11 +32,17 @@ function addOption(select, section){
 function addSection(){
     let newSection = window.prompt("Añada la sección deseada");
     if (!newSection) return;
-    addOption(newSection);
-    /* Añadir a la base de datos la nueva sección*/
-//  ...
+
+    postMenuSection(newSection);
 }
 
-function aDASD(){
-    
+function editSection(){
+    window.sessionStorage.setItem("editedSectionId", select.value);
+    window.location.href = "/admin/html/menu-items-edit.html";
+}
+
+function removeSection(){
+    let select = document.querySelector(".menu-form").querySelector("select");
+
+    deleteMenuSection(select.value);
 }
