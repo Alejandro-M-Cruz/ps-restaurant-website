@@ -13,5 +13,5 @@ dbConnection.connect(err => {
     ReservationsDAO.setConnection(dbConnection)
     MenuDAO.setConnection(dbConnection)
     ComplaintsDAO.setConnection(dbConnection)
-    app.listen(PORT, () => console.log("Server running on port " + PORT))
+    app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`))
 })

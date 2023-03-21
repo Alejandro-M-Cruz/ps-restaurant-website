@@ -60,8 +60,23 @@ INSERT INTO menu_sections (name) VALUES ("Entrantes"), ("Pizzas"), ("Pasta"), ("
 INSERT INTO
     menu_items (name, ingredients, price, image_src, section_id)
 VALUES
-    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/margarita.jpg", 2),
-    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/margarita.jpg", 2),
-    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/margarita.jpg", 2),
-    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/margarita.jpg", 2);
-
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 1),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 1),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 1),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 1),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 1),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 2),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 2),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 2),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 2),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 2),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 2),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 3),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 3),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 3),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 3),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 3),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 4),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 4),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 4),
+    ("Margarita", "Salsa de tomate, mozzarella y orégano", 8.00, "/images/menu/pizza-menu.jpg", 4);

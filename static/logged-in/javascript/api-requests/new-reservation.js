@@ -1,3 +1,9 @@
+async function getAvailableReservations() {
+    const response = await loadJson(AVAILABLE_RESERVATIONS_URL)
+    if (response.error) return alert(alertMessage(response.error))
+    return response.available
+}
+
 function submit(e) {
     e.preventDefault()
     const formData = new FormData(e.target)
