@@ -1,23 +1,31 @@
 async function loadPage(pageContent) {
+    addLabels(pageContent);
+    fillSelect(document.querySelector(".menu-form").querySelector("select"));
+    addUserInteraction();
+}
 
-    let select = document.querySelector(".menu-form").querySelector("select");
-    document.querySelector(".page-title").innerHTML = pageContent.title;
-    document.querySelector(".confirm-button").innerHTML = pageContent.addButtonLabel;
-    const editSectionButton = document.querySelector(".edit-button")
-    editSectionButton.innerHTML = pageContent.editButtonLabel;
-    editSectionButton.addEventListener("click", (select) =>editSection(select));
-    document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel;
-    document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel;
-
-    
+async function fillSelect(select){
     (await getMenuSections()).forEach(section => {
         addOption(select, section);
     })
     select.removeChild(select.childNodes[1]);
-    document.querySelector(".confirm-button").addEventListener("click",addSection);
-    document.querySelector(".cancel-button").addEventListener("click",removeSection);
 }
 
+function addLabels(pageContent){
+    document.querySelector(".page-title").innerHTML = pageContent.title;
+    document.querySelector(".confirm-button").innerHTML = pageContent.addButtonLabel;
+    document.querySelector(".edit-button").innerHTML = pageContent.editButtonLabel;
+    document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel;
+    document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel;
+}
+
+function addUserInteraction(){
+    let select = document.querySelector(".menu-form").querySelector("select");
+    document.querySelector(".edit-button").addEventListener("click", () =>editSection(select));
+    document.querySelector(".confirm-button").addEventListener("click",addSection);
+    document.querySelector(".cancel-button").addEventListener("click",removeSection);
+
+}
 function addOption(select, section){
     if(!section)return;
     let value = 0;
@@ -36,7 +44,7 @@ function addSection(){
     postMenuSection(newSection);
 }
 
-function editSection(){
+function editSection(select){
     window.sessionStorage.setItem("editedSectionId", select.value);
     window.location.href = "/admin/html/menu-items-edit.html";
 }
