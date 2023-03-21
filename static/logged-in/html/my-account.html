@@ -37,7 +37,7 @@
         includeHTML()
             .then(() => {
                 initNavbar()
-                return loadFromJson("/logged-in/json/my-account-page-content.json")
+                return loadJson("/logged-in/json/my-account-page-content.json")
             })
             .then(data => loadPage(data))
     </script>

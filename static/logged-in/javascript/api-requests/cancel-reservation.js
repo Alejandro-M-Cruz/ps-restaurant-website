@@ -1,5 +1,3 @@
-const RESERVATIONS_URL = `${API_URL}/reservations`
-
 function cancelReservation(selectedRow) {
     if (!confirm(alertMessage("CONFIRM_CANCEL_RESERVATION"))) return
     const reservationId = selectedRow.id.replace("reservation", "")

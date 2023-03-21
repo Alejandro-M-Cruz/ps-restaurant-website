@@ -53,7 +53,7 @@ export default class MenuController {
         }
     }
 
-    static async apiGetMenuItemsBySection(req, res) {
+    static async apiGetMenuItemsBySectionId(req, res) {
         try {
             const menuItems = await dao.getMenuItemsBySectionId(req.params.id)
             res.json({ menuItems })
@@ -63,13 +63,13 @@ export default class MenuController {
         }
     }
 
-    static async apiAddMenuItem(req, res) {
+    static async apiPostMenuItem(req, res) {
         try {
             const menuItem = {
                 name: req.body.name,
                 price: req.body.price,
                 ingredients: req.body.ingredients,
-                image: req.body.image,
+                image_src: req.body.image_src,
                 section_id: req.body.section_id
             }
             await dao.addMenuItem(menuItem)
@@ -96,7 +96,7 @@ export default class MenuController {
                 name: req.body.name,
                 ingredients: req.body.ingredients,
                 price: req.body.price,
-                image: req.body.image,
+                image_src: req.body.image_src,
                 section_id: req.body.section_id
             }
             await dao.updateMenuItem(req.params.id, menuItem)

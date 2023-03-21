@@ -586,6 +586,11 @@ hr{
     cursor: pointer;
 }
 
+.management-button:disabled {
+    cursor: default;
+    opacity: 70%;
+}
+
 .back-button {
     color: black;
     background-color: var(--back-button-color);
@@ -753,7 +758,7 @@ hr{
 
 .menu-card-div .name-input {
     padding: 3px 0;
-    width: 90%;
+    width: 92%;
 }
 
 .menu-card-div .delete-item-button {
@@ -774,6 +779,11 @@ hr{
 
 .menu-card-div input {
     margin: 0.5rem 0;
+}
+
+.menu-card-div .euro-label {
+    display: inline-block;
+    margin-right: 0.5rem;
 }
 
 

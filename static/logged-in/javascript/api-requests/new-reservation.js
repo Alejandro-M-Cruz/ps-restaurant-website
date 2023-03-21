@@ -1,5 +1,3 @@
-const RESERVATIONS_URL = "/api/v1/reservations"
-
 function submit(e) {
     e.preventDefault()
     const formData = new FormData(e.target)
