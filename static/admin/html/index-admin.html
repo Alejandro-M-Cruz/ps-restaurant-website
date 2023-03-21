@@ -34,11 +34,14 @@
 </div>
 
 <script src="/admin/javascript/index-admin.js"></script>
+<script src="/javascript/api-requests/get-menu-items.js"></script>
+<script src="/javascript/api-requests/get-menu-sections.js"></script>
 <script src="/javascript/menu.js"></script>
 <script>
     includeHTML()
         .then(() => {
             initNavbar()
+            loadMenu()
             return loadJson("/admin/json/index-admin-page-content.json")
         })
         .then(data => loadPage(data))

@@ -8,6 +8,7 @@ const MENU_ITEMS_URL = `${API_URL}/menu/items`
 const COMPLAINTS_URL = `${API_URL}/complaints`
 const RESERVATIONS_URL = `${API_URL}/reservations`
 const USER_RESERVATIONS_URL = `${API_URL}/reservations/user`
+const AVAILABLE_RESERVATIONS_URL = `${API_URL}/reservations/available`
 
 function includeHTML() {
     const promises = []

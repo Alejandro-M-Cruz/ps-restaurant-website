@@ -1,3 +1,9 @@
+async function getUserReservations() {
+    const response = await loadJson(USER_RESERVATIONS_URL)
+    if (response.error) return alert(alertMessage(response.error))
+    return response.reservations
+}
+
 function cancelReservation(selectedRow) {
     if (!confirm(alertMessage("CONFIRM_CANCEL_RESERVATION"))) return
     const reservationId = selectedRow.id.replace("reservation", "")

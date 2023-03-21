@@ -86,7 +86,7 @@ export default class ReservationsController {
             if (req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
                 return res.json("MAX_CUSTOMERS_EXCEEDED")
             const datetime = new Date(req.body.date + " " + req.body.time)
-            const userReservations = await dao.getReservationsByUserId(user.id)
+            const userReservations = await dao.getReservationsByUserId(req.session.user.id)
             for (const reservation of userReservations) {
                 if (reservation.datetime.toISOString() === datetime.toISOString())
                     return res.json({ error: "RESERVATION_SAME_DAY" })
@@ -98,7 +98,7 @@ export default class ReservationsController {
                 return res.json({ error: "RESERVATIONS_FULL" })
             }
             const newReservation = {
-                user_id: user.id,
+                user_id: req.session.user.id,
                 datetime: new Date(`${req.body.date} ${req.body.time}`),
                 customers: req.body.customers,
                 name: req.body.name
