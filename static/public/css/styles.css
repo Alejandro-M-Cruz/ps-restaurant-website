@@ -1,5 +1,5 @@
 :root {
-    --main-color: orange;
+    --main-color: #ffc252;
     --emphasis-color: darkorange;
     --cancel-button-color: #fa372b;
     --confirm-button-color: limegreen;
@@ -10,7 +10,7 @@
     --empty-row-color: #dddddd;
     --input-focus-color: #eeeeee;
     --menu-background-color: #dddddd;
-    --footer-background-color: #dddddd;
+    --footer-background-color: #bcbbbb;
     --page-title-font-size: 2.5rem;
     --big-links-font-size: 1.5rem;
 }
@@ -275,7 +275,7 @@ input:focus, textarea:focus {
 /* -------------LINKS TO RESERVATIONS------------- */
 
 .reserva {
-    background-color: var(--confirm-button-color);
+    background-color: brown;
     text-align: center;
     margin-bottom: 10rem;
     border-radius: 1rem;
@@ -291,7 +291,12 @@ input:focus, textarea:focus {
     font-size: var(--big-links-font-size);
     color: white;
     display: block;
-    padding: 3rem;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.reserva a {
+    width: 100%;
 }
 
 
@@ -324,7 +329,6 @@ input:focus, textarea:focus {
 .about-us-image img {
     height: 100%;
     width: 100%;
-    border-radius: 0.5rem;
 }
 
 
@@ -341,14 +345,18 @@ input:focus, textarea:focus {
     text-align: center;
     border-radius: 1rem;
     margin-top: 7rem;
-    margin: 3em auto 10em;
 }
 
 .complaints b {
     font-size: var(--big-links-font-size);
     color: white;
     display: block;
-    
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.complaints a {
+    width: 100%;
 }
 
 /* -------------FOOTER------------- */
@@ -578,6 +586,11 @@ hr{
     cursor: pointer;
 }
 
+.management-button:disabled {
+    cursor: default;
+    opacity: 70%;
+}
+
 .back-button {
     color: black;
     background-color: var(--back-button-color);
@@ -745,7 +758,7 @@ hr{
 
 .menu-card-div .name-input {
     padding: 3px 0;
-    width: 90%;
+    width: 92%;
 }
 
 .menu-card-div .delete-item-button {
@@ -766,6 +779,11 @@ hr{
 
 .menu-card-div input {
     margin: 0.5rem 0;
+}
+
+.menu-card-div .euro-label {
+    display: inline-block;
+    margin-right: 0.5rem;
 }
 
 
@@ -830,8 +848,13 @@ hr{
     }
         
     .about-us-image {
-        width: 50%;
+        width: 60%;
         margin-top: 5rem;
+    }
+
+    .about-us-image img {
+        border-radius: 0.5rem;
+        height: 100%;
     }
 
     /* ----- MENU ----- */
@@ -854,6 +877,15 @@ hr{
         width: 40%;
     }
 
+    .reserva a {
+        width: 100%;
+    }
+
+    .reserva b {
+        padding-top: 5%;
+        padding-bottom: 5%;
+    }
+
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
     .complaints {
         width: 40%;
@@ -862,6 +894,15 @@ hr{
         display: flex;
         align-items: center;
         justify-content: center;
+    }
+
+    .complaints a {
+        width: 100%;
+    }
+
+    .complaints b {
+        padding-top: 5%;
+        padding-bottom: 5%;
     }
 
     /* ----- FOOTER ----- */
@@ -1006,6 +1047,17 @@ hr{
         width: 60%;
     }
 
+    .reserva a {
+        width: 100%;
+    }
+
+    .reserva b {
+        padding-top: 10%;
+        padding-bottom: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+
     /* ----- ABOUT US ----- */
     .about-us-content {
         flex-direction: column-reverse;
@@ -1028,6 +1080,18 @@ hr{
     /* ----- HOJA DE RECLAMACIONES BOTON ----- */
     .complaints {
         width: 60%;
+        margin-bottom: 25%;
+    }
+
+    .complaints a {
+        width: 100%;
+    }
+
+    .complaints b {
+        padding-top: 10%;
+        padding-bottom: 10%;
+        padding-left: 10%;
+        padding-right: 10%;
     }
 
     /* ----- HOJA DE RECLAMACIONES ----- */

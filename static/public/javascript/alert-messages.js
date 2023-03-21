@@ -12,7 +12,10 @@ const alertMessages = {
     "MAX_CUSTOMERS_EXCEEDED": "Ha seleccionado más asientos de los disponibles",
     "CONFIRM_CANCEL_RESERVATION": "¿Está seguro de que desea cancelar la reserva?",
     "CONFIRM_DELETE_ACCOUNT": "¿Está seguro de que desea eliminar su cuenta?",
-    "CONFIRM_DELETE_ACCOUNT2": "¿Está seguro? Eliminar su cuenta no es reversible"
+    "CONFIRM_DELETE_ACCOUNT2": "¿Está seguro? Eliminar su cuenta no es reversible",
+    "DUPLICATE_MENU_SECTION": "Ya existe una sección con ese nombre",
+    "CONFIRM_CANCEL_CHANGES": "¿Está seguro de que desea cancelar los cambios?",
+    "CONFIRM_SAVE_CHANGES": "¿Está seguro de que desea guardar los cambios?"
 }
 
 function alertMessage(message) {

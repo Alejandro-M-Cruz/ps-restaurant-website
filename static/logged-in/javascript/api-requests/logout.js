@@ -1,5 +1,3 @@
-const LOGOUT_URL = "/api/v1/users/logout"
-
 function logout() {
     fetch(LOGOUT_URL, {
         method: "POST"

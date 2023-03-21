@@ -1,6 +1,4 @@
-const { futimesSync } = require("fs");
-
-function loadPage(pageContent) {
+async function loadPage(pageContent) {
 
     let select = document.querySelector(".menu-form").querySelector("select");
     document.querySelector(".page-title").innerHTML = pageContent.title;
@@ -13,16 +11,10 @@ function loadPage(pageContent) {
     })
     document.querySelector(".cancel-button").innerHTML = pageContent.deleteButtonLabel;
     document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel;
-    fetch("/api/v1/menu/").then(response => response.json()).then(data => {
-       data.sections.forEach(section => {
-            addOption(select, section);
-       });
-       
+    (await getMenuSections()).forEach(section => {
+        addOption(select, section);
     })
     document.querySelector(".confirm-button").addEventListener("click",() =>  addSection());
-    document.querySelector(".back-button").addEventListener("click", () => history.back());
-
-
 }
 
 function addOption(select, section){
