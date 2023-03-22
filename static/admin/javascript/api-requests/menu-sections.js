@@ -6,8 +6,7 @@ function postMenuSection(name) {
         },
         body: JSON.stringify({ name })
     }).then(res => res.json()).then(data => {
-        if (!data.error) return window.location.href = "/admin/html/menu-edit.html"
-        alert(alertMessage(data.error))
+        if (data.error) alert(alertMessage(data.error))
     })
 }
 
@@ -15,8 +14,18 @@ function deleteMenuSection(id) {
     fetch(`${MENU_SECTIONS_URL}/${id}`, {
         method: "DELETE"
     }).then(res => res.json()).then(data => {
-        console.log(data.error)
-        if (!data.error) return window.location.href = "/admin/html/menu-edit.html"
-        alert(alertMessage(data.error))
+        if (data.error) alert(alertMessage(data.error))
+    })
+}
+
+function updateMenuSection(id, menuSection) {
+    fetch(`${MENU_SECTIONS_URL}/${id}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(menuSection)
+    }).then(res => res.json()).then(data => {
+        if (data.error) alert(alertMessage(data.error))
     })
 }

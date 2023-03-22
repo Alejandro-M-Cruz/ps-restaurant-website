@@ -55,5 +55,4 @@ async function initNavbar() {
             userIcon.style.display = "none"
         }
     })
-    window.onbeforeunload = () => navbarLinks.forEach(li => li.style.display = "none")
 }
