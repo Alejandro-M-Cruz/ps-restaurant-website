@@ -11,7 +11,7 @@ export default class UsersController {
                 creation_date: dateFormat(req.session.user.creation_date)
             })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -26,7 +26,7 @@ export default class UsersController {
             await dao.addUser(user)
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             if (error.code === "ER_DUP_ENTRY") return res.json({ error: "DUPLICATE_USER" })
             res.json({ error: error.message }) 
         }
@@ -38,7 +38,7 @@ export default class UsersController {
             req.session.user = null
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -51,7 +51,7 @@ export default class UsersController {
             req.session.user = result[0]
             res.json({ id: result[0].id, admin: result[0].admin })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -61,7 +61,7 @@ export default class UsersController {
             req.session.user = null
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }

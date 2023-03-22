@@ -18,7 +18,7 @@ function submit(e) {
         },
         body: JSON.stringify({ name, date, time, customers })
     }).then(res => res.json()).then(data => {
-        if (!data.error) return window.location.href = "../../html/reservations.html"
+        if (!data.error) return window.location.href = "/logged-in/html/reservations.html"
         const message = alertMessage(data.error)
         let invalidInput
         switch(data.error) {

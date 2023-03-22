@@ -1,5 +1,14 @@
-export const dateFormat = dateISOString => dateISOString.substring(0, dateISOString.indexOf("T"))
+export function datetimeFormat(datetime) {
+    if (datetime instanceof Date) datetime = datetime.toISOString()
+    return dateFormat(datetime) + " " + timeFormat(datetime)
+}
 
+export function dateFormat(datetime) {
+    if (datetime instanceof Date) datetime = datetime.toISOString()
+    return datetime.substring(0, datetime.indexOf("T"))
+}
 
-export const timeFormat = dateISOString =>
-    dateISOString.substring(dateISOString.indexOf("T") + 1, dateISOString.lastIndexOf(":"))
+export function timeFormat(datetime) {
+    if (datetime instanceof Date) datetime = datetime.toISOString()
+    return datetime.substring(datetime.indexOf("T") + 1, datetime.lastIndexOf(":"))
+}

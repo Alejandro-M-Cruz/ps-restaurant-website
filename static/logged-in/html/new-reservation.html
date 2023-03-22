@@ -18,15 +18,20 @@
         </footer>
     </div>
 
+    <script src="/javascript/alert-messages.js"></script>
     <script src="/javascript/form-pages.js"></script>
     <script src="/logged-in/javascript/api-requests/new-reservation.js"></script>
+    <script src="/logged-in/javascript/new-reservation.js"></script>
     <script>
         includeHTML()
             .then(() => {
                 initNavbar()
                 return loadJson("/logged-in/json/new-reservation-page-content.json")
             })
-            .then(data => loadPage(data))
+            .then(data => {
+                loadPage(data)
+                loadAvailableReservations()
+            })
     </script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 function submit(e) {
     e.preventDefault()
     const formData = new FormData(e.target)
-    const content = formData.get("complaint")
+    const content = formData.get("content")
     fetch(COMPLAINTS_URL, {
         method: "POST",
         headers: {
