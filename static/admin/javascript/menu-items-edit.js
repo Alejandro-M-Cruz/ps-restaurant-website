@@ -1,13 +1,17 @@
+let sectionId
+let title
 let menuItems
 let menuSections
 const updatedMenuItems = []
 const addedMenuItems = []
 const deletedMenuItems = []
+let updatedMenuSection
 
 const form = document.querySelector("form")
 let confirmButton
 let undoButton
 let backButton
+
 function updateButtons() {
     confirmButton.disabled = false
     undoButton.disabled = false
@@ -84,11 +88,19 @@ function itemToAdd(id, inputs) {
 
 async function loadPage(pageContent) {
     menuSections = await getMenuSections()
-    const sectionId = window.sessionStorage.getItem("editedSectionId")
+    sectionId = window.sessionStorage.getItem("editedSectionId")
     menuItems = await getMenuItemsBySectionId(sectionId)
-    const title = menuSections.find(section => section.id === parseInt(sectionId)).name
+    title = menuSections.find(section => section.id === parseInt(sectionId)).name
     document.querySelector("title").innerHTML = title
-    document.querySelector(".page-title").innerHTML = `<input type="text" value="${title}">`
+    const titleElement = document.querySelector(".page-title")
+    const titleInput = document.createElement("input")
+    titleInput.type = "text"
+    titleInput.value = title
+    titleInput.required = true
+    titleInput.addEventListener("change", () => {
+        editSectionOnClick(titleInput.value)
+    })
+    titleElement.appendChild(titleInput)
     const menuItemsFragment = document.createDocumentFragment()
     menuItems.forEach(item => {
         menuItemsFragment.appendChild(menuItemHTML(null, item, pageContent.hints))
@@ -109,7 +121,12 @@ async function loadPage(pageContent) {
     confirmButton.addEventListener("click", confirmChanges)
     const newItemButton = document.querySelector(".edit-button")
     newItemButton.innerHTML = pageContent.newItemButtonLabel
-    newItemButton.addEventListener("click", newItemOnClick)
+    newItemButton.addEventListener("click", () => newItemOnClick(grid, pageContent))
+}
+
+function editSectionOnClick(newSectionName) {
+    updatedMenuSection = { name: newSectionName }
+    updateButtons()
 }
 
 function undoOnClick(e) {
@@ -118,9 +135,9 @@ function undoOnClick(e) {
     location.reload()
 }
 
-function newItemOnClick(e) {
-    updateButtons()
+function newItemOnClick(grid, pageContent) {
     grid.appendChild(menuItemHTML(idCount++, null, pageContent.hints))
+    updateButtons()
 }
 
 function deleteCard(e, item) {
@@ -138,4 +155,8 @@ function confirmChanges() {
     addedMenuItems.forEach(item => postMenuItem(item))
     updatedMenuItems.forEach(item => updateMenuItem(item.id, item))
     deletedMenuItems.forEach(id => deleteMenuItem(id))
+    console.log(updatedMenuSection.name + " " + title)
+    if (updatedMenuSection && updatedMenuSection.name !== title)
+        updateMenuSection(sectionId, updatedMenuSection)
 }
+
