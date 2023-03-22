@@ -6,7 +6,7 @@ export default class MenuController {
             const sections = await dao.getAllMenuSections()
             res.json({ sections })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -17,7 +17,7 @@ export default class MenuController {
             await dao.addMenuSection(menuSection)
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             if (error.code === "ER_DUP_ENTRY") return res.json({ error: "DUPLICATE_MENU_SECTION" })
             res.json({ error: error.message })
         }
@@ -28,7 +28,7 @@ export default class MenuController {
             await dao.deleteMenuSection(req.params.id)
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -39,7 +39,7 @@ export default class MenuController {
             await dao.updateMenuSection(req.params.id, menuSection)
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -49,7 +49,7 @@ export default class MenuController {
             const menuItems = await dao.getAllMenuItems()
             res.json({ menuItems })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -59,7 +59,7 @@ export default class MenuController {
             const menuItems = await dao.getMenuItemsBySectionId(req.params.id)
             res.json({ menuItems })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -76,7 +76,7 @@ export default class MenuController {
             await dao.addMenuItem(menuItem)
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -86,7 +86,7 @@ export default class MenuController {
             await dao.deleteMenuItem(req.params.id)
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }
@@ -103,7 +103,7 @@ export default class MenuController {
             await dao.updateMenuItem(req.params.id, menuItem)
             res.json({ error: null })
         } catch(error) {
-            console.error(error.message)
+            console.error(error)
             res.json({ error: error.message })
         }
     }

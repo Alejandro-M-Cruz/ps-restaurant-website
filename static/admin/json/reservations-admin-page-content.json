@@ -11,7 +11,7 @@
         },
         {
             "header": "Comensales",
-            "name": "numberOfPeople"
+            "name": "customers"
         },
         {
             "header": "A nombre de",

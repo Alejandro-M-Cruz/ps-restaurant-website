@@ -6,11 +6,13 @@
             "id": "content",
             "type": "text",
             "name": "content",
-            "required": true,
-            "maxLength": 500,
-            "rows": "10",
-            "cols": "55",
-            "placeholder": "Describa aquí su reclamación o sugerencia..."
+            "properties": {
+                "required": true,
+                "maxLength": 500,
+                "rows": "10",
+                "cols": "55",
+                "placeholder": "Describa aquí su reclamación o sugerencia..."
+            }
         }
     ],
     "cancelButtonLabel": "Cancelar",

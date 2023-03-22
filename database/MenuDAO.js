@@ -1,6 +1,9 @@
 import QueryPromiseFactory from "./QueryPromiseFactory.js";
 
 export default class MenuDAO {
+    static connection
+    static queryPromiseFactory
+
     static setConnection(connection) {
         if (this.connection) return
         this.connection = connection

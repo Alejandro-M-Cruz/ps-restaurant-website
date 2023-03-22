@@ -1,6 +1,9 @@
 import QueryPromiseFactory from "./QueryPromiseFactory.js";
 
 export default class ReservationsDAO {
+    static connection
+    static queryPromiseFactory
+
     static setConnection(connection) {
         if (this.connection) return
         this.connection = connection
@@ -34,8 +37,5 @@ export default class ReservationsDAO {
         )
 
     static getUserIdFromReservationId = id =>
-        this.queryPromiseFactory.create(
-            "SELECT user_id FROM reservations WHERE id = ?",
-            [id]
-        )
+        this.queryPromiseFactory.create("SELECT user_id FROM reservations WHERE id = ?", [id])
 }
