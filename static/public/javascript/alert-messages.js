@@ -9,6 +9,7 @@ const alertMessages = {
     "INVALID_TIME": "La hora seleccionada no es válida",
     "RESERVATION_SAME_DAY": "Ya ha realizado una reserva para la fecha seleccionada",
     "RESERVATIONS_FULL": "No hay más reservas disponibles para la hora seleccionada",
+    "MAX_RESERVATIONS_EXCEEDED": "Ha alcanzado el número máximo de reservas",
     "MAX_CUSTOMERS_EXCEEDED": "Ha seleccionado más asientos de los disponibles",
     "CONFIRM_CANCEL_RESERVATION": "¿Está seguro de que desea cancelar la reserva?",
     "CONFIRM_DELETE_ACCOUNT": "¿Está seguro de que desea eliminar su cuenta?",

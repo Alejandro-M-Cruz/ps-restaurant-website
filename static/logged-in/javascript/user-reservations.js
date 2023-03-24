@@ -1,6 +1,8 @@
 const MAX_RESERVATIONS = 5
 
 let cancelButton
+let newResButton
+let userReservations
 
 async function loadPage(pageContent) {
     document.querySelector("title").innerHTML = pageContent.title
@@ -10,14 +12,14 @@ async function loadPage(pageContent) {
     cancelButton.innerHTML = pageContent.cancelButtonLabel
     cancelButton.href = pageContent.cancelButtonHref
     cancelButton.addEventListener("click", cancelOnClick)
-    checkButton()
-    const newResButton = document.querySelector(".confirm-button")
+    newResButton = document.querySelector(".confirm-button")
     newResButton.innerHTML = pageContent.newResButtonLabel
-    newResButton.href = pageContent.newResButtonHref
-    const data = await getUserReservations()
+    newResButton.addEventListener("click", () => window.location.href = pageContent.newResButtonHref)
+    userReservations = await getUserReservations()
+    checkButton()
     fillTable(
         document.querySelector(".data-table"),
-        data ? data : [],
+        userReservations ? userReservations : [],
         pageContent,
         MAX_RESERVATIONS
     )
@@ -25,4 +27,5 @@ async function loadPage(pageContent) {
 
 function checkButton() {
     cancelButton.disabled = !document.querySelector(".selected-row")
+    newResButton.disabled = userReservations.length >= MAX_RESERVATIONS
 }
