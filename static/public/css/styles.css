@@ -1,12 +1,12 @@
 :root {
-    --main-color: orange;
+    --main-color: #ffb939;
     --emphasis-color: darkorange;
     --cancel-button-color: #fa372b;
     --confirm-button-color: limegreen;
     --back-button-color: #ffd232;
     --edit-button-color: royalblue;
     --hover-row-color: #eeeeee;
-    --selected-row-color: rgba(255, 165, 0, 0.7);
+    --selected-row-color: rgb(255 206 116 / 70%);
     --empty-row-color: #dddddd;
     --input-focus-color: #eeeeee;
     --menu-background-color: #dddddd;
@@ -390,9 +390,12 @@ input:focus, textarea:focus {
 .hours {
     display: flex;
     flex-direction: column;
-    justify-content:space-between;
     height: 100%;
     align-items:center;
+}
+
+.hours pre{
+    padding-top: 40%;
 }
 
 .social-list {
@@ -401,8 +404,15 @@ input:focus, textarea:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
     padding-bottom:1em;
+}
+
+.social-icons {
+    padding-top: 50%;
+}
+
+.social-icons img{
+    padding-bottom: 25%;
 }
 
 .social-media-icon {
@@ -1081,6 +1091,11 @@ hr{
     .reservations-selector {
         order: 1;
     }
+
+    .complaints-admin-link {
+        font-size: 7px;
+    }
+   
     
 
     /* ----- TABLE ----- */
@@ -1135,6 +1150,10 @@ hr{
 
     .hours li h3 {
         padding: 2em 0;
+    }
+
+    .hours pre {
+        padding-top: 0%;
     }
 
     .cards-grid {
