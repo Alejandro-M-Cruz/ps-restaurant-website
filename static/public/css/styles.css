@@ -67,7 +67,7 @@ button:hover {
     grid-area: footer;
 }
 
-input, textarea {
+input, textarea, select {
     border: black solid 1px;
     padding-left: 2px;
 }

@@ -10,10 +10,10 @@ async function loadPage(pageContent) {
     cancelButton = document.querySelector(".cancel-button")
     cancelButton.innerHTML = pageContent.cancelButtonLabel
     cancelButton.addEventListener("click", cancelOnClick)
-    loadReservations(pageContent, await getReservations())
+    loadReservations(pageContent, reservations = await getReservations())
 }
 
-const counterString = () => {
+function counterString() {
     const total = Math.ceil(reservations.length/RESERVATIONS_PER_TABLE)
     return `${counter}/${total}`
 }

@@ -1,6 +1,8 @@
 import dao from "../database/ReservationsDAO.js"
 import { dateFormat, timeFormat } from "./date-formatting.js";
 
+const MAX_RESERVATIONS = 5
+
 const MIN_DAYS_BEFORE_RESERVATION = 2
 const MAX_DAYS_BEFORE_RESERVATION = 30
 const MIN_TIME = 12 * 60 * 60 * 1000    // 12:00
@@ -32,16 +34,17 @@ const validDateTimes = () => {
     return dateTimes
 }
 
-function availableDateTimes(customerByDatetime) {
+function availableDateTimes(customersByDatetime) {
     const available = validDateTimes()
-    customerByDatetime.forEach(reserved => {
+    for (const reserved of customersByDatetime) {
         const date = dateFormat(reserved.datetime)
         const time = timeFormat(reserved.datetime)
+        if (!available[date]) continue
         if (reserved.total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME) {
             delete available[date][time]
             if (Object.keys(available[date]).length === 0) delete available[date]
         } else available[date][time] -= reserved.total_customers
-    })
+    }
     return available
 }
 
@@ -85,13 +88,14 @@ export default class ReservationsController {
 
     static async apiPostReservation(req, res) {
         try {
+            const userReservations = await dao.getReservationsByUserId(req.session.user.id)
+            if (userReservations.length >= MAX_RESERVATIONS) return res.json({ error: "MAX_RESERVATIONS_EXCEEDED" })
             const available = availableDateTimes(await dao.getTotalCustomersForEachDatetime())
             if (!available[req.body.date]) return res.json({ error: "INVALID_DATE" })
             if (!available[req.body.date][req.body.time]) return res.json({ error: "INVALID_TIME" })
             if (req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
                 return res.json({ error: "MAX_CUSTOMERS_EXCEEDED" })
             const datetime = new Date(req.body.date + " " + req.body.time)
-            const userReservations = await dao.getReservationsByUserId(req.session.user.id)
             for (const reservation of userReservations) {
                 if (reservation.datetime.toISOString() === datetime.toISOString())
                     return res.json({ error: "RESERVATION_SAME_DAY" })
