@@ -7,6 +7,7 @@ function postMenuSection(name) {
         body: JSON.stringify({ name })
     }).then(res => res.json()).then(data => {
         if (data.error) alert(alertMessage(data.error))
+        else window.location.reload();
     })
 }
 
@@ -15,6 +16,7 @@ function deleteMenuSection(id) {
         method: "DELETE"
     }).then(res => res.json()).then(data => {
         if (data.error) alert(alertMessage(data.error))
+        else window.location.reload();
     })
 }
 
