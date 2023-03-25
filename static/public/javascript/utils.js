@@ -30,7 +30,12 @@ async function initNavbar() {
         navbarContentJson = "/json/navbar.json"
         showUserIcon = false
     } else {
-        navbarContentJson = user.admin ? "/admin/json/navbar-admin.json" : "/logged-in/json/navbar-logged-in.json"
+        let barraNav = document.querySelector(".navbar-list")
+        if(user.admin) {
+            barraNav.style.gridTemplateColumns = "150px repeat(5, 1fr)";
+            navbarContentJson = "/admin/json/navbar-admin.json";
+        }
+        else navbarContentJson = "/logged-in/json/navbar-logged-in.json";
     }
     const navbarList = document.querySelector(".navbar-list")
     const navbarContent = await loadJson(navbarContentJson)

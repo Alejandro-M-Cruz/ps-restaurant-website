@@ -116,6 +116,7 @@ input:focus, textarea:focus {
 
 .navbar-list li:not(.navbar-list__logo) {
     display: block;
+    text-align: center;
 }
 
 .navbar-list a:not(.navbar-list__logo a) {
@@ -793,10 +794,6 @@ hr{
 
     .grid-div {
         grid-template-rows: 120px 1fr 360px;
-    }
-
-    .navbar-list li:not(.navbar-list__logo) {
-        display: block;
     }
 
     .navbar-list {
