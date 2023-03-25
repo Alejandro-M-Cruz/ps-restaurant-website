@@ -55,9 +55,10 @@ function fillTable(table, reservations, pageContent, maxReservations) {
     if (maxReservations) {
         for (let i = reservations.length; i < maxReservations; i++) {
             fragment.appendChild(emptyRow(
-                pageContent,
-                reservations.length,
-                maxReservations)
+                    pageContent,
+                    reservations.length,
+                    maxReservations
+                )
             )
         }
     }

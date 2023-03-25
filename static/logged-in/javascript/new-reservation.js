@@ -8,6 +8,7 @@ async function loadAvailableReservations() {
         loadTimeSelect(timeSelect, available[dateSelect.value])
     })
     timeSelect.addEventListener("change", () => {
+        console.log(available[dateSelect.value][timeSelect.value])
         document.querySelector("#customers").max = available[dateSelect.value][timeSelect.value]
     })
 }

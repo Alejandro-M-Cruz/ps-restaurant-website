@@ -19,7 +19,7 @@ async function loadPage(pageContent) {
     checkButton()
     fillTable(
         document.querySelector(".data-table"),
-        userReservations ? userReservations : [],
+        userReservations,
         pageContent,
         MAX_RESERVATIONS
     )

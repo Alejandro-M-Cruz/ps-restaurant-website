@@ -1,22 +1,24 @@
 import dao from "../database/ReservationsDAO.js"
-import { dateFormat, timeFormat } from "./date-formatting.js";
+import { dateFormat, timeFormat, localeToDBDatetimeFormatString } from "./date-formatting.js";
 
 const MAX_RESERVATIONS = 5
 
 const MIN_DAYS_BEFORE_RESERVATION = 2
 const MAX_DAYS_BEFORE_RESERVATION = 30
-const MIN_TIME = 12 * 60 * 60 * 1000    // 12:00
-const MAX_TIME = 22 * 60 * 60 * 1000    // 22:00
+const MIN_TIME = [12, 0]
+const MAX_TIME = [22, 0]
 const MINUTES_BETWEEN_RESERVATIONS = 30
 const MAX_CUSTOMERS_AT_THE_SAME_TIME = 30
 const TODAY = new Date()
 const START = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate())
-START.setTime(START.getTime() + MIN_DAYS_BEFORE_RESERVATION * 24 * 60 * 60 * 1000 + MIN_TIME)
+START.setTime(START.getTime() + MIN_DAYS_BEFORE_RESERVATION * 24 * 60 * 60 * 1000)
+START.setHours(MIN_TIME[0], MIN_TIME[1])
 
 const validDateTimes = () => {
     const dateTimes = {}
     const current = new Date(START.getTime())
-    const lastHour = new Date(START.getTime() + MAX_TIME - MIN_TIME)
+    const lastHour = new Date(START.getTime())
+    lastHour.setHours(MAX_TIME[0], MAX_TIME[1])
     const lastDay = new Date(
         lastHour.getTime() + (MAX_DAYS_BEFORE_RESERVATION - MIN_DAYS_BEFORE_RESERVATION) * 24 * 60 * 60 * 1000
     )
@@ -34,9 +36,9 @@ const validDateTimes = () => {
     return dateTimes
 }
 
-function availableDateTimes(customersByDatetime) {
+function availableDateTimes(customersForEachDatetime) {
     const available = validDateTimes()
-    for (const reserved of customersByDatetime) {
+    for (const reserved of customersForEachDatetime) {
         const date = dateFormat(reserved.datetime)
         const time = timeFormat(reserved.datetime)
         if (!available[date]) continue
@@ -60,7 +62,7 @@ export default class ReservationsController {
 
     static async apiGetReservations(req, res) {
         try {
-            const reservations = await dao.getAllReservations()
+            const reservations = await dao.getReservations()
             reservations.map(reservation => {
                 reservation.date = dateFormat(reservation.datetime)
                 reservation.time = timeFormat(reservation.datetime)
@@ -95,21 +97,22 @@ export default class ReservationsController {
             if (!available[req.body.date][req.body.time]) return res.json({ error: "INVALID_TIME" })
             if (req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
                 return res.json({ error: "MAX_CUSTOMERS_EXCEEDED" })
-            const datetime = new Date(req.body.date + " " + req.body.time)
             for (const reservation of userReservations) {
-                if (reservation.datetime.toISOString() === datetime.toISOString())
+                if (dateFormat(reservation.datetime) === req.body.date)
                     return res.json({ error: "RESERVATION_SAME_DAY" })
             }
-            const customers = await dao.getTotalCustomersByDatetime(datetime)
-            if (customers[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME) {
-                if (customers[0].total_customers + req.body.customers > MAX_CUSTOMERS_AT_THE_SAME_TIME)
+            const dbFormatDatetime = localeToDBDatetimeFormatString(req.body.date, req.body.time)
+            const customers = await dao.getTotalCustomersByDatetime(dbFormatDatetime)
+            if (customers[0].total_customers) {
+                if (customers[0].total_customers >= MAX_CUSTOMERS_AT_THE_SAME_TIME)
+                    return res.json({ error: "RESERVATIONS_FULL" })
+                if (customers[0].total_customers + parseInt(req.body.customers) > MAX_CUSTOMERS_AT_THE_SAME_TIME)
                     return res.json({ error: "MAX_CUSTOMERS_EXCEEDED" })
-                return res.json({ error: "RESERVATIONS_FULL" })
             }
             const newReservation = {
                 user_id: req.session.user.id,
-                datetime: new Date(`${req.body.date} ${req.body.time}`),
-                customers: req.body.customers,
+                datetime: dbFormatDatetime,
+                customers: parseInt(req.body.customers),
                 name: req.body.name
             }
             await dao.addReservation(newReservation)
