@@ -1,5 +1,6 @@
 async function loadPage(pageContent) {
     document.querySelector(".page-title").innerHTML = pageContent.title
+    document.querySelector(".back-button").innerHTML = pageContent.backButtonLabel
     const complaints = await getComplaints()
     let grid = document.querySelector(".cards-grid")
     let cardsHTML = ""
